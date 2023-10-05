@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medical_center/core/utils/app_assets.dart';
+
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -10,8 +12,8 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('todayFormatted'),
+    return  Center(
+      child: Image.asset(AppAssets.nutritionalTherapy),
     );
   }
 }
