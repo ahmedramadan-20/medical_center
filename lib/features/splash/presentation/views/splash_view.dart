@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
+import 'package:medical_center/core/utils/app_colors.dart';
+
+import '../../../../core/functions/navigator.dart';
 
 
 class SplashView extends StatefulWidget {
@@ -11,9 +14,28 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
+  void initState() {
+    delayedNavigation(context);
+    super.initState();
+  }
+
+
+
+
+  @override
   Widget build(BuildContext context) {
-    return  Center(
-      child: Image.asset(AppAssets.nutritionalTherapy),
+    return  Scaffold(
+      backgroundColor: AppColors.offWhite,
+      body: Center(
+        child: Image.asset(AppAssets.splash,width: 150,height: 150,),
+      ),
     );
   }
+}
+
+void delayedNavigation(context) {
+  Future.delayed(const Duration(seconds: 2),(){
+    navigate(context,'/onBoarding');
+
+  });
 }

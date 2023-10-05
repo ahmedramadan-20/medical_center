@@ -13,4 +13,8 @@ abstract class AppAssets {
   static const String nephrologyAndUrology = "assets/images/Nephrology_and_Urology.png";
   static const String speechAndBehaviorModification = "assets/images/Speech_and_Behavior_Modification.png";
   static const String neurology = "assets/images/Neurology.png";
+  static const String splash = "assets/images/splash.png";
+  static const String onBoarding1 = "assets/images/onBoarding1.jpg";
+  static const String onBoarding2 = "assets/images/onBoarding2.jpg";
+  static const String onBoarding3 = "assets/images/onBoarding3.jpg";
 }
