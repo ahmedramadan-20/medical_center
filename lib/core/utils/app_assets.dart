@@ -17,4 +17,5 @@ abstract class AppAssets {
   static const String onBoarding1 = "assets/images/onBoarding1.jpg";
   static const String onBoarding2 = "assets/images/onBoarding2.jpg";
   static const String onBoarding3 = "assets/images/onBoarding3.jpg";
+  static const String splash_two = "assets/images/reception.gif";
 }

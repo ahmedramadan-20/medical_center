@@ -27,14 +27,14 @@ class _SplashViewState extends State<SplashView> {
     return  Scaffold(
       backgroundColor: AppColors.offWhite,
       body: Center(
-        child: Image.asset(AppAssets.splash,width: 150,height: 150,),
+        child: Image.asset(AppAssets.splash_two,width: 150,height: 150,),
       ),
     );
   }
 }
 
 void delayedNavigation(context) {
-  Future.delayed(const Duration(seconds: 2),(){
+  Future.delayed(const Duration(seconds: 4),(){
     navigateReplacement(context,'/onBoarding');
 
   });
