@@ -21,11 +21,11 @@ class FadeAnimation extends StatelessWidget {
             milliseconds: (500 * delay).round(),
           ),
         ),
-        ShimmerEffect(
-          delay: Duration(
-            milliseconds: (1500 * delay).round(),
-          ),
-        ),
+        // ShimmerEffect(
+        //   delay: Duration(
+        //     milliseconds: (1500 * delay).round(),
+        //   ),
+        // ),
       ],
       child: child,
     );

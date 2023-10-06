@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medical_center/core/database/cashe/cache_helper.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
 import 'package:medical_center/core/utils/app_colors.dart';
 
 import '../../../../core/functions/navigator.dart';
+import '../../../../core/services/service_locator.dart';
 
 
 class SplashView extends StatefulWidget {
@@ -15,7 +17,13 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    delayedNavigation(context);
+    bool isOnBoardingVisited = getIt<CacheHelper>().getData(key: 'isOnBoardingVisited')??false;
+    if(isOnBoardingVisited==true){
+      delayedNavigation(context,'/signUp');
+    }else{
+      delayedNavigation(context,'/onBoarding');
+    }
+
     super.initState();
   }
 
@@ -33,9 +41,9 @@ class _SplashViewState extends State<SplashView> {
   }
 }
 
-void delayedNavigation(context) {
+void delayedNavigation(context,path) {
   Future.delayed(const Duration(seconds: 4),(){
-    navigateReplacement(context,'/onBoarding');
+    navigateReplacement(context,path);
 
   });
 }

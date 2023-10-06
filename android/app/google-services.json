@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "938796001232",
+    "project_id": "medical-center-df926",
+    "storage_bucket": "medical-center-df926.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938796001232:android:f920b1a4d4272a801e3bd5",
+        "android_client_info": {
+          "package_name": "com.example.medical_center"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKSMHE_3VWJyESjZ9r87kfSMzjPutMnQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
