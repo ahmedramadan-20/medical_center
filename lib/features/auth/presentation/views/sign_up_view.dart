@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medical_center/core/widgets/custom_button.dart';
-
-import '../widgets/custom_text_field.dart';
+import 'package:medical_center/core/functions/navigator.dart';
+import '../widgets/custom_sign_up_form.dart';
 import '../widgets/have_an_account_widget.dart';
-import '../widgets/terms_and_conditions.dart';
 import '../widgets/welcome_text_widget.dart';
 
 class SignUpView extends StatelessWidget {
@@ -11,7 +9,7 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: CustomScrollView(
@@ -33,42 +31,28 @@ class SignUpView extends StatelessWidget {
               ),
             ),
             const SliverToBoxAdapter(
-              child: CustomTextField(labelText: 'First Name'),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(labelText: 'Last Name'),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(labelText: 'Email Address'),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(labelText: 'Password'),
-            ),
-            const SliverToBoxAdapter(
-              child: TermsAndConditionsWidget(),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 88,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: CustomButton(
-                text: 'Sign Up',
-                onPressed: () {},
-              ),
+              child: CustomSignUpForm(),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
                 height: 16,
               ),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: HaveAnAccountWidget(
                 text1: 'Already have an account ? ',
                 text2: 'Sign In',
+                onTap: (){
+                  customNavigate(context, '/signIn');
+                },
               ),
             ),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 70,
+              ),
+            ),
+
           ],
         ),
       ),
