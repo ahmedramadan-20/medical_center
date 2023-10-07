@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_center/core/database/cashe/cache_helper.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
 import 'package:medical_center/core/utils/app_colors.dart';
+import 'package:medical_center/core/widgets/fade_animation.dart';
 
 import '../../../../core/functions/navigator.dart';
 import '../../../../core/services/service_locator.dart';
@@ -21,8 +22,9 @@ class _SplashViewState extends State<SplashView> {
         getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
     if (isOnBoardingVisited == true) {
       FirebaseAuth.instance.currentUser == null
-          ? delayedNavigation(context, '/signUp')
-          : delayedNavigation(context, '/home');
+          ? delayedNavigation(context, '/signIn')
+          : FirebaseAuth.instance.currentUser!.emailVerified == true
+          ? delayedNavigation(context, '/home'):delayedNavigation(context, '/signIn');
     } else {
       delayedNavigation(context, '/onBoarding');
     }
@@ -35,10 +37,14 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       body: Center(
-        child: Image.asset(
-          AppAssets.splash_two,
-          width: 150,
-          height: 150,
+        child: FadeAnimation(
+
+          delay: 0.2,
+          child: Image.asset(
+            AppAssets.splashIcon,
+            width: 200,
+            height: 200,
+          ),
         ),
       ),
     );

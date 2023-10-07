@@ -26,9 +26,9 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                 navigateReplacement(context, '/signUp');
               },
               child: Text(
-                'Skip',
-                style: AppTextStyles.poppins300style16
-                    .copyWith(fontWeight: FontWeight.w400),
+                'تخطي',
+                style: AppTextStyles.cairo300style16
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -52,10 +52,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
           ),
           Text(
             cubit.onBoardingData[cubit.currentIndex].title,
-            style: AppTextStyles.poppins500style24.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+            style: AppTextStyles.cairoBoldStyle25,
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -65,7 +62,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
           ),
           Text(
             cubit.onBoardingData[cubit.currentIndex].subTitle,
-            style: AppTextStyles.poppins300style16,
+            style: AppTextStyles.cairo300style16,
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
@@ -83,7 +80,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                             onBoardingVisited();
                             navigateReplacement(context, '/signUp');
                           },
-                          text: 'Create Account',
+                          text: 'انشاء حساب جديد',
                         ),
                         const SizedBox(
                           height: 16,
@@ -94,8 +91,8 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                             navigateReplacement(context, '/signIn');
                           },
                           child: Text(
-                            'Login Now',
-                            style: AppTextStyles.poppins300style16.copyWith(
+                            'تسجيل الدخول',
+                            style: AppTextStyles.cairo300style16.copyWith(
                                 fontWeight: FontWeight.w400, fontSize: 16),
                           ),
                         ),
@@ -117,7 +114,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                               curve: Curves.linear,
                             );
                           },
-                          text: 'Next',
+                          text: 'التالي',
                         ),
                       ],
                     ),

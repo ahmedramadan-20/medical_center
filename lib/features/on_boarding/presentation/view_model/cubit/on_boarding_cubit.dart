@@ -16,18 +16,18 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   List<OnBoardingModel> onBoardingData = [
     OnBoardingModel(
       imagePath: AppAssets.onBoarding1,
-      title: 'Easily book appointments',
-      subTitle: 'with your preferred doctor at our medical center.',
+      title: 'احجز مواعيدك ',
+      subTitle: 'مع طبيبك المفضل بكل سهولة في مركزنا الطبي.',
     ),
     OnBoardingModel(
       imagePath: AppAssets.onBoarding2,
-      title: 'Explore a comprehensive',
-      subTitle: 'range of medical specialties for your healthcare needs.',
+      title: 'استكشف مجموعة واسعة',
+      subTitle: 'من التخصصات الطبية لاحتياجاتك الصحية',
     ),
     OnBoardingModel(
       imagePath: AppAssets.onBoarding3,
-      title: 'Discover doctors\'',
-      subTitle: 'availability on specific days to plan your visit conveniently.',
+      title: 'اكتشف توافر الأطباء',
+      subTitle: 'في أيام معينة لتخطيط زيارتك بسهولة',
     ),
   ];
 

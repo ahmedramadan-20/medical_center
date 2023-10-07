@@ -25,7 +25,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         validator: (value) {
           if (value!.isEmpty) {
-            return 'This field is required!';
+            return 'هذا الحقل مطلوب';
           } else {
             return null;
           }
@@ -37,7 +37,7 @@ class CustomTextFormField extends StatelessWidget {
           suffixIcon: suffixIcon,
           suffixIconColor: AppColors.deepBlue,
           labelText: labelText,
-          labelStyle: AppTextStyles.poppins500style18,
+          labelStyle: AppTextStyles.cairo300style16.copyWith(fontWeight: FontWeight.w500,fontSize: 18),
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),

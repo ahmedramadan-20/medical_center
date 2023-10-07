@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:medical_center/features/auth/presentation/widgets/custom_check_box.dart';
 
@@ -10,22 +9,27 @@ class TermsAndConditionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+
       children: [
         const CustomCheckBox(),
         Text.rich(
           TextSpan(
             children: [
-              const TextSpan(
-                  text: 'I have agree to our ',
-                  style: AppTextStyles.poppins400style12),
               TextSpan(
-                  text: 'Terms and Conditions',
-                  style: AppTextStyles.poppins400style12.copyWith(
+                  text: 'هل توافق على  ',
+                  style: AppTextStyles.cairo300style16
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 12)),
+              TextSpan(
+                  text: 'الشروط والاحكام',
+                  style: AppTextStyles.cairo300style16.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12,
                     decoration: TextDecoration.underline,
                   )),
             ],
           ),
         ),
+
       ],
     );
   }

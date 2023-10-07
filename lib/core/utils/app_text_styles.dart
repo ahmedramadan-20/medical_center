@@ -20,10 +20,37 @@ abstract class AppTextStyles {
     color: AppColors.deepBlue,
     fontFamily: 'Poppins',
   );
+  static const TextStyle poppins600style12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColors.deepBlue,
+    fontFamily: 'Poppins',
+  );
   static const TextStyle poppins400style12 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     color: AppColors.deepBlue,
     fontFamily: 'Poppins',
+  );
+
+  static const TextStyle cairo700style32 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: 'Cairo',
+  );
+
+  static const TextStyle cairo300style16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+    color: AppColors.black,
+    fontFamily: 'Cairo',
+  );
+
+  static const TextStyle cairoBoldStyle25 = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+    fontFamily: 'Cairo',
   );
 }

@@ -13,7 +13,7 @@ class WelcomeTextWidget extends StatelessWidget {
     return Align(
       child: Text(
         text,
-        style: AppTextStyles.poppins500style24.copyWith(
+        style: AppTextStyles.cairo700style32.copyWith(
           fontWeight: FontWeight.w600,
           fontSize: 28,
           color: AppColors.deepBlue

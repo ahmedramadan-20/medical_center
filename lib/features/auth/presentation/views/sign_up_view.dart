@@ -22,7 +22,7 @@ class SignUpView extends StatelessWidget {
             ),
             const SliverToBoxAdapter(
               child: WelcomeTextWidget(
-                text: 'Welcome !',
+                text: 'أهلا وسهلا',
               ),
             ),
             const SliverToBoxAdapter(
@@ -40,10 +40,10 @@ class SignUpView extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: HaveAnAccountWidget(
-                text1: 'Already have an account ? ',
-                text2: 'Sign In',
+                text1: 'لديك حساب بالفعل ؟  ',
+                text2: 'تسجيل الدخول',
                 onTap: (){
-                  customNavigate(context, '/signIn');
+                  navigateReplacement(context, '/signIn');
                 },
               ),
             ),

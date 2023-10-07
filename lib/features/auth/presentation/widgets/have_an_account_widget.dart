@@ -21,11 +21,17 @@ class HaveAnAccountWidget extends StatelessWidget {
             children: [
               TextSpan(
                 text: text1,
-                style: AppTextStyles.poppins400style12,
+                style: AppTextStyles.cairo700style32.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: AppColors.deepBlue,
+                ),
               ),
               TextSpan(
                 text: text2,
-                style: AppTextStyles.poppins400style12.copyWith(
+                style: AppTextStyles.cairo700style32.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
                   color: AppColors.lightBlue,
                 ),
               ),

@@ -14,8 +14,17 @@ abstract class AppAssets {
   static const String speechAndBehaviorModification = "assets/images/Speech_and_Behavior_Modification.png";
   static const String neurology = "assets/images/Neurology.png";
   static const String splash = "assets/images/splash.png";
+  static const String splashIcon = "assets/images/splashIcon.png";
   static const String onBoarding1 = "assets/images/onBoarding1.jpg";
   static const String onBoarding2 = "assets/images/onBoarding2.jpg";
   static const String onBoarding3 = "assets/images/onBoarding3.jpg";
-  static const String splash_two = "assets/images/reception.gif";
+  static const String splashTwo = "assets/images/reception.gif";
+  static const String background = "assets/images/background.jpg";
+  static const String medicine = "assets/images/medicine.png";
+  static const String medicine1 = "assets/images/medicine1.png";
+  static const String medicalHistory = "assets/images/medical-history.png";
+  static const String medicalAssistance = "assets/images/medical-assistance.png";
+  static const String pyramids = "assets/images/Vector.svg";
+  static const String mosque = "assets/images/pyramids.svg";
+  static const String password = "assets/images/password.png";
 }
