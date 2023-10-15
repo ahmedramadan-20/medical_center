@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_center/core/functions/navigator.dart';
@@ -17,10 +16,10 @@ class CustomForgotPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if(state is ResetPasswordSuccessState){
+        if (state is ResetPasswordSuccessState) {
           showToast('Check your email to reset your password');
           navigateReplacement(context, '/signIn');
-        }else if(state is ResetPasswordErrorState){
+        } else if (state is ResetPasswordErrorState) {
           showToast(state.errMessage);
         }
       },
@@ -37,6 +36,7 @@ class CustomForgotPasswordForm extends StatelessWidget {
                   onChanged: (email) {
                     authCubit.emailAddress = email;
                   },
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 129),
                 state is ResetPasswordLoadingState
@@ -45,9 +45,10 @@ class CustomForgotPasswordForm extends StatelessWidget {
                       )
                     : CustomButton(
                         text: 'إرسال رابط إعادة تعيين كلمة المرور',
-                        onPressed: () {
-                          if (authCubit.forgotPasswordFormKey.currentState!.validate()) {
-                            authCubit.restPasswordWithLink();
+                        onPressed: () async {
+                          if (authCubit.forgotPasswordFormKey.currentState!
+                              .validate()) {
+                            await authCubit.restPasswordWithLink();
                           }
                         }),
               ],

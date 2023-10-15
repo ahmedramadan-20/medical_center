@@ -34,18 +34,21 @@ class CustomSignUpForm extends StatelessWidget {
                 onChanged: (firstName) {
                   authCubit.firstName = firstName;
                 },
+                keyboardType: TextInputType.text,
               ),
               CustomTextFormField(
                 labelText: 'الاسم الاخير',
                 onChanged: (lastName) {
                   authCubit.lastName = lastName;
                 },
+                keyboardType: TextInputType.text,
               ),
               CustomTextFormField(
                 labelText: 'البريد الالكتروني',
                 onChanged: (email) {
                   authCubit.emailAddress = email;
                 },
+                keyboardType: TextInputType.emailAddress,
               ),
               CustomTextFormField(
                 suffixIcon: IconButton(
@@ -63,6 +66,7 @@ class CustomSignUpForm extends StatelessWidget {
                 onChanged: (password) {
                   authCubit.password = password;
                 },
+                keyboardType: TextInputType.text,
               ),
               const TermsAndConditionsWidget(),
               const SizedBox(height: 88),
@@ -75,11 +79,11 @@ class CustomSignUpForm extends StatelessWidget {
                           ? AppColors.deepGrey
                           : null,
                       text: 'إنشاء حساب جديد',
-                      onPressed: () {
+                      onPressed: () async {
                         if (authCubit.termsAndConditionsCheckBoxValue == true) {
                           if (authCubit.signupFormKey.currentState!
                               .validate()) {
-                            authCubit.signUpWithEmailAndPassword();
+                            await authCubit.signUpWithEmailAndPassword();
                           }
                         }
                       }),

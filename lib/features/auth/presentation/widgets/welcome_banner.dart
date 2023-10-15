@@ -20,13 +20,11 @@ class WelcomeBanner extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            'عيادات ميت عزون',
+            'العيادات التخصصية',
             style:
                 AppTextStyles.cairo700style32.copyWith(color: AppColors.white),
           ),
-          const SizedBox(
-            height: 18,
-          ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,

@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:medical_center/app/medical_center_app.dart';
 
-import 'package:medical_center/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

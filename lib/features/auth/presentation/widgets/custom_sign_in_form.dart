@@ -19,8 +19,9 @@ class CustomSignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is SignInSuccessState) {
           // showToast('Welcome Back!');
-          FirebaseAuth.instance.currentUser!.emailVerified?
-          navigateReplacement(context, '/home'):showToast('Please verify your account!');
+          FirebaseAuth.instance.currentUser!.emailVerified
+              ? navigateReplacement(context, '/home')
+              : showToast('Please verify your account!');
         } else if (state is SignInErrorState) {
           showToast(state.errMessage);
         }
@@ -36,6 +37,7 @@ class CustomSignInForm extends StatelessWidget {
                 onChanged: (email) {
                   authCubit.emailAddress = email;
                 },
+                keyboardType: TextInputType.emailAddress,
               ),
               CustomTextFormField(
                 suffixIcon: IconButton(
@@ -53,6 +55,7 @@ class CustomSignInForm extends StatelessWidget {
                 onChanged: (password) {
                   authCubit.password = password;
                 },
+                keyboardType: TextInputType.text,
               ),
               const SizedBox(
                 height: 16,
@@ -65,12 +68,11 @@ class CustomSignInForm extends StatelessWidget {
                     )
                   : CustomButton(
                       text: 'تسجيل الدخول',
-                      onPressed: () {
+                      onPressed: () async {
                         if (authCubit.signInFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
+                          await authCubit.signInWithEmailAndPassword();
                         }
                       }),
-
             ],
           ),
         );
@@ -85,10 +87,10 @@ class ForgetPasswordTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         navigateReplacement(context, '/forgotPassword');
       },
-      child:  Align(
+      child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
           'هل نسيت كلمة السر ؟',
