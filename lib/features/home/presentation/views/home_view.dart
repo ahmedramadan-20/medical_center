@@ -12,52 +12,55 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                navigateReplacement(context, '/signIn');
-              },
-              icon: const Icon(
-                Icons.logout,
-                color: AppColors.primaryColor,
-              ),
-            )
-          ],
-          elevation: 0,
-          backgroundColor: AppColors.white,
-          leading: Builder(builder: (context) {
-            return IconButton(
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-                // navigateReplacement(context, '/signIn');
-              },
-              icon: const Icon(
-                Icons.menu,
-                color: AppColors.primaryColor,
-              ),
-            );
-          }),
-          title: SizedBox(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  S.of(context).hello,
-                  style: AppTextStyles.cairo300style16
-                      .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  S.of(context).subtitle,
-                  style: AppTextStyles.cairo300style16
-                      .copyWith(fontSize: 12, color: AppColors.deepBlue),
-                ),
-              ],
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              navigateReplacement(context, '/signIn');
+            },
+            icon: const Icon(
+              Icons.logout,
+              color: AppColors.primaryColor,
             ),
+          )
+        ],
+        elevation: 0,
+        backgroundColor: AppColors.white,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+              // navigateReplacement(context, '/signIn');
+            },
+            icon: const Icon(
+              Icons.menu,
+              color: AppColors.primaryColor,
+            ),
+          );
+        }),
+        title: SizedBox(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                S.of(context).hello,
+                style: AppTextStyles.cairo300style16
+                    .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                S.of(context).subtitle,
+                style: AppTextStyles.cairo300style16
+                    .copyWith(fontSize: 12, color: AppColors.deepBlue),
+              ),
+            ],
           ),
         ),
-        drawer: const Drawer());
+      ),
+      drawer: const Drawer(),
+      body: Center(
+      ),
+    );
   }
 }
