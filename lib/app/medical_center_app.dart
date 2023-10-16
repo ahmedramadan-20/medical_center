@@ -9,24 +9,21 @@ class MedicalCenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-       textDirection: TextDirection.rtl,
-      child: MaterialApp.router(
-        locale: const Locale('ar'),
-        localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white
-        ),
-
-        debugShowCheckedModeBanner: false,
-        routerConfig: router,
+    return MaterialApp.router(
+      locale: const Locale('ar'),
+      localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white
       ),
+
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
     );
   }
 }

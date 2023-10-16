@@ -4,6 +4,7 @@ import 'package:medical_center/features/auth/presentation/widgets/custom_sign_in
 import 'package:medical_center/features/auth/presentation/widgets/have_an_account_widget.dart';
 import 'package:medical_center/features/auth/presentation/widgets/welcome_text_widget.dart';
 
+import '../../../../generated/l10n.dart';
 import '../widgets/welcome_banner.dart';
 
 class SignInView extends StatelessWidget {
@@ -11,7 +12,7 @@ class SignInView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
@@ -23,8 +24,8 @@ class SignInView extends StatelessWidget {
               height: 32,
             ),
           ),
-          const SliverToBoxAdapter(
-            child: WelcomeTextWidget(text: 'مرحباً بعودتك !'),
+          SliverToBoxAdapter(
+            child: WelcomeTextWidget(text: S.of(context).welcome_back),
           ),
           const SliverToBoxAdapter(
             child: Padding(
@@ -37,11 +38,10 @@ class SignInView extends StatelessWidget {
               height: 16,
             ),
           ),
-
           SliverToBoxAdapter(
             child: HaveAnAccountWidget(
-                text1: 'ليس لديك حساب  ؟  ',
-                text2: 'إنشاء حساب جديد',
+                text1: '${S.of(context).dont_have_an_account} ',
+                text2: S.of(context).create_account,
                 onTap: () {
                   navigateReplacement(context, '/signUp');
                 }),
@@ -51,7 +51,6 @@ class SignInView extends StatelessWidget {
               height: 16,
             ),
           ),
-
         ],
       ),
     );

@@ -4,8 +4,8 @@ import 'package:medical_center/core/functions/navigator.dart';
 import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import '../../../../core/functions/custom_toast.dart';
-import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../generated/l10n.dart';
 import '../auth_cubit/auth_state.dart';
 import 'custom_text_field.dart';
 
@@ -32,7 +32,7 @@ class CustomForgotPasswordForm extends StatelessWidget {
             child: Column(
               children: [
                 CustomTextFormField(
-                  labelText: 'البريد الالكتروني',
+                  labelText: S.of(context).email_address,
                   onChanged: (email) {
                     authCubit.emailAddress = email;
                   },
@@ -44,7 +44,7 @@ class CustomForgotPasswordForm extends StatelessWidget {
                         color: AppColors.primaryColor,
                       )
                     : CustomButton(
-                        text: 'إرسال رابط إعادة تعيين كلمة المرور',
+                        text: S.of(context).send_reset_password_link,
                         onPressed: () async {
                           if (authCubit.forgotPasswordFormKey.currentState!
                               .validate()) {
@@ -60,26 +60,3 @@ class CustomForgotPasswordForm extends StatelessWidget {
   }
 }
 
-class ForgetPasswordTextWidget extends StatelessWidget {
-  const ForgetPasswordTextWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        navigateReplacement(context, '/forgotPassword');
-      },
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          'هل نسيت كلمة السر ؟',
-          style: AppTextStyles.cairo700style32.copyWith(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: AppColors.deepBlue,
-          ),
-        ),
-      ),
-    );
-  }
-}

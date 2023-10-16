@@ -4,6 +4,7 @@ import 'package:medical_center/core/widgets/fade_animation.dart';
 import '../../../../core/functions/navigator.dart';
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../generated/l10n.dart';
 import '../view_model/cubit/on_boarding_cubit.dart';
 import '../views/functions/on_boarding.dart';
 import 'custom_onboarding_indicator.dart';
@@ -26,7 +27,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                 navigateReplacement(context, '/signUp');
               },
               child: Text(
-                'تخطي',
+                S.of(context).skip,
                 style: AppTextStyles.cairo300style16
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -45,13 +46,13 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
           ),
           CustomSmoothPageIndicator(
             controller: cubit.controller,
-            index: cubit.onBoardingData.length,
+            index: cubit.onBoardingData(context).length,
           ),
           const SizedBox(
             height: 32,
           ),
           Text(
-            cubit.onBoardingData[cubit.currentIndex].title,
+            cubit.onBoardingData(context)[cubit.currentIndex].title,
             style: AppTextStyles.cairoBoldStyle25,
             textAlign: TextAlign.center,
             maxLines: 1,
@@ -61,13 +62,13 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
             height: 16,
           ),
           Text(
-            cubit.onBoardingData[cubit.currentIndex].subTitle,
+            cubit.onBoardingData(context)[cubit.currentIndex].subTitle,
             style: AppTextStyles.cairo300style16,
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          cubit.currentIndex == cubit.onBoardingData.length - 1
+          cubit.currentIndex == cubit.onBoardingData(context).length - 1
               ? FadeAnimation(
                   delay: 0.5,
                   child: SizedBox(
@@ -80,7 +81,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                             onBoardingVisited();
                             navigateReplacement(context, '/signUp');
                           },
-                          text: 'انشاء حساب جديد',
+                          text:  S.of(context).sign_up,
                         ),
                         const SizedBox(
                           height: 16,
@@ -91,7 +92,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                             navigateReplacement(context, '/signIn');
                           },
                           child: Text(
-                            'تسجيل الدخول',
+                            S.of(context).sign_in,
                             style: AppTextStyles.cairo300style16.copyWith(
                                 fontWeight: FontWeight.w400, fontSize: 16),
                           ),
@@ -114,7 +115,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                               curve: Curves.linear,
                             );
                           },
-                          text: 'التالي',
+                          text:  S.of(context).next,
                         ),
                       ],
                     ),

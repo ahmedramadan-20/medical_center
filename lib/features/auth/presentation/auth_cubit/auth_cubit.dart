@@ -37,8 +37,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   void _signUpHandelException(FirebaseAuthException e) {
     if (e.code == 'weak-password') {
-      emit(
-          SignUpErrorState(errMessage: 'The password provided is too weak.'));
+      emit(SignUpErrorState(errMessage: 'The password provided is too weak.'));
     } else if (e.code == 'email-already-in-use') {
       emit(SignUpErrorState(
           errMessage: 'The account already exists for that email.'));

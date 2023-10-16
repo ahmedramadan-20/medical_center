@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
@@ -26,29 +25,25 @@ final GoRouter router = GoRouter(routes: [
     path: '/signUp',
     builder: (context, state) => BlocProvider(
       create: (context) => AuthCubit(),
-      child: const Directionality(
-          textDirection: TextDirection.rtl, child: SignUpView()),
+      child: const SignUpView(),
     ),
   ),
   GoRoute(
     path: '/signIn',
     builder: (context, state) => BlocProvider(
       create: (context) => AuthCubit(),
-      child: const Directionality(
-          textDirection: TextDirection.rtl, child: SignInView()),
+      child: const SignInView(),
     ),
   ),
   GoRoute(
     path: '/home',
-    builder: (context, state) => const Directionality(
-        textDirection: TextDirection.rtl, child: HomeView()),
+    builder: (context, state) => const HomeView(),
   ),
   GoRoute(
     path: '/forgotPassword',
     builder: (context, state) => BlocProvider(
       create: (context) => AuthCubit(),
-      child: const Directionality(
-          textDirection: TextDirection.rtl, child: ForgotPasswordView()),
+      child: const ForgotPasswordView(),
     ),
   ),
 ]);

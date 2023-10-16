@@ -27,4 +27,5 @@ abstract class AppAssets {
   static const String pyramids = "assets/images/Vector.svg";
   static const String mosque = "assets/images/pyramids.svg";
   static const String password = "assets/images/password.png";
+  static const String banner = "assets/images/banner.json";
 }

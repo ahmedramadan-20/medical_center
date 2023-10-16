@@ -21,5 +21,56 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Forgot_Password":
+            MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
+        "Have_an_Account":
+            MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+        "Reset_Password":
+            MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
+        "Sign_in_title":
+            MessageLookupByLibrary.simpleMessage("العيادات التخصصية"),
+        "Terms_and_Conditions":
+            MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+        "book_your_appointment":
+            MessageLookupByLibrary.simpleMessage("احجز مواعيدك"),
+        "check_your_email": MessageLookupByLibrary.simpleMessage(
+            "تحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور"),
+        "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "discover_doctor_availability":
+            MessageLookupByLibrary.simpleMessage("اكتشف توافر الأطباء"),
+        "do_you_agree": MessageLookupByLibrary.simpleMessage("هل توافق على "),
+        "dont_have_an_account":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "email_address":
+            MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
+        "enter_your_email": MessageLookupByLibrary.simpleMessage(
+            "أدخل بريدك الإلكتروني أدناه للحصول على رابط إعادة تعيين كلمة المرور"),
+        "explore": MessageLookupByLibrary.simpleMessage("استكشف مجموعة واسعة"),
+        "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+        "hello": MessageLookupByLibrary.simpleMessage("مرحبًا،"),
+        "in_our_medical_center": MessageLookupByLibrary.simpleMessage(
+            "في مركزنا الطبي، يمكنك رؤية طبيبك المفضل بسهولة."),
+        "last_name": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "of_medical_specialists": MessageLookupByLibrary.simpleMessage(
+            "من التخصصات الطبية لاحتياجاتك الصحية"),
+        "on_specific_days": MessageLookupByLibrary.simpleMessage(
+            "في أيام معينة لتخطيط زيارتك بسهولة"),
+        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "send_reset_password_link": MessageLookupByLibrary.simpleMessage(
+            "إرسال رابط إعادة تعيين كلمة المرور"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("التسجيل"),
+        "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+        "subtitle":
+            MessageLookupByLibrary.simpleMessage("نتمنى لك الصحة والسعادة ❤️"),
+        "success": MessageLookupByLibrary.simpleMessage(
+            "نجاح، تحقق من بريدك الإلكتروني للتحقق من حسابك"),
+        "verify": MessageLookupByLibrary.simpleMessage(
+            "من فضلك، قم بالتحقق من حسابك!"),
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
+        "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى!")
+      };
 }

@@ -7,6 +7,7 @@ import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.
 import '../../../../core/functions/custom_toast.dart';
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../generated/l10n.dart';
 import '../auth_cubit/auth_state.dart';
 import 'custom_text_field.dart';
 
@@ -21,7 +22,7 @@ class CustomSignInForm extends StatelessWidget {
           // showToast('Welcome Back!');
           FirebaseAuth.instance.currentUser!.emailVerified
               ? navigateReplacement(context, '/home')
-              : showToast('Please verify your account!');
+              : showToast(S.of(context).verify);
         } else if (state is SignInErrorState) {
           showToast(state.errMessage);
         }
@@ -33,7 +34,7 @@ class CustomSignInForm extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                labelText: 'البريد الالكتروني',
+                labelText: S.of(context).email_address,
                 onChanged: (email) {
                   authCubit.emailAddress = email;
                 },
@@ -50,7 +51,7 @@ class CustomSignInForm extends StatelessWidget {
                     authCubit.obscurePasswordText();
                   },
                 ),
-                labelText: 'كلمة السر',
+                labelText:  S.of(context).password,
                 obscureText: authCubit.obscurePasswordTextValue,
                 onChanged: (password) {
                   authCubit.password = password;
@@ -67,7 +68,7 @@ class CustomSignInForm extends StatelessWidget {
                       color: AppColors.primaryColor,
                     )
                   : CustomButton(
-                      text: 'تسجيل الدخول',
+                      text:  S.of(context).sign_in,
                       onPressed: () async {
                         if (authCubit.signInFormKey.currentState!.validate()) {
                           await authCubit.signInWithEmailAndPassword();
@@ -93,7 +94,7 @@ class ForgetPasswordTextWidget extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          'هل نسيت كلمة السر ؟',
+          S.of(context).Forgot_Password,
           style: AppTextStyles.cairo700style32.copyWith(
             fontSize: 12,
             fontWeight: FontWeight.w600,

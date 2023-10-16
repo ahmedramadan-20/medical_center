@@ -6,6 +6,7 @@ import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:medical_center/features/auth/presentation/widgets/terms_and_conditions.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../generated/l10n.dart';
 import '../auth_cubit/auth_state.dart';
 import 'custom_text_field.dart';
 
@@ -17,7 +18,7 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpSuccessState) {
-          showToast('Success, Check your email to verify your account');
+          showToast(S.of(context).success);
           navigateReplacement(context, '/signIn');
         } else if (state is SignUpErrorState) {
           showToast(state.errMessage);
@@ -30,21 +31,21 @@ class CustomSignUpForm extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                labelText: 'الاسم الاول',
+                labelText: S.of(context).first_name,
                 onChanged: (firstName) {
                   authCubit.firstName = firstName;
                 },
                 keyboardType: TextInputType.text,
               ),
               CustomTextFormField(
-                labelText: 'الاسم الاخير',
+                labelText: S.of(context).last_name,
                 onChanged: (lastName) {
                   authCubit.lastName = lastName;
                 },
                 keyboardType: TextInputType.text,
               ),
               CustomTextFormField(
-                labelText: 'البريد الالكتروني',
+                labelText:  S.of(context).email_address,
                 onChanged: (email) {
                   authCubit.emailAddress = email;
                 },
@@ -61,7 +62,7 @@ class CustomSignUpForm extends StatelessWidget {
                     authCubit.obscurePasswordText();
                   },
                 ),
-                labelText: 'كلمة السر',
+                labelText:  S.of(context).password,
                 obscureText: authCubit.obscurePasswordTextValue,
                 onChanged: (password) {
                   authCubit.password = password;
@@ -78,7 +79,7 @@ class CustomSignUpForm extends StatelessWidget {
                       color: authCubit.termsAndConditionsCheckBoxValue == false
                           ? AppColors.deepGrey
                           : null,
-                      text: 'إنشاء حساب جديد',
+                      text: S.of(context).sign_up,
                       onPressed: () async {
                         if (authCubit.termsAndConditionsCheckBoxValue == true) {
                           if (authCubit.signupFormKey.currentState!

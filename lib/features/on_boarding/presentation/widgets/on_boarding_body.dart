@@ -23,7 +23,7 @@ class OnBoardingWidgetBody extends StatelessWidget {
             onPageChanged: onPageChanged,
             physics: const BouncingScrollPhysics(),
             controller: cubit.controller,
-            itemCount: cubit.onBoardingData.length,
+            itemCount: cubit.onBoardingData(context).length,
             itemBuilder: (context, index) {
               return Container(
                 height: 290,
@@ -31,7 +31,7 @@ class OnBoardingWidgetBody extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage(cubit.onBoardingData[index].imagePath),
+                      image: AssetImage(cubit.onBoardingData(context)[index].imagePath),
                       fit: BoxFit.fitHeight),),
               );
             },
