@@ -49,7 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enter Your Email Below To Get Reset Password Link"),
         "explore": MessageLookupByLibrary.simpleMessage("Explore a wide range"),
         "first_name": MessageLookupByLibrary.simpleMessage("First Name"),
-        "hello": MessageLookupByLibrary.simpleMessage("Hello,"),
+        "hello": MessageLookupByLibrary.simpleMessage("Hello, "),
         "in_our_medical_center": MessageLookupByLibrary.simpleMessage(
             "In our medical center, you can see your favorite doctor."),
         "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),

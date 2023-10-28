@@ -13,7 +13,7 @@ class ForgotPasswordView extends StatelessWidget {
     return  Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(child: SizedBox(height: 108)),
+          const SliverToBoxAdapter(child: SizedBox(height: 90)),
           SliverToBoxAdapter(child: WelcomeTextWidget(text: S.of(context).Forgot_Password)),
           const SliverToBoxAdapter(child: SizedBox(height: 40)),
           const SliverToBoxAdapter(child: ForgotPasswordImage()),

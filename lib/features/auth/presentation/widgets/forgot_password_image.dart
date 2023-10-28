@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../core/utils/app_assets.dart';
 
@@ -11,7 +12,7 @@ class ForgotPasswordImage extends StatelessWidget {
     return SizedBox(
       height: 235,
       width: 235,
-      child: Image.asset(AppAssets.password),
+      child: Lottie.asset(AppAssets.password1),
     );
   }
 }

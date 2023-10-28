@@ -1,5 +1,5 @@
 {
-  "hello": "Hello,",
+  "hello": "Hello, ",
   "subtitle": "Wishing you health and happiness ❤️",
   "Sign_in_title": "Specialized Clinics",
   "Forgot_Password": "Forgot Password?",
@@ -31,4 +31,5 @@
   "discover_doctor_availability": "Discover doctor availability",
   "on_specific_days": "On specific days for easy planning of your visit.",
   "next": "Next"
+
 }

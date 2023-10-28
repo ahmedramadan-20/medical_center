@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "أدخل بريدك الإلكتروني أدناه للحصول على رابط إعادة تعيين كلمة المرور"),
         "explore": MessageLookupByLibrary.simpleMessage("استكشف مجموعة واسعة"),
         "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
-        "hello": MessageLookupByLibrary.simpleMessage("مرحبًا،"),
+        "hello": MessageLookupByLibrary.simpleMessage("مرحبًا، "),
         "in_our_medical_center": MessageLookupByLibrary.simpleMessage(
             "في مركزنا الطبي، يمكنك رؤية طبيبك المفضل بسهولة."),
         "last_name": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),

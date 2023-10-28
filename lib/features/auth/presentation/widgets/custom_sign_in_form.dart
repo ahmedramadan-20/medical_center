@@ -92,7 +92,7 @@ class ForgetPasswordTextWidget extends StatelessWidget {
         navigateReplacement(context, '/forgotPassword');
       },
       child: Align(
-        alignment: Alignment.centerLeft,
+        alignment: AlignmentDirectional.centerEnd,
         child: Text(
           S.of(context).Forgot_Password,
           style: AppTextStyles.cairo700style32.copyWith(
