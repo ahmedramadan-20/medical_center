@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_text_styles.dart';
+import '../utils/app_text_styles.dart';
 
-class CategoriesHeaderText extends StatelessWidget {
-  const CategoriesHeaderText({super.key, required this.text});
+class CustomHeaderText extends StatelessWidget {
+  const CustomHeaderText({super.key, required this.text});
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional.centerEnd,
+      alignment: AlignmentDirectional.centerStart,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Text(
