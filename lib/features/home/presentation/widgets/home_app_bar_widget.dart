@@ -38,8 +38,7 @@ class HomeAppBarWidget extends StatelessWidget {
                     ),
                   ],
                 )),
-            IconButton(onPressed: (){}, icon: const Icon(Icons.notifications_none_outlined),),
-            IconButton(onPressed: (){}, icon: const Icon(Icons.search_outlined),),
+            IconButton(onPressed: (){}, icon: const Icon(Icons.drag_handle_outlined),),
           ]),
     );
   }

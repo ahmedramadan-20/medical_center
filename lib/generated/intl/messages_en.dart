@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wishing you health and happiness ❤️"),
         "success": MessageLookupByLibrary.simpleMessage(
             "Success, Check your email to verify your account"),
+        "today": MessageLookupByLibrary.simpleMessage("Today"),
         "verify":
             MessageLookupByLibrary.simpleMessage("Please verify your account!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),

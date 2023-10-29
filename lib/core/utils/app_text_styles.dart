@@ -53,4 +53,10 @@ abstract class AppTextStyles {
     color: AppColors.black,
     fontFamily: 'Cairo',
   );
+  static const TextStyle cairo400Style20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.deepBlue,
+    fontFamily: 'Cairo',
+  );
 }

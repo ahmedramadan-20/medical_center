@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:medical_center/features/auth/presentation/views/sign_in_view.dart';
+import 'package:medical_center/features/home/presentation/widgets/home_nav_bar_widget.dart';
 import 'package:medical_center/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
@@ -34,6 +35,10 @@ final GoRouter router = GoRouter(routes: [
       create: (context) => AuthCubit(),
       child: const SignInView(),
     ),
+  ),
+  GoRoute(
+    path: '/homeNavBar',
+    builder: (context, state) => const HomeNavBarWidget(),
   ),
   GoRoute(
     path: '/home',
