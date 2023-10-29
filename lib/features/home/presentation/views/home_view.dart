@@ -93,7 +93,7 @@ class HomeDoctorsCardList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => Container(
                   margin:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                      const EdgeInsets.symmetric(vertical: 15, ),
                   decoration: BoxDecoration(
                     color: AppColors.primaryColor,
                     borderRadius: BorderRadius.circular(5),
@@ -110,7 +110,7 @@ class HomeDoctorsCardList extends StatelessWidget {
                   width: 250,
                 ),
             separatorBuilder: (context, index) => const SizedBox(
-                  width: 10,
+                  width: 15,
                 ),
             itemCount: 3),
       ),
