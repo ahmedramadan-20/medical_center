@@ -31,6 +31,26 @@
   "discover_doctor_availability": "Discover doctor availability",
   "on_specific_days": "On specific days for easy planning of your visit.",
   "next": "Next",
-  "today": "Today"
+  "today": "Today",
+  "dr": "Dr. ",
+  "hany": "Hani Abdel Momen",
+  "general_surgery": "General Surgery",
+  "pediatrics": "Pediatrics",
+  "ent": "Ear, Nose, and Throat (ENT)",
+  "dentistry": "Dentistry",
+  "dermatology": "Dermatology",
+  "obgyn": "Obstetrics and Gynecology",
+  "internal_medicine": "Internal Medicine",
+  "nutrition_therapy": "Nutritional Therapy",
+  "rheumatology_joint": "Rheumatology and Joint",
+  "ophthalmology": "Ophthalmology",
+  "cardiology": "Cardiology",
+  "nephrology_urology": "Nephrology and Urology",
+  "speech_behavior_modification": "Speech and Behavior Modification",
+  "neurology": "Neurology",
+  "specialties": "Specialties",
+  "all": "All",
+  "workingDays":"Working Days:"
+
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_center/features/appointments/presentation/views/appointment_view.dart';
+import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
 import 'package:medical_center/features/home/presentation/views/home_view.dart';
 import 'package:medical_center/features/profile/presentation/views/profile_view.dart';
 import 'package:medical_center/features/search/presentation/views/search_view.dart';
@@ -32,7 +34,10 @@ class HomeNavBarWidget extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const HomeView(),
+    BlocProvider(
+      create: (context) => HomeCubit()..getAllDoctorsData(context),
+      child: const HomeView(),
+    ),
     const AppointmentView(),
     const SearchView(),
     const ProfileView()

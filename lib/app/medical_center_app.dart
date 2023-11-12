@@ -31,7 +31,7 @@ class MedicalCenter extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            theme: ThemeData(scaffoldBackgroundColor: AppColors.offWhite),
+            theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
             debugShowCheckedModeBanner: false,
             routerConfig: router,
           );

@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:medical_center/core/database/cache/cache_helper.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
 import 'package:medical_center/core/utils/app_colors.dart';
-import 'package:medical_center/core/widgets/fade_animation.dart';
 
 import '../../../../core/functions/navigator.dart';
 import '../../../../core/services/service_locator.dart';
@@ -24,7 +24,8 @@ class _SplashViewState extends State<SplashView> {
       FirebaseAuth.instance.currentUser == null
           ? delayedNavigation(context, '/signIn')
           : FirebaseAuth.instance.currentUser!.emailVerified == true
-          ? delayedNavigation(context, '/homeNavBar'):delayedNavigation(context, '/signIn');
+              ? delayedNavigation(context, '/homeNavBar')
+              : delayedNavigation(context, '/signIn');
     } else {
       delayedNavigation(context, '/onBoarding');
     }
@@ -37,15 +38,19 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       body: Center(
-        child: FadeAnimation(
-
-          delay: 0.2,
-          child: Image.asset(
-            AppAssets.splashIcon,
-            width: 200,
-            height: 200,
-          ),
+        child: Lottie.asset(
+          AppAssets.splashLogo,
+          repeat: false,
         ),
+        // FadeAnimation(
+        //
+        //   delay: 0.2,
+        //   child: Image.asset(
+        //     AppAssets.splashIcon,
+        //     width: 200,
+        //     height: 200,
+        //   ),
+        // ),
       ),
     );
   }

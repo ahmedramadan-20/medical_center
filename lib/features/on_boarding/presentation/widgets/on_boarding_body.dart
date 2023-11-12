@@ -4,12 +4,12 @@ import 'package:lottie/lottie.dart';
 import 'package:medical_center/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 
 class OnBoardingWidgetBody extends StatelessWidget {
-  final PageController controller;
+
   final Function(int)? onPageChanged;
 
   const OnBoardingWidgetBody({
     super.key,
-    required this.controller,
+
     required this.onPageChanged,
   });
 

@@ -32,38 +32,61 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("العيادات التخصصية"),
         "Terms_and_Conditions":
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+        "all": MessageLookupByLibrary.simpleMessage("جميع التخصصات"),
         "book_your_appointment":
             MessageLookupByLibrary.simpleMessage("احجز مواعيدك"),
+        "cardiology": MessageLookupByLibrary.simpleMessage("القلب"),
         "check_your_email": MessageLookupByLibrary.simpleMessage(
             "تحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "dentistry": MessageLookupByLibrary.simpleMessage("الأسنان"),
+        "dermatology": MessageLookupByLibrary.simpleMessage("الجلدية"),
         "discover_doctor_availability":
             MessageLookupByLibrary.simpleMessage("اكتشف توافر الأطباء"),
         "do_you_agree": MessageLookupByLibrary.simpleMessage("هل توافق على "),
         "dont_have_an_account":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "dr": MessageLookupByLibrary.simpleMessage("د. "),
         "email_address":
             MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
+        "ent": MessageLookupByLibrary.simpleMessage("أنف وأذن وحنجرة"),
         "enter_your_email": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أدناه للحصول على رابط إعادة تعيين كلمة المرور"),
         "explore": MessageLookupByLibrary.simpleMessage("استكشف مجموعة واسعة"),
         "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+        "general_surgery":
+            MessageLookupByLibrary.simpleMessage("الجراحة العامة"),
+        "hany": MessageLookupByLibrary.simpleMessage("هاني عبد المؤمن"),
         "hello": MessageLookupByLibrary.simpleMessage("مرحبًا، "),
         "in_our_medical_center": MessageLookupByLibrary.simpleMessage(
             "في مركزنا الطبي، يمكنك رؤية طبيبك المفضل بسهولة."),
+        "internal_medicine": MessageLookupByLibrary.simpleMessage("الباطنة"),
         "last_name": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
+        "nephrology_urology":
+            MessageLookupByLibrary.simpleMessage("الكلى والمسالك"),
+        "neurology": MessageLookupByLibrary.simpleMessage("الأعصاب"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "nutrition_therapy":
+            MessageLookupByLibrary.simpleMessage("التغذية العلاجية"),
+        "obgyn": MessageLookupByLibrary.simpleMessage("النساء والتوليد"),
         "of_medical_specialists": MessageLookupByLibrary.simpleMessage(
             "من التخصصات الطبية لاحتياجاتك الصحية"),
         "on_specific_days": MessageLookupByLibrary.simpleMessage(
             "في أيام معينة لتخطيط زيارتك بسهولة"),
+        "ophthalmology": MessageLookupByLibrary.simpleMessage("العيون"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "pediatrics": MessageLookupByLibrary.simpleMessage("الأطفال"),
+        "rheumatology_joint":
+            MessageLookupByLibrary.simpleMessage("المفاصل والرماتيزم"),
         "send_reset_password_link": MessageLookupByLibrary.simpleMessage(
             "إرسال رابط إعادة تعيين كلمة المرور"),
         "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "sign_up": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+        "specialties": MessageLookupByLibrary.simpleMessage("التخصصات"),
+        "speech_behavior_modification":
+            MessageLookupByLibrary.simpleMessage("تخاطب وتعديل السلوك"),
         "subtitle":
             MessageLookupByLibrary.simpleMessage("نتمنى لك الصحة والسعادة ❤️"),
         "success": MessageLookupByLibrary.simpleMessage(
@@ -72,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage(
             "من فضلك، قم بالتحقق من حسابك!"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
-        "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى!")
+        "welcome_back":
+            MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى!"),
+        "workingDays": MessageLookupByLibrary.simpleMessage("ايام العمل:")
       };
 }

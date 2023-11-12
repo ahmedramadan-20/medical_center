@@ -32,39 +32,65 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Specialized Clinics"),
         "Terms_and_Conditions":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+        "all": MessageLookupByLibrary.simpleMessage("All"),
         "book_your_appointment":
             MessageLookupByLibrary.simpleMessage("Book your appointments"),
+        "cardiology": MessageLookupByLibrary.simpleMessage("Cardiology"),
         "check_your_email": MessageLookupByLibrary.simpleMessage(
             "Check your email to reset your password"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create Account"),
+        "dentistry": MessageLookupByLibrary.simpleMessage("Dentistry"),
+        "dermatology": MessageLookupByLibrary.simpleMessage("Dermatology"),
         "discover_doctor_availability": MessageLookupByLibrary.simpleMessage(
             "Discover doctor availability"),
         "do_you_agree":
             MessageLookupByLibrary.simpleMessage("Do you agree to our "),
         "dont_have_an_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "dr": MessageLookupByLibrary.simpleMessage("Dr. "),
         "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
+        "ent":
+            MessageLookupByLibrary.simpleMessage("Ear, Nose, and Throat (ENT)"),
         "enter_your_email": MessageLookupByLibrary.simpleMessage(
             "Enter Your Email Below To Get Reset Password Link"),
         "explore": MessageLookupByLibrary.simpleMessage("Explore a wide range"),
         "first_name": MessageLookupByLibrary.simpleMessage("First Name"),
+        "general_surgery":
+            MessageLookupByLibrary.simpleMessage("General Surgery"),
+        "hany": MessageLookupByLibrary.simpleMessage("Hani Abdel Momen"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello, "),
         "in_our_medical_center": MessageLookupByLibrary.simpleMessage(
             "In our medical center, you can see your favorite doctor."),
+        "internal_medicine":
+            MessageLookupByLibrary.simpleMessage("Internal Medicine"),
         "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "nephrology_urology":
+            MessageLookupByLibrary.simpleMessage("Nephrology and Urology"),
+        "neurology": MessageLookupByLibrary.simpleMessage("Neurology"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "nutrition_therapy":
+            MessageLookupByLibrary.simpleMessage("Nutritional Therapy"),
+        "obgyn":
+            MessageLookupByLibrary.simpleMessage("Obstetrics and Gynecology"),
         "of_medical_specialists": MessageLookupByLibrary.simpleMessage(
             "Of medical specialties for your healthcare needs."),
         "on_specific_days": MessageLookupByLibrary.simpleMessage(
             "On specific days for easy planning of your visit."),
+        "ophthalmology": MessageLookupByLibrary.simpleMessage("Ophthalmology"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pediatrics": MessageLookupByLibrary.simpleMessage("Pediatrics"),
+        "rheumatology_joint":
+            MessageLookupByLibrary.simpleMessage("Rheumatology and Joint"),
         "send_reset_password_link":
             MessageLookupByLibrary.simpleMessage("Send Reset Password Link"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "specialties": MessageLookupByLibrary.simpleMessage("Specialties"),
+        "speech_behavior_modification": MessageLookupByLibrary.simpleMessage(
+            "Speech and Behavior Modification"),
         "subtitle": MessageLookupByLibrary.simpleMessage(
             "Wishing you health and happiness ❤️"),
         "success": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify":
             MessageLookupByLibrary.simpleMessage("Please verify your account!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
-        "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back!")
+        "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back!"),
+        "workingDays": MessageLookupByLibrary.simpleMessage("Working Days:")
       };
 }

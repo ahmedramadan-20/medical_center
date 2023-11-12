@@ -31,5 +31,27 @@
   "discover_doctor_availability": "اكتشف توافر الأطباء",
   "on_specific_days": "في أيام معينة لتخطيط زيارتك بسهولة",
   "next": "التالي",
-  "today": "اليوم"
+  "today": "اليوم",
+  "dr": "د. ",
+  "hany": "هاني عبد المؤمن",
+  "general_surgery": "الجراحة العامة",
+  "pediatrics": "الأطفال",
+  "ent": "أنف وأذن وحنجرة",
+  "dentistry": "الأسنان",
+  "dermatology": "الجلدية",
+  "obgyn": "النساء والتوليد",
+  "internal_medicine": "الباطنة",
+  "nutrition_therapy": "التغذية العلاجية",
+  "rheumatology_joint": "المفاصل والرماتيزم",
+  "ophthalmology": "العيون",
+  "cardiology": "القلب",
+  "nephrology_urology": "الكلى والمسالك",
+  "speech_behavior_modification": "تخاطب وتعديل السلوك",
+  "neurology": "الأعصاب",
+  "specialties": "التخصصات",
+  "all": "جميع التخصصات",
+  "workingDays": "ايام العمل:"
+
+
+
 }

@@ -379,6 +379,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Dr. `
+  String get dr {
+    return Intl.message(
+      'Dr. ',
+      name: 'dr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hani Abdel Momen`
+  String get hany {
+    return Intl.message(
+      'Hani Abdel Momen',
+      name: 'hany',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General Surgery`
+  String get general_surgery {
+    return Intl.message(
+      'General Surgery',
+      name: 'general_surgery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pediatrics`
+  String get pediatrics {
+    return Intl.message(
+      'Pediatrics',
+      name: 'pediatrics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ear, Nose, and Throat (ENT)`
+  String get ent {
+    return Intl.message(
+      'Ear, Nose, and Throat (ENT)',
+      name: 'ent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dentistry`
+  String get dentistry {
+    return Intl.message(
+      'Dentistry',
+      name: 'dentistry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dermatology`
+  String get dermatology {
+    return Intl.message(
+      'Dermatology',
+      name: 'dermatology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Obstetrics and Gynecology`
+  String get obgyn {
+    return Intl.message(
+      'Obstetrics and Gynecology',
+      name: 'obgyn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal Medicine`
+  String get internal_medicine {
+    return Intl.message(
+      'Internal Medicine',
+      name: 'internal_medicine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nutritional Therapy`
+  String get nutrition_therapy {
+    return Intl.message(
+      'Nutritional Therapy',
+      name: 'nutrition_therapy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rheumatology and Joint`
+  String get rheumatology_joint {
+    return Intl.message(
+      'Rheumatology and Joint',
+      name: 'rheumatology_joint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ophthalmology`
+  String get ophthalmology {
+    return Intl.message(
+      'Ophthalmology',
+      name: 'ophthalmology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cardiology`
+  String get cardiology {
+    return Intl.message(
+      'Cardiology',
+      name: 'cardiology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nephrology and Urology`
+  String get nephrology_urology {
+    return Intl.message(
+      'Nephrology and Urology',
+      name: 'nephrology_urology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speech and Behavior Modification`
+  String get speech_behavior_modification {
+    return Intl.message(
+      'Speech and Behavior Modification',
+      name: 'speech_behavior_modification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Neurology`
+  String get neurology {
+    return Intl.message(
+      'Neurology',
+      name: 'neurology',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specialties`
+  String get specialties {
+    return Intl.message(
+      'Specialties',
+      name: 'specialties',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Working Days:`
+  String get workingDays {
+    return Intl.message(
+      'Working Days:',
+      name: 'workingDays',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

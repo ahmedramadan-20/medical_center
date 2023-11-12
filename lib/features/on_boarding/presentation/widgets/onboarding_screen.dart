@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:medical_center/core/widgets/fade_animation.dart';
-
 import '../../../../core/functions/navigator.dart';
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_change_lang_button.dart';
 import '../../../../generated/l10n.dart';
 import '../view_model/cubit/on_boarding_cubit.dart';
 import '../views/functions/on_boarding.dart';
@@ -19,25 +19,29 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
           const SizedBox(
             height: 40,
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: GestureDetector(
-              onTap: () {
-                onBoardingVisited();
-                navigateReplacement(context, '/signUp');
-              },
-              child: Text(
-                S.of(context).skip,
-                style: AppTextStyles.cairo300style16
-                    .copyWith(fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ChangeLanguageButton(),
+
+              GestureDetector(
+                onTap: () {
+                  onBoardingVisited();
+                  navigateReplacement(context, '/signUp');
+                },
+                child: Text(
+                  S.of(context).skip,
+                  style: AppTextStyles.cairo300style16
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
+            ],
           ),
           const SizedBox(
             height: 40,
           ),
           OnBoardingWidgetBody(
-              controller: cubit.controller,
+
               onPageChanged: (index) {
                 cubit.onPageChanged(index);
               }),
@@ -129,3 +133,4 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
     ),
   );
 }
+

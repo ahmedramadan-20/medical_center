@@ -6,7 +6,6 @@ import 'package:medical_center/features/home/presentation/widgets/home_nav_bar_w
 import 'package:medical_center/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
-import '../../features/home/presentation/views/home_view.dart';
 import '../../features/on_boarding/presentation/views/on_boarding_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
@@ -40,10 +39,7 @@ final GoRouter router = GoRouter(routes: [
     path: '/homeNavBar',
     builder: (context, state) => const HomeNavBarWidget(),
   ),
-  GoRoute(
-    path: '/home',
-    builder: (context, state) => const HomeView(),
-  ),
+
   GoRoute(
     path: '/forgotPassword',
     builder: (context, state) => BlocProvider(

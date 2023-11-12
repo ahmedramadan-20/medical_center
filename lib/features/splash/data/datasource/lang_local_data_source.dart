@@ -21,5 +21,5 @@ class LangLocaleDataSourceImpl implements LangLocaleDataSource {
   Future<String?> getSavedLang() async =>
       sharedPreferences.containsKey(AppStrings.locale)
           ? sharedPreferences.getString(AppStrings.locale)
-          : AppStrings.englishCode;
+          : AppStrings.arabicCode;
 }
