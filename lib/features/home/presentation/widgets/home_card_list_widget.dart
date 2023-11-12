@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_center/core/functions/navigator.dart';
 
 import '../../../../core/functions/custom_toast.dart';
 import '../home_cubit/home_cubit.dart';
@@ -23,38 +23,21 @@ class HomeDoctorsCardList extends StatelessWidget {
         return state is GetDoctorsLoadingState
             ? const ShimmerWidget()
             : SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
-            child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return DoctorCard(
-                      model: context.read<HomeCubit>().filteredDoctors[index]);
-                },
-                separatorBuilder: (context, index) =>
-                const SizedBox(height: 10),
-                itemCount: context.read<HomeCubit>().filteredDoctors.length)
-          // FutureBuilder<List<DoctorsModel>>(
-          //   future: BlocProvider.of<HomeCubit>(context).getDoctorsData(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return const ShimmerWidget(); // Loading indicator while data is being fetched
-          //     } else if (snapshot.hasError) {
-          //       return Text('Error: ${snapshot.error}');
-          //     } else {
-          //       List<DoctorsModel>? doctors = snapshot.data;
-          //
-          //       return ListView.builder(
-          //         physics: const BouncingScrollPhysics(),
-          //         itemCount: doctors?.length,
-          //         itemBuilder: (context, index) {
-          //           return const SizedBox();
-          //             //DoctorCard(model: doctors![index]);
-          //         },
-          //       );
-          //     }
-          //   },
-          // ),
-        );
+                height: MediaQuery.of(context).size.height * 0.6,
+                child: ListView.separated(
+                    physics:const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return DoctorCard(
+                        model: context.read<HomeCubit>().filteredDoctors[index],
+                        onTap: () {
+                          customNavigate(context, "/doctor", );
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 10),
+                    itemCount:
+                        context.read<HomeCubit>().filteredDoctors.length));
       },
     );
   }
