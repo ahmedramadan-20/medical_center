@@ -44,7 +44,7 @@ class HomeCategoryWidget extends StatelessWidget {
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                              color:  AppColors.offWhite,
+                              color:  AppColors.white,
                               borderRadius: BorderRadius.circular(5),
                               image: DecorationImage(
                                 image: AssetImage(

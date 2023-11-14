@@ -23,7 +23,7 @@ class HomeDoctorsCardList extends StatelessWidget {
         return state is GetDoctorsLoadingState
             ? const ShimmerWidget()
             : SizedBox(
-                height: MediaQuery.of(context).size.height * 0.6,
+                height: MediaQuery.of(context).size.height * 0.62,
                 child: ListView.separated(
                     physics:const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {

@@ -50,7 +50,11 @@
   "neurology": "الأعصاب",
   "specialties": "التخصصات",
   "all": "جميع التخصصات",
-  "workingDays": "ايام العمل:"
+  "workingDays": "ايام العمل:",
+  "specialty": "تخصص: ",
+  "profile": "الصفحة الشخصية",
+  "account": "الحساب",
+  "edit_profile": "تعديل الصفحة الشخصية"
 
 
 

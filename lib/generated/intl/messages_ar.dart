@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("العيادات التخصصية"),
         "Terms_and_Conditions":
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+        "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "all": MessageLookupByLibrary.simpleMessage("جميع التخصصات"),
         "book_your_appointment":
             MessageLookupByLibrary.simpleMessage("احجز مواعيدك"),
@@ -47,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dont_have_an_account":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "dr": MessageLookupByLibrary.simpleMessage("د. "),
+        "edit_profile":
+            MessageLookupByLibrary.simpleMessage("تعديل الصفحة الشخصية"),
         "email_address":
             MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
         "ent": MessageLookupByLibrary.simpleMessage("أنف وأذن وحنجرة"),
@@ -76,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ophthalmology": MessageLookupByLibrary.simpleMessage("العيون"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "pediatrics": MessageLookupByLibrary.simpleMessage("الأطفال"),
+        "profile": MessageLookupByLibrary.simpleMessage("الصفحة الشخصية"),
         "rheumatology_joint":
             MessageLookupByLibrary.simpleMessage("المفاصل والرماتيزم"),
         "send_reset_password_link": MessageLookupByLibrary.simpleMessage(
@@ -85,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "specialties": MessageLookupByLibrary.simpleMessage("التخصصات"),
+        "specialty": MessageLookupByLibrary.simpleMessage("تخصص: "),
         "speech_behavior_modification":
             MessageLookupByLibrary.simpleMessage("تخاطب وتعديل السلوك"),
         "subtitle":

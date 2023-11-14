@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Specialized Clinics"),
         "Terms_and_Conditions":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "book_your_appointment":
             MessageLookupByLibrary.simpleMessage("Book your appointments"),
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dont_have_an_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "dr": MessageLookupByLibrary.simpleMessage("Dr. "),
+        "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
         "ent":
             MessageLookupByLibrary.simpleMessage("Ear, Nose, and Throat (ENT)"),
@@ -80,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ophthalmology": MessageLookupByLibrary.simpleMessage("Ophthalmology"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pediatrics": MessageLookupByLibrary.simpleMessage("Pediatrics"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "rheumatology_joint":
             MessageLookupByLibrary.simpleMessage("Rheumatology and Joint"),
         "send_reset_password_link":
@@ -89,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "specialties": MessageLookupByLibrary.simpleMessage("Specialties"),
+        "specialty": MessageLookupByLibrary.simpleMessage("specialty: "),
         "speech_behavior_modification": MessageLookupByLibrary.simpleMessage(
             "Speech and Behavior Modification"),
         "subtitle": MessageLookupByLibrary.simpleMessage(

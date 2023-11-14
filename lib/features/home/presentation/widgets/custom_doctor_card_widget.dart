@@ -129,7 +129,7 @@ class DoctorCard extends StatelessWidget {
                             ? model.arspecialization
                             : model.enspecialization,
                         style: AppTextStyles.cairo400Style20
-                            .copyWith(color: AppColors.white, fontSize: 16),
+                            .copyWith(color: AppColors.white, fontSize: 14),
                       ),
                       // Text(
                       //   'Working Days: ${localizedDays.join(', ')}',

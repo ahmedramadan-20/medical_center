@@ -47,24 +47,33 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.home_outlined),
+      icon: const Icon(Icons.home),
+      inactiveIcon: const Icon(Icons.home_outlined),
       activeColorPrimary: AppColors.primaryColor,
       inactiveColorPrimary: AppColors.deepGrey,
+
+
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.checklist_rtl_outlined),
+      icon: const Icon(Icons.calendar_today),
+      inactiveIcon: const Icon(Icons.calendar_today_outlined),
       activeColorPrimary: AppColors.primaryColor,
       inactiveColorPrimary: AppColors.deepGrey,
+
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.search_outlined),
+      icon: const Icon(Icons.bloodtype),
+      inactiveIcon: const Icon(Icons.bloodtype_outlined),
       activeColorPrimary: AppColors.primaryColor,
       inactiveColorPrimary: AppColors.deepGrey,
+
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.person_outline),
+      icon: const Icon(Icons.person),
+      inactiveIcon: const Icon(Icons.person_outline),
       activeColorPrimary: AppColors.primaryColor,
       inactiveColorPrimary: AppColors.deepGrey,
+
     ),
   ];
 }

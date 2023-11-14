@@ -50,7 +50,14 @@
   "neurology": "Neurology",
   "specialties": "Specialties",
   "all": "All",
-  "workingDays":"Working Days:"
+  "workingDays":"Working Days:",
+  "specialty":"specialty: ",
+  "profile": "Profile",
+  "account": "Account",
+  "edit_profile": "Edit Profile"
+
+
+
 
 
 }
