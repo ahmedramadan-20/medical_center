@@ -54,10 +54,37 @@
   "specialty":"specialty: ",
   "profile": "Profile",
   "account": "Account",
-  "edit_profile": "Edit Profile"
-
-
-
-
-
+  "edit_profile": "Edit Profile",
+  "address": "Address",
+  "mit_azzoun": "Mit Azzoun next to the Grand Mosque.",
+  "street": "The Meezanieh Street, next to Dr. Abdullah Saleh's pharmacy.",
+  "clinics": "Clinics",
+  "joint": "Joint Clinic",
+  "language": "Language",
+  "booking": "For booking and inquiries",
+  "phone": "Phone",
+  "landline": "Landline",
+  "general": "General",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "required":"This field is required.",
+  "phone_number":"Phone number",
+  "gender":"Gender",
+  "male":"Male",
+  "female":"Female",
+  "blood_type":"Blood type",
+  "no_user_found": "No user found for that email.",
+  "wrong_password": "Wrong password provided for that user.",
+  "check_your_email_and_password": "Check your Email and Password.",
+  "weak_password": "The password provided is too weak.",
+  "account_already_exists": "The account already exists for that email.",
+  "invalid_email": "The email is invalid.",
+  "blood_types": "Blood Types",
+  "all_blood_types": "All",
+  "no_blood_types_found": "No blood types found 😥"
 }

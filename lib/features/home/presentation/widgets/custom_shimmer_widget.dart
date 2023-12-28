@@ -70,7 +70,7 @@ class ShimmerWidget extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       width: 150,
-                      height: 15,
+                      height: 30,
                       decoration: BoxDecoration(
                           color: AppColors.grey,
                           borderRadius: BorderRadius.circular(5)),
@@ -87,7 +87,9 @@ class ShimmerWidget extends StatelessWidget {
         ),
       ),
     ).animate(
-      effects: [const ShimmerEffect()],
+      effects: [const ShimmerEffect()],onPlay: (controller) {
+        controller.repeat();
+      }
     );
   }
 }

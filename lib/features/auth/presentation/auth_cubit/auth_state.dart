@@ -34,3 +34,16 @@ final class ResetPasswordErrorState extends AuthState {
 
   ResetPasswordErrorState({required this.errMessage});
 }
+
+
+final class SelectGenderState extends AuthState {}
+final class SelectBloodTypeState extends AuthState {}
+
+// blood type state
+final class CreateBloodTypeLoadingState extends AuthState {}
+final class CreateBloodTypeSuccessState extends AuthState {}
+final class CreateBloodTypeErrorState extends AuthState {
+  final String errMessage;
+
+  CreateBloodTypeErrorState({required this.errMessage});
+}

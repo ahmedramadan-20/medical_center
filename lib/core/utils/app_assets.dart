@@ -24,4 +24,6 @@ abstract class AppAssets {
   static const String doctor = 'assets/images/doctor.png';
   static const String splashLogo = 'assets/images/splashlogo.json';
   static const String all = 'assets/images/all.png';
+  static const String appLogo = 'assets/images/applogo.png';
+  static const String noData = 'assets/images/no-data.json';
 }

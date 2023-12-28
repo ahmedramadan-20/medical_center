@@ -1,15 +1,19 @@
-class AppStrings{
+class AppStrings {
   static const String englishCode = 'en';
   static const String arabicCode = 'ar';
   static const String locale = 'locale';
 }
-class FirebaseStrings{
-  static const String arname = 'arname';
-  static const String enname = 'enname';
-  static const String arspecialization = 'arspecialization';
-  static const String enspecialization = 'enspecialization';
+
+class FirebaseStrings {
+  static const String id = 'id';
+  static const String arName = 'arName';
+  static const String enName = 'enName';
+  static const String arSpecialization = 'arSpecialization';
+  static const String enSpecialization = 'enSpecialization';
   static const String image = 'image';
-  static const String workinghours = 'workinghours';
+  static const String workingHours = 'workingHours';
   static const String doctors = 'doctors';
   static const String isAvailable = 'isAvailable';
+  static const String specializationId = 'specializationId';
+  static const String numberOfPatients = 'numberOfPatients';
 }

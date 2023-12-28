@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_styles.dart';
 import '../home_cubit/home_cubit.dart';
 import '../home_cubit/home_state.dart';
@@ -12,73 +15,95 @@ class HomeCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 5),
-          height: 110,
+          height: 100,
           child: ListView.separated(
-
-              physics: const BouncingScrollPhysics(),
+              clipBehavior: Clip.none,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => SizedBox(
-                width: 70,
-                child: InkWell(
-                  onTap: () {
-
-                    BlocProvider.of<HomeCubit>(context).changeIndex(index, context);
-                    BlocProvider.of<HomeCubit>(context).selectedIndex =
-                        index;
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(color: BlocProvider.of<HomeCubit>(context)
-                        .selectedIndex ==
-                        index
-                        ? AppColors.primaryColor
-                        :Colors.transparent,borderRadius: BorderRadius.circular(5)),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color:  AppColors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  BlocProvider.of<HomeCubit>(context)
-                                      .categoryList(context)[index]
-                                      .image,
+                    width: 70,
+                    child: GestureDetector(
+                      onTap: () {
+                        BlocProvider.of<HomeCubit>(context).changeIndex(
+                          index,
+                        );
+                        BlocProvider.of<HomeCubit>(context).selectedIndex =
+                            index;
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        decoration: BoxDecoration(
+                            color: BlocProvider.of<HomeCubit>(context)
+                                        .selectedIndex ==
+                                    index
+                                ? AppColors.babyBlue.withOpacity(0.4)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(15),
+                            border:
+                                context.read<HomeCubit>().selectedIndex == index
+                                    ? Border.all(
+                                        color: AppColors.babyBlue, width: 1)
+                                    : null),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: const BoxDecoration(),
+                              child: CachedNetworkImage(
+                                imageUrl: BlocProvider.of<HomeCubit>(context)
+                                    .specialities[index]
+                                    .image,
+                                fit: BoxFit.cover,
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                                placeholder: (context, url) => Animate(
+                                  child: Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.grey,
+                                        borderRadius: BorderRadius.circular(5)),
+                                  ).animate().shimmer(),
                                 ),
-                              )),
-                        ),
-                        Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 2),
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              BlocProvider.of<HomeCubit>(context)
-                                  .categoryList(context)[index]
-                                  .categoryName,
-                              style: AppTextStyles.cairo300style16
-                                  .copyWith(fontSize: 12,color: BlocProvider.of<HomeCubit>(context)
-                                  .selectedIndex ==index?AppColors.white:AppColors.black),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
+                              ),
                             ),
-                          ),
-                        )
-                      ],
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 2),
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                Localizations.localeOf(context).languageCode ==
+                                        AppStrings.englishCode
+                                    ? context
+                                        .read<HomeCubit>()
+                                        .specialities[index]
+                                        .enCategoryName
+                                    : context
+                                        .read<HomeCubit>()
+                                        .specialities[index]
+                                        .arCategoryName,
+                                style: AppTextStyles.cairo300style16.copyWith(
+                                  fontSize: 12,
+                                  color:
+                                      context.read<HomeCubit>().selectedIndex ==
+                                              index
+                                          ? AppColors.deepBlue
+                                          : AppColors.black,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              separatorBuilder: (context, index) => const SizedBox(width: 10),
-              itemCount: BlocProvider.of<HomeCubit>(context)
-                  .categoryList(context)
-                  .length),
+              separatorBuilder: (context, index) => const SizedBox(width: 5),
+              itemCount: context.read<HomeCubit>().specialities.length),
         );
       },
     );

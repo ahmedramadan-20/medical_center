@@ -11,49 +11,50 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 152,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 20,
+                ),
               ),
-            ),
-            SliverToBoxAdapter(
-              child: WelcomeTextWidget(
-                text: S.of(context).welcome,
+              SliverToBoxAdapter(
+                child: WelcomeTextWidget(
+                  text: S.of(context).welcome,
+                ),
               ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 16,
+              // const SliverToBoxAdapter(
+              //   child: SizedBox(
+              //     height: 10,
+              //   ),
+              // ),
+              const SliverToBoxAdapter(
+                child: CustomSignUpForm(),
               ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomSignUpForm(),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 16,
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 16,
+                ),
               ),
-            ),
-            SliverToBoxAdapter(
-              child: HaveAnAccountWidget(
-                text1: '${S.of(context).Have_an_Account} ',
-                text2: S.of(context).sign_in,
-                onTap: () {
-                  navigateReplacement(context, '/signIn');
-                },
+              SliverToBoxAdapter(
+                child: HaveAnAccountWidget(
+                  text1: '${S.of(context).Have_an_Account} ',
+                  text2: S.of(context).sign_in,
+                  onTap: () {
+                    navigateReplacement(context, '/signIn');
+                  },
+                ),
               ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 70,
-              ),
-            ),
-          ],
+              // const SliverToBoxAdapter(
+              //   child: SizedBox(
+              //     height: 70,
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_text_styles.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
@@ -24,9 +25,11 @@ class CustomTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0, left: 8, top: 24),
       child: TextFormField(
+        onTapOutside:
+        (event) { FocusManager.instance.primaryFocus?.unfocus(); },
         validator: (value) {
           if (value!.isEmpty) {
-            return 'هذا الحقل مطلوب';
+            return S.of(context).required;
           } else {
             return null;
           }
@@ -51,7 +54,8 @@ class CustomTextFormField extends StatelessWidget {
 
 OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(4),
+
+    borderRadius: BorderRadius.circular(10),
     borderSide: const BorderSide(
       color: AppColors.deepBlue,
     ),

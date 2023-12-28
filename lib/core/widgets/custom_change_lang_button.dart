@@ -10,10 +10,16 @@ class ChangeLanguageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(onPressed: (){changeLanguage(context);}, child: Text(
-      Localizations.localeOf(context).languageCode==AppStrings.arabicCode?'English':"العربية",
-      style: AppTextStyles.cairo300style16
-          .copyWith(fontWeight: FontWeight.bold, color: AppColors.primaryColor),
-    ));
+    return TextButton(
+        onPressed: () {
+          changeLanguage(context);
+        },
+        child: Text(
+          Localizations.localeOf(context).languageCode == AppStrings.arabicCode
+              ? 'English'
+              : "العربية",
+          style: AppTextStyles.cairo300style16.copyWith(
+              fontWeight: FontWeight.bold, color: AppColors.primaryColor),
+        ));
   }
 }

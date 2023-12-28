@@ -23,7 +23,6 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const ChangeLanguageButton(),
-
               GestureDetector(
                 onTap: () {
                   onBoardingVisited();
@@ -40,11 +39,9 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
           const SizedBox(
             height: 40,
           ),
-          OnBoardingWidgetBody(
-
-              onPageChanged: (index) {
-                cubit.onPageChanged(index);
-              }),
+          OnBoardingWidgetBody(onPageChanged: (index) {
+            cubit.onPageChanged(index);
+          }),
           const SizedBox(
             height: 24,
           ),
@@ -85,7 +82,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                             onBoardingVisited();
                             navigateReplacement(context, '/signUp');
                           },
-                          text:  S.of(context).sign_up,
+                          text: S.of(context).sign_up,
                         ),
                         const SizedBox(
                           height: 16,
@@ -119,7 +116,7 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
                               curve: Curves.linear,
                             );
                           },
-                          text:  S.of(context).next,
+                          text: S.of(context).next,
                         ),
                       ],
                     ),
@@ -133,4 +130,3 @@ Widget onboardingBody(BuildContext context, OnBoardingCubit cubit) {
     ),
   );
 }
-

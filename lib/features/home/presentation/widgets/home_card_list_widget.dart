@@ -23,19 +23,22 @@ class HomeDoctorsCardList extends StatelessWidget {
         return state is GetDoctorsLoadingState
             ? const ShimmerWidget()
             : SizedBox(
-                height: MediaQuery.of(context).size.height * 0.62,
+                height: MediaQuery.of(context).size.height * 0.66,
                 child: ListView.separated(
-                    physics:const BouncingScrollPhysics(),
+                    shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return DoctorCard(
                         model: context.read<HomeCubit>().filteredDoctors[index],
                         onTap: () {
-                          customNavigate(context, "/doctor", );
+                          customNavigate(context, "/doctor",
+                              extra: context
+                                  .read<HomeCubit>()
+                                  .filteredDoctors[index]);
                         },
                       );
                     },
                     separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 5),
                     itemCount:
                         context.read<HomeCubit>().filteredDoctors.length));
       },

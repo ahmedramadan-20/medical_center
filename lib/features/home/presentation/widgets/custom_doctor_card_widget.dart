@@ -22,7 +22,7 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> workingDays = model.workinghours.keys.toList();
+    List<String> workingDays = model.workingHours.keys.toList();
     // Map<String, dynamic> workingHours = model.workinghours;
 
     // Format day names based on app language
@@ -49,18 +49,18 @@ class DoctorCard extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 15.0, right: 10, left: 10),
+          padding: const EdgeInsets.only(bottom: 10.0, right: 10, left: 10),
           child: InkWell(
             onTap: onTap,
-            child: Container(
+            child:Container(
               padding: const EdgeInsetsDirectional.symmetric(vertical: 5),
               decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(5),
+                color: AppColors.babyBlue,
+                borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.lightBlue.withOpacity(0.4),
-                    blurRadius: 7,
+                    color: AppColors.babyBlue.withOpacity(0.6),
+                    blurRadius: 5,
                     offset: const Offset(0, 7), // changes position of shadow
                   ),
                 ],
@@ -73,23 +73,28 @@ class DoctorCard extends StatelessWidget {
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(15),
 
                     ),
                     child: Hero(
-                      tag: model.enname,
-                      child: CachedNetworkImage(
-                        imageUrl: model.image,
-                        placeholder: (context, url) => Animate(
-                          child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: AppColors.grey,
-                                borderRadius: BorderRadius.circular(5)),
-                          ).animate().shimmer(),
+                      tag: model.enName,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: model.image,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                              Animate(
+                            child: Container(
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  color: AppColors.grey,
+                                  borderRadius: BorderRadius.circular(5)),
+                            ).animate().shimmer(),
+                          ),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
                         ),
-                        errorWidget: (context, url, error) => const Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -105,17 +110,17 @@ class DoctorCard extends StatelessWidget {
                             Text(
                               S.of(context).dr,
                               style: AppTextStyles.cairo400Style20.copyWith(
-                                color: AppColors.white,
+                                color: AppColors.deepBlue,
                               ),
                             ),
                             Expanded(
                               child: Text(
                                 Localizations.localeOf(context).languageCode ==
                                         AppStrings.arabicCode
-                                    ? model.arname
-                                    : model.enname,
+                                    ? model.arName
+                                    : model.enName,
                                 style: AppTextStyles.cairo400Style20
-                                    .copyWith(color: AppColors.white),
+                                    .copyWith(color: AppColors.deepBlue),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                               ),
@@ -126,10 +131,10 @@ class DoctorCard extends StatelessWidget {
                       Text(
                         Localizations.localeOf(context).languageCode ==
                                 AppStrings.arabicCode
-                            ? model.arspecialization
-                            : model.enspecialization,
+                            ? model.arSpecialization
+                            : model.enSpecialization,
                         style: AppTextStyles.cairo400Style20
-                            .copyWith(color: AppColors.white, fontSize: 14),
+                            .copyWith(color: AppColors.deepBlue, fontSize: 14),
                       ),
                       // Text(
                       //   'Working Days: ${localizedDays.join(', ')}',
@@ -147,19 +152,13 @@ class DoctorCard extends StatelessWidget {
                       // ),
 
                       // for (int i = 0; i < workingDays.length; i++)
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 7),
-                        margin: const EdgeInsets.symmetric(vertical: 5),
-                        decoration: BoxDecoration(
-                            color: AppColors.offWhite,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Text(
-                            '${S.of(context).workingDays} ${localizedDays.join(', ')}',
-                            // '${localizedDays[i]}: ${_formatHour(workingHours[workingDays[i]]['start'], context)}',
+                      const SizedBox(height: 5,),
+                      Text(
+                          '${S.of(context).workingDays}\n${localizedDays.join(', ')}',
+                          // '${localizedDays[i]}: ${_formatHour(workingHours[workingDays[i]]['start'], context)}',
 
-                            style: AppTextStyles.cairo300style16
-                                .copyWith(fontSize: 12)),
-                      ),
+                          style: AppTextStyles.cairo300style16
+                              .copyWith(fontSize: 12,color: AppColors.deepBlue),),
                       // Display working hours
                       // for (var entry in localizedHours.entries)
                       //   Container(

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_center/core/functions/navigator.dart';
 
 import '../../app/global_cubit/locale_cubit.dart';
 import 'app_strings.dart';
@@ -12,4 +13,5 @@ void changeLanguage(context) {
   }else{
     BlocProvider.of<LocaleCubit>(context).toEnglish();
   }
+  navigateReplacement(context, '/');
 }

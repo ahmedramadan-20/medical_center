@@ -609,6 +609,326 @@ class S {
       args: [],
     );
   }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mit Azzoun next to the Grand Mosque.`
+  String get mit_azzoun {
+    return Intl.message(
+      'Mit Azzoun next to the Grand Mosque.',
+      name: 'mit_azzoun',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Meezanieh Street, next to Dr. Abdullah Saleh's pharmacy.`
+  String get street {
+    return Intl.message(
+      'The Meezanieh Street, next to Dr. Abdullah Saleh\'s pharmacy.',
+      name: 'street',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clinics`
+  String get clinics {
+    return Intl.message(
+      'Clinics',
+      name: 'clinics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Joint Clinic`
+  String get joint {
+    return Intl.message(
+      'Joint Clinic',
+      name: 'joint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For booking and inquiries`
+  String get booking {
+    return Intl.message(
+      'For booking and inquiries',
+      name: 'booking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get phone {
+    return Intl.message(
+      'Phone',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Landline`
+  String get landline {
+    return Intl.message(
+      'Landline',
+      name: 'landline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message(
+      'General',
+      name: 'general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monday`
+  String get monday {
+    return Intl.message(
+      'Monday',
+      name: 'monday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tuesday`
+  String get tuesday {
+    return Intl.message(
+      'Tuesday',
+      name: 'tuesday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wednesday`
+  String get wednesday {
+    return Intl.message(
+      'Wednesday',
+      name: 'wednesday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thursday`
+  String get thursday {
+    return Intl.message(
+      'Thursday',
+      name: 'thursday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Friday`
+  String get friday {
+    return Intl.message(
+      'Friday',
+      name: 'friday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saturday`
+  String get saturday {
+    return Intl.message(
+      'Saturday',
+      name: 'saturday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunday`
+  String get sunday {
+    return Intl.message(
+      'Sunday',
+      name: 'sunday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is required.`
+  String get required {
+    return Intl.message(
+      'This field is required.',
+      name: 'required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phone_number {
+    return Intl.message(
+      'Phone number',
+      name: 'phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message(
+      'Gender',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message(
+      'Male',
+      name: 'male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message(
+      'Female',
+      name: 'female',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blood type`
+  String get blood_type {
+    return Intl.message(
+      'Blood type',
+      name: 'blood_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No user found for that email.`
+  String get no_user_found {
+    return Intl.message(
+      'No user found for that email.',
+      name: 'no_user_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong password provided for that user.`
+  String get wrong_password {
+    return Intl.message(
+      'Wrong password provided for that user.',
+      name: 'wrong_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your Email and Password.`
+  String get check_your_email_and_password {
+    return Intl.message(
+      'Check your Email and Password.',
+      name: 'check_your_email_and_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password provided is too weak.`
+  String get weak_password {
+    return Intl.message(
+      'The password provided is too weak.',
+      name: 'weak_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The account already exists for that email.`
+  String get account_already_exists {
+    return Intl.message(
+      'The account already exists for that email.',
+      name: 'account_already_exists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email is invalid.`
+  String get invalid_email {
+    return Intl.message(
+      'The email is invalid.',
+      name: 'invalid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blood Types`
+  String get blood_types {
+    return Intl.message(
+      'Blood Types',
+      name: 'blood_types',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all_blood_types {
+    return Intl.message(
+      'All',
+      name: 'all_blood_types',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No blood types found 😥`
+  String get no_blood_types_found {
+    return Intl.message(
+      'No blood types found 😥',
+      name: 'no_blood_types_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

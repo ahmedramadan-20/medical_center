@@ -1,8 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_center/core/utils/app_constants.dart';
+import '../../../../generated/l10n.dart';
 import 'auth_state.dart';
+
+enum Gender { male, female }
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
@@ -10,12 +15,15 @@ class AuthCubit extends Cubit<AuthState> {
   String? firstName;
   String? lastName;
   String? emailAddress;
+  String? phoneNumber;
   String? password;
   bool? termsAndConditionsCheckBoxValue = false;
   bool? obscurePasswordTextValue = true;
   GlobalKey<FormState> signupFormKey = GlobalKey();
   GlobalKey<FormState> signInFormKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordFormKey = GlobalKey();
+  String? gender;
+  String? bloodType;
 
   Future<void> signUpWithEmailAndPassword() async {
     try {
@@ -26,6 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
         password: password!,
       );
       await addUserProfile();
+      await createBloodType();
       await verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
@@ -37,12 +46,11 @@ class AuthCubit extends Cubit<AuthState> {
 
   void _signUpHandelException(FirebaseAuthException e) {
     if (e.code == 'weak-password') {
-      emit(SignUpErrorState(errMessage: 'The password provided is too weak.'));
+      emit(SignUpErrorState(errMessage: S.current.weak_password));
     } else if (e.code == 'email-already-in-use') {
-      emit(SignUpErrorState(
-          errMessage: 'The account already exists for that email.'));
+      emit(SignUpErrorState(errMessage: S.current.account_already_exists));
     } else if (e.code == 'invalid-email') {
-      emit(SignUpErrorState(errMessage: 'The email is invalid.'));
+      emit(SignUpErrorState(errMessage: S.current.invalid_email));
     } else {
       emit(SignUpErrorState(errMessage: e.code));
     }
@@ -74,12 +82,12 @@ class AuthCubit extends Cubit<AuthState> {
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        emit(SignInErrorState(errMessage: 'No user found for that email.'));
+        emit(SignInErrorState(errMessage: S.current.no_user_found));
       } else if (e.code == 'wrong-password') {
-        emit(SignInErrorState(
-            errMessage: 'Wrong password provided for that user.'));
+        emit(SignInErrorState(errMessage: S.current.wrong_password));
       } else {
-        emit(SignInErrorState(errMessage: 'Check your Email and Password'));
+        emit(SignInErrorState(
+            errMessage: S.current.check_your_email_and_password));
       }
     } catch (e) {
       emit(SignInErrorState(errMessage: e.toString()));
@@ -99,10 +107,65 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> addUserProfile() async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     await users.add({
-      'email': emailAddress,
-      'first_name': firstName,
-      'last_name': lastName,
+      'firstName': firstName!,
+      'lastName': lastName!,
+      'email': emailAddress!,
+      'image': userImage,
+      'phone': phoneNumber!,
+      'gender': gender!,
+      'bloodType': bloodType ?? 'Unknown',
       'isAdmin': false,
     });
+  }
+
+  List<String> bloodTypes = [
+    'A+',
+    'A-',
+    'B+',
+    'B-',
+    'AB+',
+    'AB-',
+    'O+',
+    'O-',
+    'Unknown'
+  ];
+
+  // select gender
+  void selectGender({required value}) {
+    gender = value;
+    if (kDebugMode) {
+      print(gender);
+    }
+    emit(SelectGenderState());
+  }
+
+  //select blood type
+  void selectBloodType({required value}) {
+    bloodType = value;
+    if (kDebugMode) {
+      print(bloodType);
+    }
+    emit(SelectBloodTypeState());
+  }
+
+  // crate blood type
+  Future<void> createBloodType() async {
+    try {
+      emit(CreateBloodTypeLoadingState());
+      await FirebaseFirestore.instance  .collection('bloodTypes')
+      .add({
+        'firstName': firstName,
+        'lastName': lastName,
+        'bloodType': bloodType,
+        'phone': phoneNumber,
+        'gender': gender,
+        'email': emailAddress,
+
+      });
+      emit(CreateBloodTypeSuccessState());
+    }
+    catch (e) {
+      emit(CreateBloodTypeErrorState(errMessage: e.toString()));
+    }
   }
 }
