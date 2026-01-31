@@ -1,9 +1,15 @@
 import 'package:get_it/get_it.dart';
 import 'package:medical_center/app/global_cubit/locale_cubit.dart';
+import 'package:medical_center/app/global_cubit/theme_cubit.dart';
 import 'package:medical_center/app/repositories/lang_repository.dart';
+import 'package:medical_center/app/repositories/theme_repository.dart';
 import 'package:medical_center/app/usecases/change_lang.dart';
+import 'package:medical_center/app/usecases/change_theme.dart';
 import 'package:medical_center/app/usecases/get_saved_lang.dart';
+import 'package:medical_center/app/usecases/get_saved_theme.dart';
 import 'package:medical_center/core/database/cache/cache_helper.dart';
+import 'package:medical_center/core/database/cache/theme_local_data_source.dart';
+import 'package:medical_center/core/repositories/theme_repository_impl.dart';
 import 'package:medical_center/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:medical_center/features/auth/data/repositories/auth_repository.dart';
 import 'package:medical_center/features/auth/domain/usecases/reset_password_usecase.dart';
@@ -44,6 +50,11 @@ Future<void> setupServiceLocator() async {
     () => LangLocaleDataSourceImpl(sharedPreferences: getIt()),
   );
 
+  // Theme data source
+  getIt.registerLazySingleton<ThemeLocalDataSource>(
+    () => ThemeLocalDataSourceImpl(cacheHelper: getIt()),
+  );
+
   // Authentication data source
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     AuthRemoteDataSourceImpl.new,
@@ -53,6 +64,11 @@ Future<void> setupServiceLocator() async {
   // Language repository
   getIt.registerLazySingleton<LangRepository>(
     () => LangRepositoryImpl(langLocaleDataSource: getIt()),
+  );
+
+  // Theme repository
+  getIt.registerLazySingleton<ThemeRepository>(
+    () => ThemeRepositoryImpl(themeLocalDataSource: getIt()),
   );
 
   // Authentication repository
@@ -75,6 +91,14 @@ Future<void> setupServiceLocator() async {
       () => ChangeLangUseCase(langRepository: getIt()),
     )
 
+    // Theme use cases
+    ..registerLazySingleton<GetSavedThemeUseCase>(
+      () => GetSavedThemeUseCase(themeRepository: getIt()),
+    )
+    ..registerLazySingleton<ChangeThemeUseCase>(
+      () => ChangeThemeUseCase(themeRepository: getIt()),
+    )
+
     // Authentication use cases
     ..registerLazySingleton<SignUpUseCase>(
       () => SignUpUseCase(repository: getIt()),
@@ -92,6 +116,14 @@ Future<void> setupServiceLocator() async {
       () => LocaleCubit(
         getSavedLangUseCase: getIt(),
         changeLangUseCase: getIt(),
+      ),
+    )
+
+    // Theme cubit
+    ..registerFactory<ThemeCubit>(
+      () => ThemeCubit(
+        getSavedThemeUseCase: getIt(),
+        changeThemeUseCase: getIt(),
       ),
     )
 

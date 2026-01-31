@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_change_lang_button.dart';
+import 'package:medical_center/app/global_cubit/theme_cubit.dart';
 import 'package:medical_center/features/profile/presentation/profile_cubit/profile_cubit.dart';
 import 'package:medical_center/generated/l10n.dart';
 
@@ -28,7 +29,7 @@ class CustomProfileListTile extends StatelessWidget {
             const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
@@ -109,6 +110,8 @@ class CustomProfileListTile extends StatelessWidget {
                   ),
                   _buildDivider(),
                   _buildLanguageTile(context),
+                  _buildDivider(),
+                  _buildThemeTile(context),
                 ],
               ),
             ),
@@ -215,7 +218,7 @@ class CustomProfileListTile extends StatelessWidget {
                   title,
                   style: AppTextStyles.cairo400Style20.copyWith(
                     fontSize: 16,
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               ),
@@ -253,7 +256,7 @@ class CustomProfileListTile extends StatelessWidget {
             title,
             style: AppTextStyles.cairo400Style20.copyWith(
               fontSize: 16,
-              color: AppColors.deepBlue,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
           iconColor: AppColors.primaryColor,
@@ -284,7 +287,7 @@ class CustomProfileListTile extends StatelessWidget {
                 S.of(context).language,
                 style: AppTextStyles.cairo400Style20.copyWith(
                   fontSize: 16,
-                  color: AppColors.deepBlue,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
@@ -293,11 +296,54 @@ class CustomProfileListTile extends StatelessWidget {
         ),
       );
 
+  Widget _buildThemeTile(BuildContext context) =>
+      BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          final isDark = context.read<ThemeCubit>().isDark;
+          return Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(
+                    isDark ? Icons.dark_mode : Icons.light_mode,
+                    color: AppColors.primaryColor,
+                    size: 22,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Text(
+                    isDark ? 'Dark Mode' : 'Light Mode',
+                    style: AppTextStyles.cairo400Style20.copyWith(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                ),
+                Switch.adaptive(
+                  value: isDark,
+                  activeColor: AppColors.primaryColor,
+                  onChanged: (value) {
+                    context.read<ThemeCubit>().toggleTheme();
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      );
+
   Widget _buildDivider() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Divider(
           height: 1,
-          color: AppColors.lightGrey.withValues(alpha: 0.5),
+          color: AppColors.lightGrey.withValues(alpha: 0.3),
         ),
       );
 }

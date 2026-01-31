@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:medical_center/app/global_cubit/locale_cubit.dart';
+import 'package:medical_center/app/global_cubit/theme_cubit.dart';
 import 'package:medical_center/core/routes/app_router.dart';
 import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/theme/app_theme.dart';
@@ -26,6 +27,9 @@ class MedicalCenter extends StatelessWidget {
             create: (context) => getIt<LocaleCubit>()..getSavedLang(),
           ),
           BlocProvider(
+            create: (context) => getIt<ThemeCubit>()..getSavedTheme(),
+          ),
+          BlocProvider(
             create: (context) => getIt<HomeCubit>(),
           ),
           BlocProvider(
@@ -34,7 +38,8 @@ class MedicalCenter extends StatelessWidget {
           BlocProvider(
             create: (context) => getIt<NotificationsCubit>()
               ..getNotifications(
-                  FirebaseAuth.instance.currentUser?.email ?? ''),
+                FirebaseAuth.instance.currentUser?.email ?? '',
+              ),
           ),
           BlocProvider(
             create: (context) => getIt<ProfileCubit>()..getUserData(),
@@ -42,20 +47,29 @@ class MedicalCenter extends StatelessWidget {
         ],
         child: BlocBuilder<LocaleCubit, LocaleState>(
           buildWhen: (previous, current) => previous != current,
-          builder: (context, state) => MaterialApp.router(
-            locale: state.locale,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.light,
-            debugShowCheckedModeBanner: false,
-            routerConfig: router,
+          builder: (context, localeState) =>
+              BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, themeState) {
+              final themeMode = themeState is ChangeThemeState
+                  ? themeState.themeMode
+                  : context.read<ThemeCubit>().themeMode;
+
+              return MaterialApp.router(
+                locale: localeState.locale,
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: themeMode,
+                debugShowCheckedModeBanner: false,
+                routerConfig: router,
+              );
+            },
           ),
         ),
       );

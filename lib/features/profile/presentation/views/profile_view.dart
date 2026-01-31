@@ -23,7 +23,6 @@ class ProfileView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : Scaffold(
-                backgroundColor: AppColors.offWhite,
                 body: SafeArea(
                   child: CustomScrollView(
                     slivers: [
