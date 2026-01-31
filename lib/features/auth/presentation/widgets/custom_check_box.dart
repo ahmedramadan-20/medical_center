@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
 
 class CustomCheckBox extends StatefulWidget {
@@ -15,10 +15,10 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
 
   @override
   Widget build(BuildContext context) => Checkbox(
-        activeColor: AppColors.deepBlue,
+        activeColor: Theme.of(context).colorScheme.primary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        side: const BorderSide(
-          color: AppColors.deepBlue,
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.primary,
         ),
         value: value,
         onChanged: (newValue) {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_strings.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/utils/time_formatter.dart';
@@ -25,7 +25,7 @@ class DoctorView extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => ReviewCubit()..getDoctorReviews(model.docId ?? ''),
         child: Scaffold(
-          backgroundColor: const Color(0xFFFBFBFB),
+          backgroundColor: Theme.of(context).colorScheme.surface,
           body: Stack(
             children: [
               CustomScrollView(
@@ -78,10 +78,11 @@ class DoctorView extends StatelessWidget {
         expandedHeight: 400,
         pinned: true,
         stretch: true,
-        backgroundColor: AppColors.deepBlue,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: Padding(
           padding: const EdgeInsets.all(8),
           child: _buildGlassIconButton(
+            context,
             onTap: () => Navigator.pop(context),
             icon: Icons.arrow_back_ios_new,
           ),
@@ -90,6 +91,7 @@ class DoctorView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8),
             child: _buildGlassIconButton(
+              context,
               onTap: () {},
               icon: Icons.share_outlined,
             ),
@@ -145,7 +147,8 @@ class DoctorView extends StatelessWidget {
         ),
       );
 
-  Widget _buildGlassIconButton({
+  Widget _buildGlassIconButton(
+    BuildContext context, {
     required VoidCallback onTap,
     required IconData icon,
   }) =>
@@ -159,13 +162,23 @@ class DoctorView extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.2),
+                color: Theme.of(context)
+                    .colorScheme
+                    .primaryContainer
+                    .withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.3),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onPrimaryContainer
+                      .withValues(alpha: 0.2),
                 ),
               ),
-              child: Icon(icon, color: Colors.white, size: 20),
+              child: Icon(
+                icon,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                size: 20,
+              ),
             ),
           ),
         ),
@@ -196,7 +209,7 @@ class DoctorView extends StatelessWidget {
                     style: AppTextStyles.cairo400Style20.copyWith(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.deepBlue,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -204,7 +217,10 @@ class DoctorView extends StatelessWidget {
                     specialty,
                     style: TextStyle(
                       fontSize: 16,
-                      color: AppColors.deepBlue.withValues(alpha: 0.6),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withValues(alpha: 0.6),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -214,21 +230,21 @@ class DoctorView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppColors.green.withValues(alpha: 0.1),
+                color: Colors.green.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
                 children: [
                   const Icon(
                     Icons.verified_rounded,
-                    color: AppColors.green,
+                    color: Colors.green,
                     size: 16,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     S.of(context).verified,
                     style: const TextStyle(
-                      color: AppColors.green,
+                      color: Colors.green,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
@@ -245,11 +261,12 @@ class DoctorView extends StatelessWidget {
   Widget _buildStatBar(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.08),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -259,20 +276,23 @@ class DoctorView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildStatItem(
+              context,
               S.of(context).experience,
               '${model.experienceYears}+',
               Icons.work_history_rounded,
               Colors.blue,
             ),
-            _buildStatDivider(),
+            _buildStatDivider(context),
             _buildStatItem(
+              context,
               S.of(context).rating,
               model.averageRating.toStringAsFixed(1),
               Icons.star_rounded,
               Colors.amber,
             ),
-            _buildStatDivider(),
+            _buildStatDivider(context),
             _buildStatItem(
+              context,
               S.of(context).reviews,
               '${model.numberOfReviews}',
               Icons.chat_bubble_rounded,
@@ -283,6 +303,7 @@ class DoctorView extends StatelessWidget {
       );
 
   Widget _buildStatItem(
+    BuildContext context,
     String label,
     String value,
     IconData icon,
@@ -301,26 +322,29 @@ class DoctorView extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
-              color: AppColors.deepBlue,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
           Text(
             label,
             style: TextStyle(
-              color: AppColors.deepBlue.withValues(alpha: 0.5),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.5),
               fontSize: 12,
             ),
           ),
         ],
       );
 
-  Widget _buildStatDivider() => Container(
+  Widget _buildStatDivider(BuildContext context) => Container(
         height: 40,
         width: 1,
-        color: Colors.grey.withValues(alpha: 0.1),
+        color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
       );
 
   Widget _buildSectionHeader(
@@ -336,7 +360,7 @@ class DoctorView extends StatelessWidget {
             style: AppTextStyles.cairo400Style20.copyWith(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: AppColors.deepBlue,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
           if (trailing != null) trailing,
@@ -351,21 +375,24 @@ class DoctorView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
+        ),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: AppColors.primaryColor.withValues(alpha: 0.1),
+              color:
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.medical_services_rounded,
-              color: AppColors.primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               size: 28,
             ),
           ),
@@ -376,16 +403,19 @@ class DoctorView extends StatelessWidget {
               children: [
                 Text(
                   specialty,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 Text(
                   S.of(context).specialistPractitioner,
                   style: TextStyle(
-                    color: AppColors.deepBlue.withValues(alpha: 0.5),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withValues(alpha: 0.5),
                     fontSize: 13,
                   ),
                 ),
@@ -423,18 +453,25 @@ class DoctorView extends StatelessWidget {
                     width: 16,
                     height: 16,
                     decoration: BoxDecoration(
-                      color: isToday ? AppColors.primaryColor : Colors.white,
+                      color: isToday
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.surface,
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: isToday
-                            ? AppColors.primaryColor
-                            : Colors.grey.withValues(alpha: 0.3),
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withValues(alpha: 0.5),
                         width: 2,
                       ),
                       boxShadow: isToday
                           ? [
                               BoxShadow(
-                                color: AppColors.primaryColor
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
                                     .withValues(alpha: 0.3),
                                 blurRadius: 8,
                                 spreadRadius: 2,
@@ -464,13 +501,24 @@ class DoctorView extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: isToday
-                          ? AppColors.primaryColor.withValues(alpha: 0.05)
-                          : Colors.white,
+                          ? Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withValues(alpha: 0.05)
+                          : Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
                         color: isToday
-                            ? AppColors.primaryColor.withValues(alpha: 0.1)
-                            : Colors.grey.withValues(alpha: 0.05),
+                            ? Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.1)
+                            : Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withValues(alpha: 0.1),
                       ),
                     ),
                     child: Row(
@@ -486,16 +534,18 @@ class DoctorView extends StatelessWidget {
                                     isToday ? FontWeight.bold : FontWeight.w600,
                                 fontSize: 15,
                                 color: isToday
-                                    ? AppColors.primaryColor
-                                    : AppColors.deepBlue,
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
                               hours,
                               style: TextStyle(
-                                color:
-                                    AppColors.deepBlue.withValues(alpha: 0.5),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withValues(alpha: 0.5),
                                 fontSize: 13,
                               ),
                             ),
@@ -508,7 +558,7 @@ class DoctorView extends StatelessWidget {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.primaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -570,7 +620,10 @@ class DoctorView extends StatelessWidget {
               );
             }
             return Column(
-              children: state.reviews.take(3).map(_buildReviewTile).toList(),
+              children: state.reviews
+                  .take(3)
+                  .map((review) => _buildReviewTile(context, review))
+                  .toList(),
             );
           } else if (state is ReviewError) {
             return Center(child: Text(state.message));
@@ -579,15 +632,15 @@ class DoctorView extends StatelessWidget {
         },
       );
 
-  Widget _buildReviewTile(dynamic review) => Container(
+  Widget _buildReviewTile(BuildContext context, dynamic review) => Container(
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.02),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),
@@ -599,13 +652,15 @@ class DoctorView extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundColor:
-                      AppColors.primaryColor.withValues(alpha: 0.1),
+                  backgroundColor: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
                   radius: 20,
                   child: Text(
                     review.userName.substring(0, 1).toUpperCase(),
-                    style: const TextStyle(
-                      color: AppColors.primaryColor,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -617,10 +672,10 @@ class DoctorView extends StatelessWidget {
                     children: [
                       Text(
                         review.userName,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
-                          color: AppColors.deepBlue,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       Row(
@@ -644,7 +699,10 @@ class DoctorView extends StatelessWidget {
             Text(
               review.comment,
               style: TextStyle(
-                color: AppColors.deepBlue.withValues(alpha: 0.6),
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.6),
                 fontSize: 14,
                 height: 1.5,
               ),
@@ -668,10 +726,16 @@ class DoctorView extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
             decoration: BoxDecoration(
-              color: AppColors.deepBlue.withValues(alpha: 0.85),
+              color: Theme.of(context)
+                  .colorScheme
+                  .surfaceContainerHighest
+                  .withValues(alpha: 0.85),
               borderRadius: BorderRadius.circular(32),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.15),
+                color: Theme.of(context)
+                    .colorScheme
+                    .outline
+                    .withValues(alpha: 0.2),
                 width: 1.5,
               ),
               boxShadow: [
@@ -687,10 +751,16 @@ class DoctorView extends StatelessWidget {
                   ? () => context.push('/bookAppointment', extra: model)
                   : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryColor,
-                foregroundColor: Colors.white,
-                disabledBackgroundColor: Colors.white.withValues(alpha: 0.1),
-                disabledForegroundColor: Colors.white.withValues(alpha: 0.3),
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                disabledBackgroundColor: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.1),
+                disabledForegroundColor: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.3),
                 elevation: 0,
                 minimumSize: const Size(double.infinity, 56),
                 shape: RoundedRectangleBorder(

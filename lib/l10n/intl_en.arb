@@ -12,6 +12,8 @@
   "sign_out": "Sign Out",
   "create_account": "Create Account",
   "email_address": "Email Address",
+  "search_by_name_or_specialty": "Search by name or specialty",
+  "search_users_hint": "Search by name or email",
   "password": "Password",
   "sign_in": "Sign In",
   "sign_up": "Sign Up",

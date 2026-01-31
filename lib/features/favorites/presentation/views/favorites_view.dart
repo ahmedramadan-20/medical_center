@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/favorites/presentation/manager/favorites_cubit.dart';
 import 'package:medical_center/features/favorites/presentation/manager/favorites_state.dart';
@@ -13,7 +13,7 @@ class FavoritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.offWhite,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: Text(
             S.of(context).my_favorites,
@@ -48,15 +48,19 @@ class FavoritesView extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(32),
                           decoration: BoxDecoration(
-                            color:
-                                AppColors.primaryColor.withValues(alpha: 0.1),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.1),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
                             Icons.favorite_border,
                             size: 80,
-                            color:
-                                AppColors.primaryColor.withValues(alpha: 0.5),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.5),
                           ),
                         ),
                         const SizedBox(height: 32),
@@ -65,7 +69,7 @@ class FavoritesView extends StatelessWidget {
                           style: AppTextStyles.cairo400Style20.copyWith(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.deepBlue,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -74,7 +78,8 @@ class FavoritesView extends StatelessWidget {
                           S.of(context).start_adding_favorites,
                           style: AppTextStyles.cairo300style16.copyWith(
                             fontSize: 15,
-                            color: AppColors.deepGrey,
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -86,7 +91,8 @@ class FavoritesView extends StatelessWidget {
                           icon: const Icon(Icons.search),
                           label: Text(S.of(context).browse_doctors),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryColor,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 32,

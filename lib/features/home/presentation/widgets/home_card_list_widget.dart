@@ -16,7 +16,7 @@ class HomeDoctorsCardList extends StatelessWidget {
   Widget build(BuildContext context) => BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {
           if (state is GetDoctorsErrorState) {
-            showToast(state.error);
+            showToast(context, state.error);
           }
         },
         buildWhen: (previous, current) =>

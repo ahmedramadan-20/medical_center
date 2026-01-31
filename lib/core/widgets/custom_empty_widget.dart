@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 
 class CustomEmptyWidget extends StatelessWidget {
@@ -34,7 +33,7 @@ class CustomEmptyWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: AppTextStyles.cairo400Style20.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: AppColors.deepBlue,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               if (subtitle != null) ...[
@@ -43,7 +42,7 @@ class CustomEmptyWidget extends StatelessWidget {
                   subtitle!,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.cairo300style16.copyWith(
-                    color: Colors.grey[600],
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                 ),
               ],
@@ -52,7 +51,8 @@ class CustomEmptyWidget extends StatelessWidget {
                 ElevatedButton(
                   onPressed: onActionPressed,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -64,7 +64,6 @@ class CustomEmptyWidget extends StatelessWidget {
                   child: Text(
                     actionLabel!,
                     style: const TextStyle(
-                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

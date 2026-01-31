@@ -59,6 +59,8 @@ class AdminDoctorsCubit extends Cubit<AdminDoctorsState> {
 
   /// Internal list of all doctors.
   List<DoctorsModel> _allDoctors = [];
+  List<DoctorsModel> _filteredDoctors = [];
+  String _searchQuery = '';
 
   /// Loads all doctors with real-time updates.
   ///
@@ -79,7 +81,7 @@ class AdminDoctorsCubit extends Cubit<AdminDoctorsState> {
         (snapshot) {
           _allDoctors = snapshot.docs.map(DoctorsModel.fromFirestore).toList();
           _logger.info('Loaded ${_allDoctors.length} doctors');
-          emit(AdminDoctorsLoaded(_allDoctors));
+          _applySearch();
         },
         onError: (error, stackTrace) {
           _logger.error('Error in doctors stream', error, stackTrace);
@@ -239,5 +241,28 @@ class AdminDoctorsCubit extends Cubit<AdminDoctorsState> {
     _logger.info('Closing AdminDoctorsCubit and cancelling subscriptions');
     _doctorSubscription?.cancel();
     return super.close();
+  }
+
+  /// Searches doctors by name or specialty.
+  void searchDoctors(String query) {
+    _searchQuery = query.toLowerCase();
+    _applySearch();
+  }
+
+  void _applySearch() {
+    if (_searchQuery.isEmpty) {
+      _filteredDoctors = _allDoctors;
+    } else {
+      _filteredDoctors = _allDoctors
+          .where(
+            (doctor) =>
+                doctor.enName.toLowerCase().contains(_searchQuery) ||
+                doctor.arName.toLowerCase().contains(_searchQuery) ||
+                doctor.enSpecialization.toLowerCase().contains(_searchQuery) ||
+                doctor.arSpecialization.toLowerCase().contains(_searchQuery),
+          )
+          .toList();
+    }
+    emit(AdminDoctorsLoaded(_filteredDoctors));
   }
 }

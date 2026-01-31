@@ -33,6 +33,7 @@ import 'package:medical_center/features/notifications/presentation/manager/notif
 import 'package:medical_center/features/notifications/presentation/views/notifications_view.dart';
 import 'package:medical_center/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import 'package:medical_center/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:medical_center/features/search/presentation/views/search_view.dart';
 import 'package:medical_center/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:medical_center/features/splash/presentation/views/splash_view.dart';
 
@@ -174,6 +175,10 @@ final GoRouter router = GoRouter(
           ..getNotifications(FirebaseAuth.instance.currentUser!.email!),
         child: const NotificationsView(),
       ),
+    ),
+    GoRoute(
+      path: '/search',
+      builder: (context, state) => const SearchView(),
     ),
   ],
 );

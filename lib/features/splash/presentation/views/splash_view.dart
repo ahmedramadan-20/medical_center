@@ -7,7 +7,6 @@ import 'package:lottie/lottie.dart';
 import 'package:medical_center/core/database/cache/cache_helper.dart';
 import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -55,7 +54,7 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.offWhite,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Center(
           child: Lottie.asset(
             AppAssets.splashLogo,
@@ -73,4 +72,3 @@ class _SplashViewState extends State<SplashView> {
         ),
       );
 }
-

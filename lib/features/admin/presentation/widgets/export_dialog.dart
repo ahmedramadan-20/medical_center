@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:medical_center/core/functions/custom_toast.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/features/admin/data/models/dashboard_stats_model.dart';
 import 'package:medical_center/generated/l10n.dart';
 
@@ -61,7 +61,7 @@ class ExportDialog extends StatelessWidget {
     final message = format == 'CSV'
         ? S.of(context).csv_data_copied
         : S.of(context).json_data_copied;
-    showToast(message);
+    showToast(context, message);
   }
 
   @override
@@ -72,7 +72,7 @@ class ExportDialog extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
@@ -83,12 +83,15 @@ class ExportDialog extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryColor.withValues(alpha: 0.1),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.file_download,
-                      color: AppColors.primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                       size: 24,
                     ),
                   ),
@@ -96,26 +99,26 @@ class ExportDialog extends StatelessWidget {
                   Expanded(
                     child: Text(
                       S.of(context).export_dashboard_data,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.black,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                   ),
                   IconButton(
                     onPressed: () => Navigator.pop(context),
                     icon: const Icon(Icons.close),
-                    color: AppColors.grey,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                 ],
               ),
               const SizedBox(height: 24),
               Text(
                 S.of(context).select_export_format,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
-                  color: AppColors.grey,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
               ),
               const SizedBox(height: 16),
@@ -123,7 +126,7 @@ class ExportDialog extends StatelessWidget {
                 icon: Icons.table_chart,
                 title: S.of(context).csv_format,
                 description: S.of(context).export_csv_description,
-                color: AppColors.green,
+                color: Colors.green,
                 onTap: () => _copyToClipboard(context, _generateCSV(), 'CSV'),
               ),
               const SizedBox(height: 12),
@@ -131,15 +134,15 @@ class ExportDialog extends StatelessWidget {
                 icon: Icons.code,
                 title: S.of(context).json_format,
                 description: S.of(context).export_json_description,
-                color: AppColors.blue,
+                color: Colors.blue,
                 onTap: () => _copyToClipboard(context, _generateJSON(), 'JSON'),
               ),
               const SizedBox(height: 16),
               Text(
                 S.of(context).data_copied_to_clipboard,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 12,
-                  color: AppColors.deepGrey,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                   fontStyle: FontStyle.italic,
                 ),
               ),
@@ -192,18 +195,18 @@ class _ExportOptionCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.black,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       description,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
-                        color: AppColors.grey,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                   ],

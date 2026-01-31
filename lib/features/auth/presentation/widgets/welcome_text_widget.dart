@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 
 import 'package:medical_center/core/utils/app_text_styles.dart';
 
@@ -15,7 +14,7 @@ class WelcomeTextWidget extends StatelessWidget {
           style: AppTextStyles.cairo700style32.copyWith(
             fontWeight: FontWeight.w600,
             fontSize: 28,
-            color: AppColors.deepBlue,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       );

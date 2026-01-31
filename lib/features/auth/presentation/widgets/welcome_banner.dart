@@ -8,14 +8,6 @@ class WelcomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        // height: 280,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(15),
-            bottomLeft: Radius.circular(15),
-          ),
-          // color: AppColors.blue,
-        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -29,11 +21,6 @@ class WelcomeBanner extends StatelessWidget {
               width: 250,
               alignment: Alignment.bottomCenter,
             ),
-            // Text(
-            //   S.of(context).Sign_in_title,
-            //   style:
-            //       AppTextStyles.cairo700style32.copyWith(color: AppColors.white),
-            // ),
 
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceBetween,

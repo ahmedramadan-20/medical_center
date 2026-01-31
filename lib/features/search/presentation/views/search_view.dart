@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_state.dart';
@@ -38,12 +38,12 @@ class _SearchViewState extends State<SearchView> {
           return searchCubit;
         },
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             elevation: 0,
-            title: const Text(
-              'Search Doctors',
+            title: Text(
+              S.of(context).browse_doctors,
               style: AppTextStyles.cairo400Style20,
             ),
           ),
@@ -87,7 +87,7 @@ class _SearchViewState extends State<SearchView> {
       );
 
   Widget _buildSearchBar() => Container(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
@@ -97,9 +97,11 @@ class _SearchViewState extends State<SearchView> {
                 context.read<SearchCubit>().updateSearchQuery(value);
               },
               decoration: InputDecoration(
-                hintText: 'Search by name or specialty',
-                prefixIcon:
-                    const Icon(Icons.search, color: AppColors.primaryColor),
+                hintText: S.of(context).search_by_name_or_specialty,
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
                         icon: const Icon(Icons.clear),
@@ -111,7 +113,8 @@ class _SearchViewState extends State<SearchView> {
                       )
                     : null,
                 filled: true,
-                fillColor: AppColors.offWhite,
+                fillColor:
+                    Theme.of(context).colorScheme.surfaceContainerHighest,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
@@ -142,8 +145,11 @@ class _SearchViewState extends State<SearchView> {
                           count > 0 ? 'Filters ($count)' : 'Filters',
                         ),
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: AppColors.primaryColor,
-                          side: const BorderSide(color: AppColors.primaryColor),
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       );
                     },
@@ -177,7 +183,7 @@ class _SearchViewState extends State<SearchView> {
     if (!_showFilters) return const SizedBox.shrink();
 
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -282,13 +288,19 @@ class _SearchViewState extends State<SearchView> {
               Container(
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryColor.withValues(alpha: 0.1),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   Icons.search_off,
                   size: 80,
-                  color: AppColors.primaryColor.withValues(alpha: 0.5),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.5),
                 ),
               ),
               const SizedBox(height: 32),
@@ -297,7 +309,7 @@ class _SearchViewState extends State<SearchView> {
                 style: AppTextStyles.cairo400Style20.copyWith(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.deepBlue,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -306,7 +318,7 @@ class _SearchViewState extends State<SearchView> {
                 'Try adjusting your search or filters',
                 style: AppTextStyles.cairo300style16.copyWith(
                   fontSize: 15,
-                  color: AppColors.deepGrey,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -322,8 +334,9 @@ class _SearchViewState extends State<SearchView> {
                 icon: const Icon(Icons.clear_all),
                 label: const Text('Clear Filters'),
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: AppColors.primaryColor,
-                  side: const BorderSide(color: AppColors.primaryColor),
+                  foregroundColor: Theme.of(context).colorScheme.primary,
+                  side:
+                      BorderSide(color: Theme.of(context).colorScheme.primary),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
                     vertical: 12,

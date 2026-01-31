@@ -43,6 +43,8 @@ class AdminUsersCubit extends Cubit<AdminUsersState> {
   StreamSubscription<QuerySnapshot>? _usersSubscription;
 
   List<UserModel> _allUsers = [];
+  List<UserModel> _filteredUsers = [];
+  String _searchQuery = '';
 
   /// Loads all users with real-time updates.
   Future<void> getUsers() async {
@@ -57,7 +59,7 @@ class AdminUsersCubit extends Cubit<AdminUsersState> {
             )
             .toList();
         _logger.info('Loaded ${_allUsers.length} users');
-        emit(AdminUsersLoaded(_allUsers));
+        _applySearch();
       });
     } catch (e) {
       _logger.error('Error loading users', e);
@@ -114,5 +116,27 @@ class AdminUsersCubit extends Cubit<AdminUsersState> {
     _logger.info('Closing AdminUsersCubit');
     _usersSubscription?.cancel();
     return super.close();
+  }
+
+  /// Searches users by name or email.
+  void searchUsers(String query) {
+    _searchQuery = query.toLowerCase();
+    _applySearch();
+  }
+
+  void _applySearch() {
+    if (_searchQuery.isEmpty) {
+      _filteredUsers = _allUsers;
+    } else {
+      _filteredUsers = _allUsers
+          .where(
+            (user) =>
+                user.firstName.toLowerCase().contains(_searchQuery) ||
+                user.lastName.toLowerCase().contains(_searchQuery) ||
+                user.email.toLowerCase().contains(_searchQuery),
+          )
+          .toList();
+    }
+    emit(AdminUsersLoaded(_filteredUsers));
   }
 }

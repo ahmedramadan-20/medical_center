@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_blood_cubit.dart';
@@ -13,7 +13,7 @@ class ManageBloodRecordsScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AdminBloodCubit()..getBloodRecords(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
             title: Text(
               S.of(context).blood_donation_records,
@@ -59,14 +59,17 @@ class ManageBloodRecordsScreen extends StatelessWidget {
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: AppColors.red.withValues(alpha: 0.1),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .error
+                                .withValues(alpha: 0.1),
                             shape: BoxShape.circle,
                           ),
                           child: Center(
                             child: Text(
                               record.bloodType,
-                              style: const TextStyle(
-                                color: AppColors.red,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.error,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
@@ -91,9 +94,9 @@ class ManageBloodRecordsScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        trailing: const Icon(
+                        trailing: Icon(
                           Icons.info_outline,
-                          color: AppColors.primaryColor,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
 
 class ShimmerWidget extends StatelessWidget {
@@ -20,15 +19,11 @@ class ShimmerWidget extends StatelessWidget {
                 vertical: 15,
               ),
               decoration: BoxDecoration(
-                color: AppColors.lightGrey,
+                color: Theme.of(context)
+                    .colorScheme
+                    .surfaceContainerHighest
+                    .withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(5),
-                // boxShadow: [
-                //   BoxShadow(
-                //     color: AppColors.grey.withValues(alpha: 0.4),
-                //     blurRadius: 7,
-                //     offset: const Offset(0, 7), // changes position of shadow
-                //   ),
-                // ],
               ),
               child: Row(
                 children: [
@@ -37,7 +32,8 @@ class ShimmerWidget extends StatelessWidget {
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: AppColors.grey,
+                      color:
+                          Theme.of(context).colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
@@ -50,7 +46,9 @@ class ShimmerWidget extends StatelessWidget {
                         width: 200,
                         height: 15,
                         decoration: BoxDecoration(
-                          color: AppColors.grey,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -62,7 +60,9 @@ class ShimmerWidget extends StatelessWidget {
                         width: 170,
                         height: 15,
                         decoration: BoxDecoration(
-                          color: AppColors.grey,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -74,7 +74,9 @@ class ShimmerWidget extends StatelessWidget {
                         width: 150,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: AppColors.grey,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),

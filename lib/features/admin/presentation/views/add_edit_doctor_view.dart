@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_doctors_cubit.dart';
 import 'package:medical_center/features/home/data/models/category_model.dart';
@@ -45,32 +45,34 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.offWhite,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: Text(
             widget.doctor == null
                 ? S.of(context).add_new_doctor
                 : S.of(context).edit_doctor_profile,
             style: AppTextStyles.cairo400Style20.copyWith(
-                color: AppColors.deepBlue, fontWeight: FontWeight.bold,),
+              color: Theme.of(context).colorScheme.onSurface,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           elevation: 0,
-          leading: const BackButton(color: AppColors.deepBlue),
+          leading: BackButton(color: Theme.of(context).colorScheme.onSurface),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 8),
               child: TextButton.icon(
                 onPressed: _saveDoctor,
-                icon: const Icon(
+                icon: Icon(
                   Icons.check_circle_outline,
-                  color: AppColors.primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 label: Text(
                   S.of(context).save,
-                  style: const TextStyle(
-                    color: AppColors.primaryColor,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -160,15 +162,21 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
               height: 120,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.surface,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primaryColor.withValues(alpha: 0.15),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.15),
                     blurRadius: 25,
                     offset: const Offset(0, 10),
                   ),
                 ],
-                border: Border.all(color: Colors.white, width: 4),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.surface,
+                  width: 4,
+                ),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(60),
@@ -176,16 +184,16 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
                     ? Image.network(
                         _imageController.text,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => const Icon(
+                        errorBuilder: (_, __, ___) => Icon(
                           Icons.medical_services_outlined,
                           size: 50,
-                          color: AppColors.primaryColor,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       )
-                    : const Icon(
+                    : Icon(
                         Icons.person_add_outlined,
                         size: 50,
-                        color: AppColors.primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
               ),
             ),
@@ -194,12 +202,15 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
               right: 0,
               child: Container(
                 padding: const EdgeInsets.all(8),
-                decoration: const BoxDecoration(
-                  color: AppColors.primaryColor,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
                   shape: BoxShape.circle,
                 ),
-                child:
-                    const Icon(Icons.camera_alt, color: Colors.white, size: 20),
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  size: 20,
+                ),
               ),
             ),
           ],
@@ -210,7 +221,7 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
         title,
         style: AppTextStyles.cairo300style16.copyWith(
           fontWeight: FontWeight.bold,
-          color: AppColors.deepBlue,
+          color: Theme.of(context).colorScheme.onSurface,
           fontSize: 18,
         ),
       );
@@ -224,11 +235,12 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
   }) =>
       Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.02),
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -241,14 +253,20 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
           textAlign: isArabic ? TextAlign.right : TextAlign.left,
           decoration: InputDecoration(
             labelText: label,
-            prefixIcon: Icon(icon, color: AppColors.primaryColor, size: 22),
+            prefixIcon: Icon(
+              icon,
+              color: Theme.of(context).colorScheme.primary,
+              size: 22,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide.none,
             ),
             filled: true,
-            fillColor: Colors.white,
-            labelStyle: TextStyle(color: Colors.grey[600]),
+            fillColor: Theme.of(context).colorScheme.surface,
+            labelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
           ),
           validator: (v) => v!.isEmpty ? S.of(context).field_is_required : null,
         ),
@@ -257,11 +275,12 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
   Widget _buildSpecialityDropdown(List<SpecialityModel> specialities) =>
       Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.02),
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -270,9 +289,9 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
         child: DropdownButtonFormField<SpecialityModel>(
           decoration: InputDecoration(
             labelText: S.of(context).specialization,
-            prefixIcon: const Icon(
+            prefixIcon: Icon(
               Icons.category_outlined,
-              color: AppColors.primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               size: 22,
             ),
             border: OutlineInputBorder(
@@ -280,7 +299,7 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
               borderSide: BorderSide.none,
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: Theme.of(context).colorScheme.surface,
           ),
           initialValue: _selectedSpeciality,
           items: specialities
@@ -312,7 +331,8 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
                 icon: const Icon(Icons.more_time, size: 20),
                 label: Text(S.of(context).add_shift),
                 style: TextButton.styleFrom(
-                    foregroundColor: AppColors.primaryColor,),
+                  foregroundColor: Theme.of(context).colorScheme.primary,
+                ),
               ),
             ],
           ),
@@ -322,22 +342,35 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
               padding: const EdgeInsets.all(20),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: AppColors.primaryColor.withValues(alpha: 0.05),
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                    color: AppColors.primaryColor.withValues(alpha: 0.1),),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
+                ),
               ),
               child: Column(
                 children: [
                   Icon(
                     Icons.event_busy_rounded,
-                    color: Colors.grey[400],
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurfaceVariant
+                        .withValues(alpha: 0.5),
                     size: 40,
                   ),
                   const SizedBox(height: 12),
                   Text(
                     S.of(context).no_schedules_added_yet,
-                    style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
                   ),
                 ],
               ),
@@ -352,21 +385,29 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
                 return Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                        color: Colors.grey[100] ?? Colors.grey.shade100,),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .outline
+                          .withValues(alpha: 0.1),
+                    ),
                   ),
                   child: ListTile(
                     leading: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: AppColors.primaryColor.withValues(alpha: 0.1),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.access_time_filled,
-                        color: AppColors.primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                         size: 20,
                       ),
                     ),
@@ -376,12 +417,14 @@ class _AddEditDoctorScreenState extends State<AddEditDoctorScreen> {
                     ),
                     subtitle: Text(
                       '${schedule.startTime} - ${schedule.endTime}',
-                      style: TextStyle(color: Colors.grey[600]),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
                     ),
                     trailing: IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.remove_circle_outline,
-                        color: Colors.redAccent,
+                        color: Theme.of(context).colorScheme.error,
                         size: 20,
                       ),
                       onPressed: () {

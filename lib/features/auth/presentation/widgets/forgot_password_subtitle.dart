@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/generated/l10n.dart';
 
@@ -13,7 +12,7 @@ class ForgotPasswordSubtitle extends StatelessWidget {
         child: Text(
           S.of(context).enter_your_email,
           style: AppTextStyles.cairo300style16.copyWith(
-            color: AppColors.deepBlue,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
             fontSize: 16,
             fontWeight: FontWeight.w400,
           ),

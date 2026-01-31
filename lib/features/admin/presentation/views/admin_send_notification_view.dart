@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_notification_cubit.dart';
 
@@ -30,7 +30,7 @@ class _AdminSendNotificationViewState extends State<AdminSendNotificationView> {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Send Notification'),
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             foregroundColor: Colors.white,
           ),
           body: BlocConsumer<AdminNotificationCubit, AdminNotificationState>(
@@ -64,7 +64,7 @@ class _AdminSendNotificationViewState extends State<AdminSendNotificationView> {
                       'Compose Broadcast Message',
                       style: AppTextStyles.cairo400Style20.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -126,7 +126,7 @@ class _AdminSendNotificationViewState extends State<AdminSendNotificationView> {
                               }
                             },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryColor,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(

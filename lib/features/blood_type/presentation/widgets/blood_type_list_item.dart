@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/home/data/models/blood_type_model.dart';
 
@@ -13,17 +12,18 @@ class BloodTypeListItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 4),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.04),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
           ],
           border: Border.all(
-            color: AppColors.babyBlue.withValues(alpha: 0.1),
+            color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
           ),
         ),
         child: Row(
@@ -34,8 +34,11 @@ class BloodTypeListItem extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.babyBlue,
-                    AppColors.babyBlue.withValues(alpha: 0.7),
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.7),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -43,7 +46,10 @@ class BloodTypeListItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.babyBlue.withValues(alpha: 0.3),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),
@@ -53,7 +59,7 @@ class BloodTypeListItem extends StatelessWidget {
               child: Text(
                 bloodType.bloodType,
                 style: AppTextStyles.cairo400Style20.copyWith(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -69,6 +75,7 @@ class BloodTypeListItem extends StatelessWidget {
                     style: AppTextStyles.cairo400Style20.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 18,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -76,16 +83,16 @@ class BloodTypeListItem extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.phone_outlined,
                         size: 16,
-                        color: Colors.grey,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                       const SizedBox(width: 6),
                       Text(
                         bloodType.phone,
                         style: AppTextStyles.cairo300style16.copyWith(
-                          color: Colors.grey[600],
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
                           fontSize: 14,
                         ),
                       ),
@@ -101,12 +108,15 @@ class BloodTypeListItem extends StatelessWidget {
               icon: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppColors.babyBlue.withValues(alpha: 0.1),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.call_rounded,
-                  color: AppColors.babyBlue,
+                  color: Theme.of(context).colorScheme.primary,
                   size: 20,
                 ),
               ),

@@ -50,7 +50,7 @@ class BloodTypesListTile extends StatelessWidget {
                 ? state.error
                 : (state as GettingBloodTypesErrorState).error;
 
-            showToast(S.of(context).error_occurred);
+            showToast(context, S.of(context).error_occurred);
             if (kDebugMode) {
               print('Blood Types Error: $error');
             }

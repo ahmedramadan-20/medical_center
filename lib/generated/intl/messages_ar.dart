@@ -530,6 +530,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_activities": MessageLookupByLibrary.simpleMessage(
       "البحث في النشاطات...",
     ),
+    "search_by_name_or_specialty": MessageLookupByLibrary.simpleMessage(
+      "البحث بالاسم أو التخصص",
+    ),
+    "search_users_hint": MessageLookupByLibrary.simpleMessage(
+      "البحث بالاسم أو البريد الإلكتروني",
+    ),
     "select_appointment_date": MessageLookupByLibrary.simpleMessage(
       "اختر تاريخ الموعد",
     ),

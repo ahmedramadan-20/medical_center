@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 
 /// Quick action button for dashboard
 class QuickActionButton extends StatelessWidget {
@@ -24,10 +23,13 @@ class QuickActionButton extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
-            border:
-                Border.all(color: AppColors.lightGrey.withValues(alpha: 0.3)),
+            border: Border.all(
+                color: Theme.of(context)
+                    .colorScheme
+                    .outline
+                    .withValues(alpha: 0.3)),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.05),
@@ -60,7 +62,7 @@ class QuickActionButton extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Icon(icon, color: AppColors.white, size: 28),
+                    child: Icon(icon, color: Colors.white, size: 28),
                   ),
                   if (badge != null)
                     Positioned(
@@ -69,14 +71,14 @@ class QuickActionButton extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
-                          color: AppColors.red,
+                          color: Colors.red,
                           shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.white, width: 2),
+                          border: Border.all(color: Colors.white, width: 2),
                         ),
                         child: Text(
                           badge!,
                           style: const TextStyle(
-                            color: AppColors.white,
+                            color: Colors.white,
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                           ),
@@ -89,10 +91,10 @@ class QuickActionButton extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.black,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

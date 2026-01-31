@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:medical_center/core/functions/custom_toast.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_strings.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/utils/time_formatter.dart';
@@ -44,17 +44,21 @@ class DoctorCard extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.04),
+                color: Theme.of(context)
+                    .colorScheme
+                    .shadow
+                    .withValues(alpha: 0.08),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
               ),
             ],
             border: Border.all(
-              color: AppColors.babyBlue.withValues(alpha: 0.08),
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
               width: 1.5,
             ),
           ),
@@ -89,14 +93,20 @@ class DoctorCard extends StatelessWidget {
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Animate(
                                 child: Container(
-                                  color: Colors.grey[200],
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .surfaceContainerHighest,
                                 ),
                               ).shimmer(),
                               errorWidget: (context, url, error) => Container(
-                                color: Colors.grey[100],
-                                child: const Icon(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHighest,
+                                child: Icon(
                                   Icons.person,
-                                  color: Colors.grey,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurfaceVariant,
                                 ),
                               ),
                             ),
@@ -115,7 +125,9 @@ class DoctorCard extends StatelessWidget {
                                     '${S.of(context).dr}${Localizations.localeOf(context).languageCode == AppStrings.arabicCode ? model.arName : model.enName}',
                                     style:
                                         AppTextStyles.cairo400Style20.copyWith(
-                                      color: AppColors.deepBlue,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
                                     ),
@@ -126,14 +138,17 @@ class DoctorCard extends StatelessWidget {
                                 Container(
                                   padding: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                    color: AppColors.babyBlue
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary
                                         .withValues(alpha: 0.1),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: const Icon(
+                                  child: Icon(
                                     Icons.arrow_forward_ios_rounded,
                                     size: 14,
-                                    color: AppColors.babyBlue,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ],
@@ -145,7 +160,7 @@ class DoctorCard extends StatelessWidget {
                                   ? model.arSpecialization
                                   : model.enSpecialization,
                               style: AppTextStyles.cairo300style16.copyWith(
-                                color: AppColors.babyBlue,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 13,
                               ),
@@ -153,10 +168,12 @@ class DoctorCard extends StatelessWidget {
                             const SizedBox(height: 12),
                             Row(
                               children: [
-                                const Icon(
+                                Icon(
                                   Icons.calendar_month_outlined,
                                   size: 14,
-                                  color: Colors.grey,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurfaceVariant,
                                 ),
                                 const SizedBox(width: 6),
                                 Expanded(
@@ -165,7 +182,10 @@ class DoctorCard extends StatelessWidget {
                                     style:
                                         AppTextStyles.cairo300style16.copyWith(
                                       fontSize: 11,
-                                      color: Colors.grey[600],
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withValues(alpha: 0.5),
                                     ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -177,10 +197,12 @@ class DoctorCard extends StatelessWidget {
                             if (model.schedules.isNotEmpty)
                               Row(
                                 children: [
-                                  const Icon(
+                                  Icon(
                                     Icons.access_time_rounded,
                                     size: 14,
-                                    color: Colors.grey,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
                                   ),
                                   const SizedBox(width: 6),
                                   Expanded(
@@ -193,7 +215,10 @@ class DoctorCard extends StatelessWidget {
                                       style: AppTextStyles.cairo300style16
                                           .copyWith(
                                         fontSize: 11,
-                                        color: Colors.grey[600],
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withValues(alpha: 0.5),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -215,9 +240,9 @@ class DoctorCard extends StatelessWidget {
                 child: BlocListener<FavoritesCubit, FavoritesState>(
                   listener: (context, favState) {
                     if (favState is FavoriteAdded) {
-                      showToast(S.of(context).favorite_added);
+                      showToast(context, S.of(context).favorite_added);
                     } else if (favState is FavoriteRemoved) {
-                      showToast(S.of(context).favorite_removed);
+                      showToast(context, S.of(context).favorite_removed);
                     }
                   },
                   child: Material(
@@ -230,11 +255,17 @@ class DoctorCard extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.9),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .surface
+                              .withValues(alpha: 0.9),
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.1),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .shadow
+                                  .withValues(alpha: 0.1),
                               blurRadius: 4,
                               offset: const Offset(0, 2),
                             ),
@@ -242,7 +273,12 @@ class DoctorCard extends StatelessWidget {
                         ),
                         child: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorite ? Colors.red : AppColors.deepGrey,
+                          color: isFavorite
+                              ? Colors.red
+                              : Theme.of(context)
+                                  .colorScheme
+                                  .onSurface
+                                  .withValues(alpha: 0.6),
                           size: 20,
                         ),
                       ),

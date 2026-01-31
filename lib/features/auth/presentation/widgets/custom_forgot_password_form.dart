@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medical_center/core/functions/custom_toast.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/widgets/custom_button.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_state.dart';
@@ -16,10 +16,10 @@ class CustomForgotPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) => BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is ResetPasswordSuccessState) {
-            showToast(S.of(context).check_your_email);
+            showToast(context, S.of(context).check_your_email);
             context.pushReplacement('/signIn');
           } else if (state is ResetPasswordErrorState) {
-            showToast(state.errMessage);
+            showToast(context, state.errMessage);
           }
         },
         builder: (context, state) {
@@ -39,8 +39,8 @@ class CustomForgotPasswordForm extends StatelessWidget {
                   ),
                   const SizedBox(height: 129),
                   if (state is ResetPasswordLoadingState)
-                    const CircularProgressIndicator(
-                      color: AppColors.primaryColor,
+                    CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
                     )
                   else
                     CustomButton(

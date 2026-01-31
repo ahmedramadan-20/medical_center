@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_reviews_cubit.dart';
@@ -14,7 +14,7 @@ class ManageReviewsView extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AdminReviewsCubit()..getReviews(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
             title: Text(
               S.of(context).manage_reviews,
@@ -70,7 +70,9 @@ class ManageReviewsView extends StatelessWidget {
                                           .copyWith(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: AppColors.deepBlue,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface,
                                       ),
                                     ),
                                     Text(

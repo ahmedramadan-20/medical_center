@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/favorites/presentation/manager/favorites_cubit.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
@@ -41,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
           }
 
           return Scaffold(
-            backgroundColor: AppColors.offWhite,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             body: SafeArea(
               child: CustomScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -60,14 +59,16 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   SliverPadding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10,),
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
                     sliver: SliverToBoxAdapter(
                       child: Text(
                         S.of(context).ourDoctors,
                         style: AppTextStyles.cairo400Style20.copyWith(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.deepBlue,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                     ),

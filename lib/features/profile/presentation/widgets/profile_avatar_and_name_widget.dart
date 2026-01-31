@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medical_center/core/services/image_service.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/profile/presentation/profile_cubit/profile_cubit.dart';
 
@@ -22,11 +22,12 @@ class ProfileAvatarAndName extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.08),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -41,8 +42,14 @@ class ProfileAvatarAndName extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.primaryColor.withValues(alpha: 0.1),
-                    AppColors.primaryColor.withValues(alpha: 0.05),
+                    Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.1),
+                    Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.05),
                   ],
                 ),
               ),
@@ -60,20 +67,24 @@ class ProfileAvatarAndName extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
-                              color: AppColors.grey.withValues(alpha: 0.3),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest,
                             ),
                           ).animate().shimmer(),
                         ),
                         errorWidget: (context, url, error) => Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            color:
-                                AppColors.primaryColor.withValues(alpha: 0.1),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.1),
                           ),
-                          child: const Icon(
+                          child: Icon(
                             Icons.person,
                             size: 40,
-                            color: AppColors.primaryColor,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                       ),
@@ -92,14 +103,14 @@ class ProfileAvatarAndName extends StatelessWidget {
                           style: AppTextStyles.cairo400Style20.copyWith(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.deepBlue,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.edit,
-                          color: AppColors.primaryColor,
+                          color: Theme.of(context).colorScheme.primary,
                           size: 20,
                         ),
                         onPressed: () async {
@@ -117,7 +128,10 @@ class ProfileAvatarAndName extends StatelessWidget {
                     user.email,
                     style: AppTextStyles.cairo300style16.copyWith(
                       fontSize: 14,
-                      color: AppColors.deepGrey,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withValues(alpha: 0.6),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -130,7 +144,10 @@ class ProfileAvatarAndName extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: user.isAdmin
-                          ? AppColors.primaryColor.withValues(alpha: 0.1)
+                          ? Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withValues(alpha: 0.1)
                           : Colors.green.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -140,7 +157,7 @@ class ProfileAvatarAndName extends StatelessWidget {
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: user.isAdmin
-                            ? AppColors.primaryColor
+                            ? Theme.of(context).colorScheme.primary
                             : Colors.green,
                       ),
                     ),

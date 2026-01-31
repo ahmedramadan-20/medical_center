@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 
 class HaveAnAccountWidget extends StatelessWidget {
@@ -27,7 +26,7 @@ class HaveAnAccountWidget extends StatelessWidget {
                   style: AppTextStyles.cairo700style32.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                 ),
                 TextSpan(
@@ -35,7 +34,7 @@ class HaveAnAccountWidget extends StatelessWidget {
                   style: AppTextStyles.cairo700style32.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
-                    color: AppColors.lightBlue,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],

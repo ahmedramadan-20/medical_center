@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medical_center/core/functions/custom_toast.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_button.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
@@ -20,10 +20,10 @@ class CustomSignUpForm extends StatelessWidget {
   Widget build(BuildContext context) => BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is SignUpSuccessState) {
-            showToast(S.of(context).success);
+            showToast(context, S.of(context).success);
             context.pushReplacement('/signIn');
           } else if (state is SignUpErrorState) {
-            showToast(state.errMessage);
+            showToast(context, state.errMessage);
           }
         },
         builder: (context, state) {
@@ -77,20 +77,20 @@ class CustomSignUpForm extends StatelessWidget {
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 10),
-                _buildGenderRadioButtons(authCubit),
-                _buildBloodTypeDropdown(authCubit),
+                _buildGenderRadioButtons(context, authCubit),
+                _buildBloodTypeDropdown(context, authCubit),
                 const TermsAndConditionsWidget(),
                 const SizedBox(height: 22),
                 if (state is SignUpLoadingState)
-                  const CircularProgressIndicator(
-                    color: AppColors.primaryColor,
+                  CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
                   )
                 else
                   CustomButton(
                     color: authCubit.termsAndConditionsCheckBoxValue == false ||
                             authCubit.gender == null ||
                             authCubit.bloodType == null
-                        ? AppColors.lightGrey
+                        ? Theme.of(context).colorScheme.outlineVariant
                         : null,
                     text: S.of(context).sign_up,
                     onPressed: () async {
@@ -109,7 +109,8 @@ class CustomSignUpForm extends StatelessWidget {
         },
       );
 
-  Widget _buildGenderRadioButtons(AuthCubit authCubit) => Padding(
+  Widget _buildGenderRadioButtons(BuildContext context, AuthCubit authCubit) =>
+      Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
           children: [
@@ -120,7 +121,7 @@ class CustomSignUpForm extends StatelessWidget {
             Row(
               children: [
                 Radio(
-                  activeColor: AppColors.primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   value: 'male',
                   groupValue: authCubit.gender,
                   onChanged: (value) {
@@ -132,7 +133,7 @@ class CustomSignUpForm extends StatelessWidget {
                   style: AppTextStyles.cairo300style16,
                 ),
                 Radio(
-                  activeColor: AppColors.primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   value: 'female',
                   groupValue: authCubit.gender,
                   onChanged: (value) {
@@ -149,7 +150,8 @@ class CustomSignUpForm extends StatelessWidget {
         ),
       );
 
-  Widget _buildBloodTypeDropdown(AuthCubit authCubit) => Padding(
+  Widget _buildBloodTypeDropdown(BuildContext context, AuthCubit authCubit) =>
+      Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
           children: [
@@ -161,7 +163,6 @@ class CustomSignUpForm extends StatelessWidget {
             const SizedBox(width: 15),
             DropdownButton<String>(
               hint: Text(S.current.choose_blood_type),
-              // dropdownColor: AppColors.babyBlue,
               style: AppTextStyles.cairo300style16,
               borderRadius: BorderRadius.circular(10),
               value: authCubit.bloodType,

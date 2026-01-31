@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/blood_type/presentation/blood_types_cubit/blood_cubit.dart';
 import 'package:medical_center/features/blood_type/presentation/blood_types_cubit/blood_state.dart';
@@ -33,20 +32,27 @@ class BloodTypesCategory extends StatelessWidget {
                       gradient: isSelected
                           ? LinearGradient(
                               colors: [
-                                AppColors.babyBlue,
-                                AppColors.babyBlue.withValues(alpha: 0.8),
+                                Theme.of(context).colorScheme.primary,
+                                Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withValues(alpha: 0.8),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             )
                           : null,
-                      color: isSelected ? null : AppColors.white,
+                      color: isSelected
+                          ? null
+                          : Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: isSelected
                           ? [
                               BoxShadow(
-                                color:
-                                    AppColors.babyBlue.withValues(alpha: 0.3),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withValues(alpha: 0.3),
                                 blurRadius: 10,
                                 offset: const Offset(0, 4),
                               ),
@@ -61,14 +67,19 @@ class BloodTypesCategory extends StatelessWidget {
                       border: Border.all(
                         color: isSelected
                             ? Colors.transparent
-                            : AppColors.babyBlue.withValues(alpha: 0.1),
+                            : Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withValues(alpha: 0.1),
                         width: 1.5,
                       ),
                     ),
                     child: Text(
                       cubit.bloodTypesList[index],
                       style: AppTextStyles.cairo400Style20.copyWith(
-                        color: isSelected ? Colors.white : Colors.black87,
+                        color: isSelected
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Theme.of(context).colorScheme.onSurface,
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.w500,
                         fontSize: 16,

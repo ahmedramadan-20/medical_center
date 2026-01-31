@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/generated/l10n.dart';
 
@@ -48,21 +47,21 @@ class CustomTextFormField extends StatelessWidget {
           obscureText: obscureText ?? false,
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
-            suffixIconColor: AppColors.deepBlue,
+            suffixIconColor: Theme.of(context).colorScheme.primary,
             labelText: labelText,
             labelStyle: AppTextStyles.cairo300style16
                 .copyWith(fontWeight: FontWeight.w500, fontSize: 18),
-            border: getBorderStyle(),
-            enabledBorder: getBorderStyle(),
-            focusedBorder: getBorderStyle(),
+            border: getBorderStyle(context),
+            enabledBorder: getBorderStyle(context),
+            focusedBorder: getBorderStyle(context),
           ),
         ),
       );
 }
 
-OutlineInputBorder getBorderStyle() => OutlineInputBorder(
+OutlineInputBorder getBorderStyle(BuildContext context) => OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(
-        color: AppColors.deepBlue,
+      borderSide: BorderSide(
+        color: Theme.of(context).colorScheme.outline,
       ),
     );

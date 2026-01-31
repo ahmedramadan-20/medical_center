@@ -12,6 +12,8 @@
   "sign_out": "تسجيل الخروج",
   "create_account": "إنشاء حساب",
   "email_address": "عنوان البريد الإلكتروني",
+  "search_by_name_or_specialty": "البحث بالاسم أو التخصص",
+  "search_users_hint": "البحث بالاسم أو البريد الإلكتروني",
   "password": "كلمة المرور",
   "sign_in": "تسجيل الدخول",
   "sign_up": "التسجيل",

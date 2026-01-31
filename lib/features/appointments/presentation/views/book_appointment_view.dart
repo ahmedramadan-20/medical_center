@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_button.dart';
 import 'package:medical_center/features/appointments/data/models/appointment_model.dart';
@@ -70,16 +70,16 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AppointmentCubit(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
             title: Text(
               S.of(context).book_appointment,
               style: AppTextStyles.cairo400Style20,
             ),
             centerTitle: true,
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             elevation: 0,
-            leading: const BackButton(color: Colors.black),
+            leading: BackButton(color: Theme.of(context).colorScheme.onSurface),
           ),
           body: BlocListener<AppointmentCubit, AppointmentState>(
             listener: (context, state) {
@@ -126,7 +126,7 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
                       style: AppTextStyles.cairo400Style20.copyWith(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.deepBlue,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -220,30 +220,30 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
                     style: AppTextStyles.cairo400Style20.copyWith(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.deepBlue,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   Text(
                     widget.doctor.enSpecialization,
                     style: AppTextStyles.cairo300style16.copyWith(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.calendar_today,
                         size: 14,
-                        color: AppColors.babyBlue,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         'Today: ${DateFormat('MMM dd, yyyy').format(DateTime.now())}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.babyBlue,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     ],
@@ -270,8 +270,10 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
         child: Column(
           children: [
             ListTile(
-              leading: const Icon(Icons.calendar_today,
-                  color: AppColors.primaryColor,),
+              leading: Icon(
+                Icons.calendar_today,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               title: Text(
                 _selectedDate != null
                     ? DateFormat('EEEE, MMM dd, yyyy').format(_selectedDate!)
@@ -295,8 +297,10 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
             ),
             const Divider(height: 1),
             ListTile(
-              leading:
-                  const Icon(Icons.access_time, color: AppColors.primaryColor),
+              leading: Icon(
+                Icons.access_time,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               title: Text(
                 _selectedTime != null
                     ? _selectedTime!.format(context)

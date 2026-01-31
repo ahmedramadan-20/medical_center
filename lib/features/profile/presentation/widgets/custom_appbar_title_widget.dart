@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 
 class CustomAppBarTitle extends StatelessWidget {
@@ -16,7 +14,7 @@ class CustomAppBarTitle extends StatelessWidget {
           child: Text(
             text,
             style: AppTextStyles.cairoBoldStyle25
-                .copyWith(color: AppColors.deepBlue),
+                .copyWith(color: Theme.of(context).colorScheme.onSurface),
           ),
         ),
       );

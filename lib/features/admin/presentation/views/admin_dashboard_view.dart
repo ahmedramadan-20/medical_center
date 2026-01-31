@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_dashboard_cubit.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_dashboard_state.dart';
@@ -16,7 +15,7 @@ class AdminDashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.offWhite,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: BlocBuilder<AdminDashboardCubit, AdminDashboardState>(
           builder: (context, state) => CustomScrollView(
             physics: const BouncingScrollPhysics(),
@@ -91,7 +90,7 @@ class AdminDashboardView extends StatelessWidget {
         expandedHeight: 140,
         pinned: true,
         elevation: 0,
-        backgroundColor: AppColors.deepBlue,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: const BackButton(color: Colors.white),
         flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
@@ -104,11 +103,14 @@ class AdminDashboardView extends StatelessWidget {
             ),
           ),
           background: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [AppColors.deepBlue, AppColors.primaryColor],
+                colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.primaryContainer,
+                ],
               ),
             ),
             child: Stack(
@@ -150,14 +152,15 @@ class AdminDashboardView extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.primaryColor,
-              AppColors.primaryColor.withValues(alpha: 0.8),
+              Theme.of(context).colorScheme.primary,
+              Theme.of(context).colorScheme.primary.withValues(alpha: 0.8),
             ],
           ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primaryColor.withValues(alpha: 0.3),
+              color:
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -223,7 +226,7 @@ class AdminDashboardView extends StatelessWidget {
         style: AppTextStyles.cairo400Style20.copyWith(
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: AppColors.deepBlue,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       );
 
@@ -284,11 +287,11 @@ class AdminDashboardView extends StatelessWidget {
       Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),
@@ -312,7 +315,7 @@ class AdminDashboardView extends StatelessWidget {
                 Text(
                   value,
                   style: AppTextStyles.cairo700style32.copyWith(
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontSize: 24,
                   ),
                 ),
@@ -324,7 +327,7 @@ class AdminDashboardView extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.cairo300style16.copyWith(
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
@@ -332,7 +335,10 @@ class AdminDashboardView extends StatelessWidget {
                 Text(
                   subtitle,
                   style: AppTextStyles.cairo300style16.copyWith(
-                    color: AppColors.deepGrey,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withValues(alpha: 0.6),
                     fontSize: 12,
                   ),
                 ),
@@ -349,11 +355,11 @@ class AdminDashboardView extends StatelessWidget {
       Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),
@@ -423,7 +429,7 @@ class AdminDashboardView extends StatelessWidget {
                 Text(
                   label,
                   style: AppTextStyles.cairo300style16.copyWith(
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -432,7 +438,7 @@ class AdminDashboardView extends StatelessWidget {
             Text(
               count.toString(),
               style: AppTextStyles.cairo400Style20.copyWith(
-                color: AppColors.deepBlue,
+                color: Theme.of(context).colorScheme.onSurface,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -536,10 +542,11 @@ class AdminDashboardView extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.04),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 15,
                   offset: const Offset(0, 5),
                 ),
@@ -563,7 +570,7 @@ class AdminDashboardView extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.cairo300style16.copyWith(
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                     fontSize: 13,
                   ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 
 /// Search bar for dashboard filtering
 class DashboardSearchBar extends StatelessWidget {
@@ -15,9 +14,11 @@ class DashboardSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.lightGrey.withValues(alpha: 0.3)),
+          border: Border.all(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
@@ -30,8 +31,11 @@ class DashboardSearchBar extends StatelessWidget {
           onChanged: onSearch,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: const TextStyle(color: AppColors.grey, fontSize: 14),
-            prefixIcon: const Icon(Icons.search, color: AppColors.primaryColor),
+            hintStyle: TextStyle(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                fontSize: 14),
+            prefixIcon: Icon(Icons.search,
+                color: Theme.of(context).colorScheme.primary),
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -63,12 +67,17 @@ class FilterChipWidget extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
-            color: isSelected ? AppColors.primaryColor : AppColors.white,
+            color: isSelected
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: isSelected
-                  ? AppColors.primaryColor
-                  : AppColors.lightGrey.withValues(alpha: 0.5),
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context)
+                      .colorScheme
+                      .outline
+                      .withValues(alpha: 0.5),
             ),
           ),
           child: Row(
@@ -78,14 +87,18 @@ class FilterChipWidget extends StatelessWidget {
                 Icon(
                   icon,
                   size: 16,
-                  color: isSelected ? AppColors.white : AppColors.primaryColor,
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.primary,
                 ),
                 const SizedBox(width: 6),
               ],
               Text(
                 label,
                 style: TextStyle(
-                  color: isSelected ? AppColors.white : AppColors.black,
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.onSurface,
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                 ),

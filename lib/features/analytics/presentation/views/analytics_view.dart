@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/analytics/presentation/manager/analytics_cubit.dart';
@@ -14,7 +14,7 @@ class AnalyticsView extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AnalyticsCubit()..loadAnalytics(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
             title: Text(
               S.of(context).analytics_reports,
@@ -76,7 +76,7 @@ class AnalyticsView extends StatelessWidget {
         style: AppTextStyles.cairo400Style20.copyWith(
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: AppColors.deepBlue,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       );
 
@@ -114,7 +114,7 @@ class AnalyticsView extends StatelessWidget {
                   S.of(context).total_doctors,
                   analytics.totalDoctors.toString(),
                   Icons.medical_services,
-                  AppColors.primaryColor,
+                  Theme.of(context).colorScheme.primary,
                 ),
               ),
               const SizedBox(width: 16),
@@ -174,7 +174,7 @@ class AnalyticsView extends StatelessWidget {
                   style: AppTextStyles.cairo400Style20.copyWith(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.deepBlue,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -182,7 +182,7 @@ class AnalyticsView extends StatelessWidget {
                   title,
                   style: AppTextStyles.cairo300style16.copyWith(
                     fontSize: 11,
-                    color: AppColors.deepGrey,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -300,17 +300,18 @@ class AnalyticsView extends StatelessWidget {
         itemCount: analytics.topDoctors.length,
         separatorBuilder: (context, index) => Divider(
           height: 1,
-          color: AppColors.lightGrey.withValues(alpha: 0.5),
+          color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
         ),
         itemBuilder: (context, index) {
           final doctor = analytics.topDoctors[index];
           return ListTile(
             leading: CircleAvatar(
-              backgroundColor: AppColors.primaryColor.withValues(alpha: 0.1),
+              backgroundColor:
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
               child: Text(
                 '${index + 1}',
-                style: const TextStyle(
-                  color: AppColors.primaryColor,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold,
                 ),
               ),

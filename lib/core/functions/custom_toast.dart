@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 
-void showToast(String msg) {
+void showToast(BuildContext context, String msg) {
   Fluttertoast.showToast(
     msg: msg,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
-    backgroundColor: AppColors.primaryColor,
+    backgroundColor: Theme.of(context).colorScheme.primary,
     textColor: Colors.white,
     fontSize: 16,
   );

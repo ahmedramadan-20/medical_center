@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/notifications/presentation/manager/notifications_cubit.dart';
 import 'package:medical_center/features/notifications/presentation/manager/notifications_state.dart';
@@ -16,27 +16,34 @@ class NotificationsView extends StatelessWidget {
     final userId = FirebaseAuth.instance.currentUser?.email;
 
     return Scaffold(
-      backgroundColor: AppColors.offWhite,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Text(
           S.of(context).notifications,
           style: AppTextStyles.cairo400Style20.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
         centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
+        leading: BackButton(color: Theme.of(context).colorScheme.onPrimary),
         actions: [
           IconButton(
-            icon: const Icon(Icons.done_all, color: Colors.white),
+            icon: Icon(
+              Icons.done_all,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
             tooltip: S.of(context).mark_all_as_read,
             onPressed: () =>
                 context.read<NotificationsCubit>().markAllAsRead(userId!),
           ),
           IconButton(
-            icon: const Icon(Icons.delete_sweep_outlined, color: Colors.white),
+            icon: Icon(
+              Icons.delete_sweep_outlined,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
             tooltip: S.of(context).clear_all,
             onPressed: () => _showClearAllDialog(context, userId!),
           ),
@@ -110,13 +117,22 @@ class NotificationsView extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: notification.isRead
-                            ? Colors.white
-                            : AppColors.primaryColor.withValues(alpha: 0.05),
+                            ? Theme.of(context).colorScheme.surface
+                            : Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.05),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: notification.isRead
-                              ? Colors.grey[200]!
-                              : AppColors.primaryColor.withValues(alpha: 0.2),
+                              ? Theme.of(context)
+                                  .colorScheme
+                                  .outline
+                                  .withValues(alpha: 0.2)
+                              : Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withValues(alpha: 0.2),
                         ),
                       ),
                       child: Row(
@@ -126,6 +142,7 @@ class NotificationsView extends StatelessWidget {
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: _getNotificationColor(
+                                context,
                                 notification.data?['type'] ?? '',
                               ).withValues(alpha: 0.1),
                               shape: BoxShape.circle,
@@ -135,6 +152,7 @@ class NotificationsView extends StatelessWidget {
                                 notification.data?['type'] ?? '',
                               ),
                               color: _getNotificationColor(
+                                context,
                                 notification.data?['type'] ?? '',
                               ),
                               size: 24,
@@ -163,7 +181,9 @@ class NotificationsView extends StatelessWidget {
                                           fontWeight: notification.isRead
                                               ? FontWeight.w500
                                               : FontWeight.bold,
-                                          color: AppColors.deepBlue,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface,
                                         ),
                                       ),
                                     ),
@@ -171,8 +191,10 @@ class NotificationsView extends StatelessWidget {
                                       Container(
                                         width: 8,
                                         height: 8,
-                                        decoration: const BoxDecoration(
-                                          color: AppColors.primaryColor,
+                                        decoration: BoxDecoration(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                           shape: BoxShape.circle,
                                         ),
                                       ),
@@ -255,7 +277,7 @@ class NotificationsView extends StatelessWidget {
     }
   }
 
-  Color _getNotificationColor(String type) {
+  Color _getNotificationColor(BuildContext context, String type) {
     switch (type) {
       case 'appointment':
         return Colors.green;
@@ -264,7 +286,7 @@ class NotificationsView extends StatelessWidget {
       case 'review':
         return Colors.amber;
       default:
-        return AppColors.primaryColor;
+        return Theme.of(context).colorScheme.primary;
     }
   }
 

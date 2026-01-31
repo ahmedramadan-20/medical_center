@@ -547,6 +547,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_activities": MessageLookupByLibrary.simpleMessage(
       "Search activities...",
     ),
+    "search_by_name_or_specialty": MessageLookupByLibrary.simpleMessage(
+      "Search by name or specialty",
+    ),
+    "search_users_hint": MessageLookupByLibrary.simpleMessage(
+      "Search by name or email",
+    ),
     "select_appointment_date": MessageLookupByLibrary.simpleMessage(
       "Select Appointment Date",
     ),

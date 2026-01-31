@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/appointments/data/models/review_model.dart';
@@ -46,14 +46,14 @@ class MyAppointmentsView extends StatelessWidget {
             }
           },
           child: Scaffold(
-            backgroundColor: AppColors.offWhite,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: AppBar(
               title: Text(
                 S.of(context).my_appointments,
                 style: AppTextStyles.cairo400Style20,
               ),
               centerTitle: true,
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               elevation: 0,
             ),
             body: BlocBuilder<AppointmentCubit, AppointmentState>(
@@ -98,7 +98,7 @@ class MyAppointmentsView extends StatelessWidget {
                         margin: const EdgeInsets.only(bottom: 12),
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -114,8 +114,11 @@ class MyAppointmentsView extends StatelessWidget {
                               contentPadding: EdgeInsets.zero,
                               title: Text(
                                 '${S.of(context).dr}${_getDoctorName(context, appointment)} (${_getDoctorSpecialty(context, appointment)})',
-                                style: AppTextStyles.cairo300style16
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: AppTextStyles.cairo300style16.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
                               ),
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,8 +185,10 @@ class MyAppointmentsView extends StatelessWidget {
                                   onPressed: () =>
                                       _showReviewDialog(context, appointment),
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.babyBlue,
-                                    foregroundColor: Colors.white,
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                    foregroundColor:
+                                        Theme.of(context).colorScheme.onPrimary,
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
@@ -217,7 +222,9 @@ class MyAppointmentsView extends StatelessWidget {
                                           ),
                                         ),
                                     style: TextStyle(
-                                      color: Colors.grey[500],
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurfaceVariant,
                                       fontSize: 11,
                                       fontStyle: FontStyle.italic,
                                     ),
@@ -325,13 +332,15 @@ class MyAppointmentsView extends StatelessWidget {
                     hintStyle: const TextStyle(fontSize: 14),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide:
-                          BorderSide(color: Colors.grey[300] ?? Colors.grey),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                      ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide:
-                          BorderSide(color: Colors.grey[300] ?? Colors.grey),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                      ),
                     ),
                   ),
                 ),
@@ -359,7 +368,7 @@ class MyAppointmentsView extends StatelessWidget {
                   Navigator.pop(dialogContext);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),

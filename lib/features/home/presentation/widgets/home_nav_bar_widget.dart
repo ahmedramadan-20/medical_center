@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/features/appointments/presentation/views/my_appointments_view.dart';
 import 'package:medical_center/features/blood_type/presentation/blood_types_cubit/blood_cubit.dart';
 import 'package:medical_center/features/blood_type/presentation/views/blood_type_view.dart';
@@ -20,8 +19,9 @@ class HomeNavBarWidget extends StatelessWidget {
         tabs: _buildTabs(context),
         navBarBuilder: (navBarConfig) => Style12BottomNavBar(
           navBarConfig: navBarConfig,
-          navBarDecoration: const NavBarDecoration(
-            borderRadius: BorderRadius.only(
+          navBarDecoration: NavBarDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
@@ -36,8 +36,9 @@ List<PersistentTabConfig> _buildTabs(BuildContext context) => [
         item: ItemConfig(
           icon: const Icon(Icons.home),
           inactiveIcon: const Icon(Icons.home_outlined),
-          activeForegroundColor: AppColors.primaryColor,
-          inactiveForegroundColor: AppColors.babyBlue,
+          activeForegroundColor: Theme.of(context).colorScheme.primary,
+          inactiveForegroundColor:
+              Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
           title: S.of(context).home,
         ),
       ),
@@ -46,8 +47,9 @@ List<PersistentTabConfig> _buildTabs(BuildContext context) => [
         item: ItemConfig(
           icon: const Icon(Icons.calendar_today),
           inactiveIcon: const Icon(Icons.calendar_today_outlined),
-          activeForegroundColor: AppColors.primaryColor,
-          inactiveForegroundColor: AppColors.babyBlue,
+          activeForegroundColor: Theme.of(context).colorScheme.primary,
+          inactiveForegroundColor:
+              Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
           title: S.of(context).appointments,
         ),
       ),
@@ -59,8 +61,9 @@ List<PersistentTabConfig> _buildTabs(BuildContext context) => [
         item: ItemConfig(
           icon: const Icon(Icons.bloodtype),
           inactiveIcon: const Icon(Icons.bloodtype_outlined),
-          activeForegroundColor: AppColors.primaryColor,
-          inactiveForegroundColor: AppColors.babyBlue,
+          activeForegroundColor: Theme.of(context).colorScheme.primary,
+          inactiveForegroundColor:
+              Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
           title: S.of(context).blood_types,
         ),
       ),
@@ -69,8 +72,9 @@ List<PersistentTabConfig> _buildTabs(BuildContext context) => [
         item: ItemConfig(
           icon: const Icon(Icons.person),
           inactiveIcon: const Icon(Icons.person_outline),
-          activeForegroundColor: AppColors.primaryColor,
-          inactiveForegroundColor: AppColors.babyBlue,
+          activeForegroundColor: Theme.of(context).colorScheme.primary,
+          inactiveForegroundColor:
+              Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
           title: S.of(context).profile,
         ),
       ),

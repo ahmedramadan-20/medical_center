@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_specialities_cubit.dart';
@@ -14,7 +14,7 @@ class ManageSpecialitiesScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AdminSpecialitiesCubit()..getSpecialities(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
             title: Text(
               S.of(context).manage_specialities,
@@ -27,7 +27,7 @@ class ManageSpecialitiesScreen extends StatelessWidget {
           ),
           floatingActionButton: Builder(
             builder: (context) => FloatingActionButton(
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: Theme.of(context).colorScheme.primary,
               onPressed: () => _showAddSpecialityDialog(context),
               child: const Icon(Icons.add, color: Colors.white),
             ),

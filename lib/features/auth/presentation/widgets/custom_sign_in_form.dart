@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medical_center/core/functions/custom_toast.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_button.dart';
 import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.dart';
@@ -18,12 +18,11 @@ class CustomSignInForm extends StatelessWidget {
   Widget build(BuildContext context) => BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is SignInSuccessState) {
-            // showToast('Welcome Back!');
             FirebaseAuth.instance.currentUser!.emailVerified
                 ? context.pushReplacement('/homeNavBar')
-                : showToast(S.of(context).verify);
+                : showToast(context, S.of(context).verify);
           } else if (state is SignInErrorState) {
-            showToast(state.errMessage);
+            showToast(context, state.errMessage);
           }
         },
         builder: (context, state) {
@@ -61,8 +60,8 @@ class CustomSignInForm extends StatelessWidget {
                 const ForgetPasswordTextWidget(),
                 const SizedBox(height: 102),
                 if (state is SignInLoadingState)
-                  const CircularProgressIndicator(
-                    color: AppColors.primaryColor,
+                  CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
                   )
                 else
                   CustomButton(
@@ -95,7 +94,7 @@ class ForgetPasswordTextWidget extends StatelessWidget {
             style: AppTextStyles.cairo700style32.copyWith(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: AppColors.deepBlue,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
         ),

@@ -2,10 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_doctors_cubit.dart';
+import 'package:medical_center/features/admin/presentation/widgets/dashboard_search_bar.dart';
 import 'package:medical_center/generated/l10n.dart';
 
 class ManageDoctorsScreen extends StatelessWidget {
@@ -15,12 +16,23 @@ class ManageDoctorsScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AdminDoctorsCubit()..getAllDoctors(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           body: BlocBuilder<AdminDoctorsCubit, AdminDoctorsState>(
             builder: (context, state) => CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
                 _buildSliverAppBar(context),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+                    child: DashboardSearchBar(
+                      hintText: S.of(context).search_by_name_or_specialty,
+                      onSearch: (query) {
+                        context.read<AdminDoctorsCubit>().searchDoctors(query);
+                      },
+                    ),
+                  ),
+                ),
                 if (state is AdminDoctorsLoading)
                   const SliverFillRemaining(
                     child: Center(child: CircularProgressIndicator()),
@@ -58,15 +70,15 @@ class ManageDoctorsScreen extends StatelessWidget {
           ),
           floatingActionButton: Builder(
             builder: (context) => FloatingActionButton.extended(
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: Theme.of(context).colorScheme.primary,
               onPressed: () {
                 context.push('/addDoctor');
               },
               icon: const Icon(Icons.add, color: Colors.white),
               label: Text(
                 S.of(context).add_doctor,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -79,8 +91,8 @@ class ManageDoctorsScreen extends StatelessWidget {
         expandedHeight: 120,
         pinned: true,
         elevation: 0,
-        backgroundColor: AppColors.deepBlue,
-        leading: const BackButton(color: Colors.white),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        leading: BackButton(color: Theme.of(context).colorScheme.onPrimary),
         flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
           title: Text(
@@ -92,11 +104,14 @@ class ManageDoctorsScreen extends StatelessWidget {
             ),
           ),
           background: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [AppColors.deepBlue, AppColors.primaryColor],
+                colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.8),
+                ],
               ),
             ),
           ),
@@ -106,7 +121,7 @@ class ManageDoctorsScreen extends StatelessWidget {
   Widget _buildDoctorCard(BuildContext context, doctor) => Container(
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
@@ -135,8 +150,10 @@ class ManageDoctorsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color:
-                                AppColors.primaryColor.withValues(alpha: 0.2),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.2),
                             blurRadius: 10,
                             offset: const Offset(0, 5),
                           ),
@@ -148,11 +165,13 @@ class ManageDoctorsScreen extends StatelessWidget {
                           imageUrl: doctor.image,
                           fit: BoxFit.cover,
                           errorWidget: (context, url, error) => Container(
-                            color:
-                                AppColors.primaryColor.withValues(alpha: 0.1),
-                            child: const Icon(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.1),
+                            child: Icon(
                               Icons.person,
-                              color: AppColors.primaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
                         ),
@@ -170,7 +189,7 @@ class ManageDoctorsScreen extends StatelessWidget {
                             style: AppTextStyles.cairo400Style20.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.deepBlue,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                           ),
                           Text(
@@ -220,9 +239,9 @@ class ManageDoctorsScreen extends StatelessWidget {
                     Column(
                       children: [
                         IconButton(
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.edit_note_rounded,
-                            color: AppColors.primaryColor,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           onPressed: () {
                             context.push('/editDoctor', extra: doctor);

@@ -2,7 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_center/core/services/image_service.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_button.dart';
 import 'package:medical_center/features/auth/presentation/widgets/custom_text_field.dart';
@@ -77,8 +77,8 @@ class _EditProfileViewState extends State<EditProfileView> {
               ),
               const SizedBox(height: 20),
               ListTile(
-                leading:
-                    const Icon(Icons.camera_alt, color: AppColors.primaryColor),
+                leading: Icon(Icons.camera_alt,
+                    color: Theme.of(context).colorScheme.primary),
                 title: Text(S.of(context).camera),
                 onTap: () {
                   Navigator.pop(context);
@@ -86,8 +86,10 @@ class _EditProfileViewState extends State<EditProfileView> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.photo_library,
-                    color: AppColors.primaryColor,),
+                leading: Icon(
+                  Icons.photo_library,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 title: Text(S.of(context).gallery),
                 onTap: () {
                   Navigator.pop(context);
@@ -145,9 +147,11 @@ class _EditProfileViewState extends State<EditProfileView> {
                             height: 120,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: AppColors.lightGrey.withValues(alpha: 0.3),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest,
                               border: Border.all(
-                                color: AppColors.primaryColor,
+                                color: Theme.of(context).colorScheme.primary,
                                 width: 3,
                               ),
                             ),
@@ -161,7 +165,9 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 : Icon(
                                     Icons.person,
                                     size: 60,
-                                    color: AppColors.deepGrey
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant
                                         .withValues(alpha: 0.5),
                                   ),
                           ),
@@ -173,7 +179,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                               child: Container(
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                  color: AppColors.primaryColor,
+                                  color: Theme.of(context).colorScheme.primary,
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color: Colors.white,
@@ -196,7 +202,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       S.of(context).tap_to_change_photo,
                       style: AppTextStyles.cairo300style16.copyWith(
                         fontSize: 12,
-                        color: AppColors.deepGrey,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -251,7 +257,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         'Email cannot be changed',
                         style: AppTextStyles.cairo300style16.copyWith(
                           fontSize: 12,
-                          color: AppColors.deepGrey,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ),

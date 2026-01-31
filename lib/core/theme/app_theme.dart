@@ -13,18 +13,24 @@ class AppTheme {
   static ThemeData get lightTheme {
     final colorScheme = ColorScheme.fromSeed(
       seedColor: AppColors.primaryColor,
+      surface: AppColors.offWhite,
+      onSurface: AppColors.black,
+      primary: AppColors.primaryColor,
+      onPrimary: Colors.white,
+      secondary: AppColors.deepBlue,
+      onSecondary: Colors.white,
+      error: AppColors.red,
+      onError: Colors.white,
+      outline: AppColors.lightGrey,
+      surfaceContainerHighest: Colors.white,
     );
 
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: AppColors.offWhite,
+      scaffoldBackgroundColor: colorScheme.surface,
       brightness: Brightness.light,
-
-      // Default font family for all text
       fontFamily: 'Cairo',
-
-      // AppBar theme
       appBarTheme: AppBarTheme(
         centerTitle: false,
         elevation: 0,
@@ -37,12 +43,10 @@ class AppTheme {
           fontFamily: 'Cairo',
         ),
       ),
-
-      // ElevatedButton theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
-          foregroundColor: AppColors.offWhite,
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -54,11 +58,9 @@ class AppTheme {
           ),
         ),
       ),
-
-      // TextButton theme
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: AppColors.primaryColor,
+          foregroundColor: colorScheme.primary,
           textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
@@ -66,184 +68,17 @@ class AppTheme {
           ),
         ),
       ),
-
-      // Card theme
       cardTheme: CardThemeData(
         elevation: 2,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         clipBehavior: Clip.antiAlias,
       ),
-
-      // Input decoration theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.lightGrey),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.lightGrey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.primaryColor, width: 2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.red),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.red, width: 2),
-        ),
-      ),
-
-      // Text theme
-      textTheme: const TextTheme(
-        displayLarge: TextStyle(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
-        ),
-        displayMedium: TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
-        ),
-        displaySmall: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Cairo',
-        ),
-        headlineMedium: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
-        ),
-        titleLarge: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Cairo',
-        ),
-        titleMedium: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Cairo',
-        ),
-        bodyLarge: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
-          fontFamily: 'Poppins',
-          height: 1.5,
-        ),
-        bodyMedium: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-          fontFamily: 'Poppins',
-          height: 1.4,
-        ),
-        bodySmall: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.normal,
-          fontFamily: 'Poppins',
-        ),
-        labelLarge: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Poppins',
-        ),
-      ),
-
-      // Divider theme
-      dividerTheme: const DividerThemeData(
-        color: AppColors.lightGrey,
-        thickness: 1,
-        space: 1,
-      ),
-
-      // Chip theme
-      chipTheme: ChipThemeData(
-        backgroundColor: AppColors.babyBlue,
-        selectedColor: AppColors.primaryColor,
-        labelStyle: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-      ),
-    );
-  }
-
-  /// Dark theme configuration
-  static ThemeData get darkTheme {
-    final colorScheme = ColorScheme.fromSeed(
-      seedColor: AppColors.primaryColor,
-      brightness: Brightness.dark,
-    );
-
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: colorScheme,
-      scaffoldBackgroundColor: colorScheme.surface,
-
-      // Default font family for all text
-      fontFamily: 'Cairo',
-
-      // AppBar theme
-      appBarTheme: AppBarTheme(
-        centerTitle: false,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: colorScheme.onSurface,
-        titleTextStyle: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          color: colorScheme.onSurface,
-          fontFamily: 'Cairo',
-        ),
-      ),
-
-      // ElevatedButton theme
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
-          foregroundColor: Colors.white,
-          minimumSize: const Size(double.infinity, 56),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          textStyle: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Cairo',
-          ),
-        ),
-      ),
-
-      // Card theme
-      cardTheme: CardThemeData(
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        clipBehavior: Clip.antiAlias,
-      ),
-
-      // Input decoration theme
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: colorScheme.surfaceContainerHighest,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 16,
@@ -260,9 +95,11 @@ class AppTheme {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: colorScheme.error),
+        ),
       ),
-
-      // Text theme
       textTheme: TextTheme(
         displayLarge: TextStyle(
           fontSize: 32,
@@ -283,6 +120,134 @@ class AppTheme {
           fontFamily: 'Poppins',
           height: 1.4,
           color: colorScheme.onSurface,
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: colorScheme.outline.withValues(alpha: 0.5),
+        thickness: 1,
+        space: 1,
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: Colors.white,
+        elevation: 8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+    );
+  }
+
+  /// Dark theme configuration
+  static ThemeData get darkTheme {
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.primaryColor,
+      brightness: Brightness.dark,
+    ).copyWith(
+      surface: const Color(0xFF121212),
+      onSurface: Colors.white,
+      primary: AppColors.primaryColor,
+      onPrimary: Colors.white,
+      secondary: AppColors.babyBlue,
+      onSecondary: AppColors.black,
+      error: AppColors.red,
+      onError: Colors.white,
+      outline: const Color(0xFF333333),
+      surfaceContainerHighest: const Color(0xFF1E1E1E),
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: colorScheme.surface,
+      brightness: Brightness.dark,
+      fontFamily: 'Cairo',
+      appBarTheme: AppBarTheme(
+        centerTitle: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: colorScheme.onSurface,
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: colorScheme.onSurface,
+          fontFamily: 'Cairo',
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          minimumSize: const Size(double.infinity, 56),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          textStyle: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Cairo',
+          ),
+        ),
+      ),
+      cardTheme: CardThemeData(
+        elevation: 2,
+        color: colorScheme.surfaceContainerHighest,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        clipBehavior: Clip.antiAlias,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: colorScheme.surfaceContainerHighest,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: colorScheme.primary, width: 2),
+        ),
+      ),
+      textTheme: TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Cairo',
+          color: colorScheme.onSurface,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Poppins',
+          height: 1.5,
+          color: colorScheme.onSurface,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Poppins',
+          height: 1.4,
+          color: colorScheme.onSurface,
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: colorScheme.outline,
+        thickness: 1,
+        space: 1,
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: colorScheme.surfaceContainerHighest,
+        elevation: 8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
     );

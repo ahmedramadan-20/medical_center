@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 
 /// A reusable custom button widget with consistent styling.
@@ -30,7 +29,8 @@ class CustomButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: color ?? AppColors.primaryColor,
+            backgroundColor: color ?? Theme.of(context).colorScheme.primary,
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -40,7 +40,6 @@ class CustomButton extends StatelessWidget {
             style: AppTextStyles.cairo700style32.copyWith(
               fontWeight: FontWeight.w500,
               fontSize: 18,
-              color: AppColors.offWhite,
             ),
           ),
         ),

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_change_lang_button.dart';
 import 'package:medical_center/app/global_cubit/theme_cubit.dart';
@@ -23,7 +22,7 @@ class CustomProfileListTile extends StatelessWidget {
               style: AppTextStyles.cairo400Style20.copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: AppColors.deepBlue,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             const SizedBox(height: 16),
@@ -33,7 +32,10 @@ class CustomProfileListTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .shadow
+                        .withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -50,7 +52,7 @@ class CustomProfileListTile extends StatelessWidget {
                     },
                     showArrow: true,
                   ),
-                  _buildDivider(),
+                  _buildDivider(context),
                   _buildModernExpansionTile(
                     context: context,
                     icon: Icons.location_on_outlined,
@@ -64,14 +66,18 @@ class CustomProfileListTile extends StatelessWidget {
                             Text(
                               '${S.of(context).clinics}: ${S.of(context).mit_azzoun}',
                               style: AppTextStyles.cairo300style16.copyWith(
-                                color: AppColors.deepGrey,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurfaceVariant,
                               ),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               '${S.of(context).joint}: ${S.of(context).street}',
                               style: AppTextStyles.cairo300style16.copyWith(
-                                color: AppColors.deepGrey,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurfaceVariant,
                               ),
                             ),
                           ],
@@ -79,7 +85,7 @@ class CustomProfileListTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  _buildDivider(),
+                  _buildDivider(context),
                   _buildModernExpansionTile(
                     context: context,
                     icon: Icons.phone_outlined,
@@ -93,14 +99,18 @@ class CustomProfileListTile extends StatelessWidget {
                             Text(
                               '${S.of(context).phone}: 01202027567',
                               style: AppTextStyles.cairo300style16.copyWith(
-                                color: AppColors.deepGrey,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurfaceVariant,
                               ),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               '${S.of(context).landline}: 0502053187',
                               style: AppTextStyles.cairo300style16.copyWith(
-                                color: AppColors.deepGrey,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurfaceVariant,
                               ),
                             ),
                           ],
@@ -108,9 +118,9 @@ class CustomProfileListTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  _buildDivider(),
+                  _buildDivider(context),
                   _buildLanguageTile(context),
-                  _buildDivider(),
+                  _buildDivider(context),
                   _buildThemeTile(context),
                 ],
               ),
@@ -126,7 +136,7 @@ class CustomProfileListTile extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.red.withValues(alpha: 0.3),
+                    color: Colors.red.withValues(alpha: 0.2),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -157,13 +167,19 @@ class CustomProfileListTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   gradient: LinearGradient(
                     colors: [
-                      AppColors.primaryColor,
-                      AppColors.primaryColor.withValues(alpha: 0.8),
+                      Theme.of(context).colorScheme.primary,
+                      Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withValues(alpha: 0.8),
                     ],
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryColor.withValues(alpha: 0.3),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withValues(alpha: 0.2),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -207,10 +223,17 @@ class CustomProfileListTile extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryColor.withValues(alpha: 0.1),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(icon, color: AppColors.primaryColor, size: 22),
+                child: Icon(
+                  icon,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 22,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -223,10 +246,10 @@ class CustomProfileListTile extends StatelessWidget {
                 ),
               ),
               if (showArrow)
-                const Icon(
+                Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 16,
-                  color: AppColors.deepGrey,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
             ],
           ),
@@ -247,10 +270,15 @@ class CustomProfileListTile extends StatelessWidget {
           leading: Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: AppColors.primaryColor.withValues(alpha: 0.1),
+              color:
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, color: AppColors.primaryColor, size: 22),
+            child: Icon(
+              icon,
+              color: Theme.of(context).colorScheme.primary,
+              size: 22,
+            ),
           ),
           title: Text(
             title,
@@ -259,8 +287,8 @@ class CustomProfileListTile extends StatelessWidget {
               color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
-          iconColor: AppColors.primaryColor,
-          collapsedIconColor: AppColors.deepGrey,
+          iconColor: Theme.of(context).colorScheme.primary,
+          collapsedIconColor: Theme.of(context).colorScheme.onSurfaceVariant,
           children: children,
         ),
       );
@@ -272,12 +300,15 @@ class CustomProfileListTile extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.primaryColor.withValues(alpha: 0.1),
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.language,
-                color: AppColors.primaryColor,
+                color: Theme.of(context).colorScheme.primary,
                 size: 22,
               ),
             ),
@@ -307,12 +338,15 @@ class CustomProfileListTile extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor.withValues(alpha: 0.1),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(
                     isDark ? Icons.dark_mode : Icons.light_mode,
-                    color: AppColors.primaryColor,
+                    color: Theme.of(context).colorScheme.primary,
                     size: 22,
                   ),
                 ),
@@ -328,7 +362,7 @@ class CustomProfileListTile extends StatelessWidget {
                 ),
                 Switch.adaptive(
                   value: isDark,
-                  activeColor: AppColors.primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   onChanged: (value) {
                     context.read<ThemeCubit>().toggleTheme();
                   },
@@ -339,11 +373,14 @@ class CustomProfileListTile extends StatelessWidget {
         },
       );
 
-  Widget _buildDivider() => Padding(
+  Widget _buildDivider(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Divider(
           height: 1,
-          color: AppColors.lightGrey.withValues(alpha: 0.3),
+          color: Theme.of(context)
+              .colorScheme
+              .outlineVariant
+              .withValues(alpha: 0.3),
         ),
       );
 }

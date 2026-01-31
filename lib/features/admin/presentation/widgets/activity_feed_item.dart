@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/features/admin/data/models/dashboard_stats_model.dart';
 
 /// Activity feed item widget
@@ -29,20 +29,20 @@ class ActivityFeedItem extends StatelessWidget {
     }
   }
 
-  Color _getColor() {
+  Color _getColor(BuildContext context) {
     switch (activity.type) {
       case 'appointment':
-        return AppColors.blue;
+        return Colors.blue;
       case 'review':
-        return AppColors.yellow;
+        return Colors.amber;
       case 'user':
-        return AppColors.green;
+        return Colors.green;
       case 'doctor':
-        return AppColors.primaryColor;
+        return Theme.of(context).colorScheme.primary;
       case 'blood':
-        return AppColors.red;
+        return Colors.red;
       default:
-        return AppColors.grey;
+        return Theme.of(context).colorScheme.onSurfaceVariant;
     }
   }
 
@@ -69,16 +69,18 @@ class ActivityFeedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = _getColor();
+    final color = _getColor(context);
     final icon = _getIcon();
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.lightGrey.withValues(alpha: 0.3)),
+        border: Border.all(
+            color:
+                Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
@@ -97,18 +99,18 @@ class ActivityFeedItem extends StatelessWidget {
               children: [
                 Text(
                   activity.title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   activity.description,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: AppColors.grey,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -119,9 +121,12 @@ class ActivityFeedItem extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             _formatTimestamp(activity.timestamp),
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 11,
-              color: AppColors.deepGrey,
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurfaceVariant
+                  .withValues(alpha: 0.7),
               fontWeight: FontWeight.w500,
             ),
           ),

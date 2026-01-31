@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_appointments_cubit.dart';
@@ -23,7 +23,7 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AdminAppointmentsCubit()..getAllAppointments(),
         child: Scaffold(
-          backgroundColor: AppColors.offWhite,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           body: BlocBuilder<AdminAppointmentsCubit, AdminAppointmentsState>(
             builder: (context, state) {
               var filteredAppointments = <AppointmentModel>[];
@@ -121,7 +121,9 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
                 label: Text(
                   filterLabel,
                   style: TextStyle(
-                    color: isSelected ? Colors.white : AppColors.deepBlue,
+                    color: isSelected
+                        ? Theme.of(context).colorScheme.onPrimary
+                        : Theme.of(context).colorScheme.onSurface,
                     fontWeight:
                         isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
@@ -131,15 +133,18 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
                     _selectedFilter = filterKey;
                   });
                 },
-                selectedColor: AppColors.primaryColor,
-                backgroundColor: Colors.white,
-                checkmarkColor: Colors.white,
+                selectedColor: Theme.of(context).colorScheme.primary,
+                backgroundColor: Theme.of(context).colorScheme.surface,
+                checkmarkColor: Theme.of(context).colorScheme.onPrimary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                   side: BorderSide(
                     color: isSelected
-                        ? AppColors.primaryColor
-                        : Colors.grey.shade300,
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context)
+                            .colorScheme
+                            .outline
+                            .withValues(alpha: 0.3),
                   ),
                 ),
               ),
@@ -154,8 +159,8 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
         expandedHeight: 120,
         pinned: true,
         elevation: 0,
-        backgroundColor: AppColors.deepBlue,
-        leading: const BackButton(color: Colors.white),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        leading: BackButton(color: Theme.of(context).colorScheme.onPrimary),
         flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
           title: Text(
@@ -167,11 +172,14 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
             ),
           ),
           background: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [AppColors.deepBlue, AppColors.primaryColor],
+                colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.8),
+                ],
               ),
             ),
           ),
@@ -200,7 +208,7 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
@@ -219,12 +227,15 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor.withValues(alpha: 0.1),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.event_note_rounded,
-                    color: AppColors.primaryColor,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -237,7 +248,7 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
                         style: AppTextStyles.cairo400Style20.copyWith(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.deepBlue,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       Text(
@@ -293,13 +304,13 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
                     const Icon(
                       Icons.phone_rounded,
                       size: 16,
-                      color: AppColors.primaryColor,
+                      color: Colors.green,
                     ),
                     const SizedBox(width: 8),
                     Text(
                       appointment.patientPhone,
                       style: const TextStyle(
-                        color: AppColors.primaryColor,
+                        color: Colors.green,
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                       ),
@@ -354,7 +365,8 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
                 Text(
                   S.of(context).reserved_on(
                         DateFormat('MMM dd, yyyy HH:mm').format(
-                            DateTime.parse(appointment.bookingCreatedAt),),
+                          DateTime.parse(appointment.bookingCreatedAt),
+                        ),
                       ),
                   style: TextStyle(
                     color: Colors.grey[500],
@@ -379,7 +391,10 @@ class _ManageAppointmentsScreenState extends State<ManageAppointmentsScreen> {
         child: Text(
           status.toUpperCase(),
           style: TextStyle(
-              color: color, fontWeight: FontWeight.bold, fontSize: 10,),
+            color: color,
+            fontWeight: FontWeight.bold,
+            fontSize: 10,
+          ),
         ),
       );
 

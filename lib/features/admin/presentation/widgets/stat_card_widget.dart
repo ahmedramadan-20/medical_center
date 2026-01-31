@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
 
 /// Professional statistics card with animations
 class StatCardWidget extends StatelessWidget {
@@ -69,16 +68,16 @@ class StatCardWidget extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: trend!.startsWith('+')
-                            ? AppColors.green.withValues(alpha: 0.15)
-                            : AppColors.red.withValues(alpha: 0.15),
+                            ? Colors.green.withValues(alpha: 0.15)
+                            : Colors.red.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         trend!,
                         style: TextStyle(
                           color: trend!.startsWith('+')
-                              ? AppColors.green
-                              : AppColors.red,
+                              ? Colors.green
+                              : Colors.red,
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
@@ -100,9 +99,9 @@ class StatCardWidget extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
-                  color: AppColors.grey,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                   fontWeight: FontWeight.w500,
                 ),
                 maxLines: 2,
@@ -112,9 +111,12 @@ class StatCardWidget extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   subtitle!,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: AppColors.deepGrey,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurfaceVariant
+                        .withValues(alpha: 0.7),
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

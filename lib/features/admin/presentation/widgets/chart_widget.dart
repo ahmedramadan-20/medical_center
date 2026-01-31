@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_center/core/utils/app_colors.dart';
+
 import 'package:medical_center/features/admin/data/models/dashboard_stats_model.dart';
 import 'package:medical_center/generated/l10n.dart';
 
@@ -41,10 +41,10 @@ class AppointmentTrendChart extends StatelessWidget {
                   children: [
                     Text(
                       trend.value.toString(),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -53,8 +53,11 @@ class AppointmentTrendChart extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            AppColors.primaryColor,
-                            AppColors.primaryColor.withValues(alpha: 0.6),
+                            Theme.of(context).colorScheme.primary,
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.6),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -67,9 +70,9 @@ class AppointmentTrendChart extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       trend.label,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 10,
-                        color: AppColors.grey,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                       maxLines: 1,
                     ),
@@ -115,10 +118,12 @@ class SpecialityStatsWidget extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 12),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(12),
-            border:
-                Border.all(color: AppColors.lightGrey.withValues(alpha: 0.3)),
+            border: Border.all(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,10 +134,10 @@ class SpecialityStatsWidget extends StatelessWidget {
                   Expanded(
                     child: Text(
                       speciality.speciality,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.black,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -140,14 +145,14 @@ class SpecialityStatsWidget extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Icon(Icons.star, color: AppColors.yellow, size: 16),
+                      const Icon(Icons.star, color: Colors.amber, size: 16),
                       const SizedBox(width: 4),
                       Text(
                         speciality.averageRating.toStringAsFixed(1),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -159,22 +164,22 @@ class SpecialityStatsWidget extends StatelessWidget {
                 children: [
                   Text(
                     '${speciality.doctorCount} doctors',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
-                      color: AppColors.grey,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(width: 8),
                   const Text(
                     '•',
-                    style: TextStyle(color: AppColors.grey),
+                    style: TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(width: 8),
                   Text(
                     '${speciality.appointmentCount} appointments',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
-                      color: AppColors.grey,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],
@@ -185,7 +190,10 @@ class SpecialityStatsWidget extends StatelessWidget {
                   Container(
                     height: 6,
                     decoration: BoxDecoration(
-                      color: AppColors.lightGrey.withValues(alpha: 0.3),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .outline
+                          .withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ),
@@ -194,10 +202,13 @@ class SpecialityStatsWidget extends StatelessWidget {
                     child: Container(
                       height: 6,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           colors: [
-                            AppColors.primaryColor,
-                            AppColors.blue,
+                            Theme.of(context).colorScheme.primary,
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.6),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(3),
