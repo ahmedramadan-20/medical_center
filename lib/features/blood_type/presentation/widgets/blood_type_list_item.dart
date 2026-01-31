@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:medical_center/core/utils/app_text_styles.dart';
-import 'package:medical_center/features/home/data/models/blood_type_model.dart';
+import 'package:medical_center/features/blood_type/data/models/blood_type_model.dart';
 
 class BloodTypeListItem extends StatelessWidget {
   const BloodTypeListItem({required this.bloodType, super.key});

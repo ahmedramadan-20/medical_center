@@ -1,4 +1,4 @@
-import 'package:medical_center/features/home/data/models/blood_type_model.dart';
+import 'package:medical_center/features/blood_type/data/models/blood_type_model.dart';
 
 class BloodState {}
 

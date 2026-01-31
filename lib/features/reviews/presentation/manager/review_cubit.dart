@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medical_center/features/appointments/data/models/review_model.dart';
+import 'package:medical_center/features/reviews/data/models/review_model.dart';
 import 'package:medical_center/features/reviews/presentation/manager/review_state.dart';
 
 class ReviewCubit extends Cubit<ReviewState> {

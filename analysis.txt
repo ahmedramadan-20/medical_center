@@ -1,0 +1,496 @@
+Analyzing medical_center...                                     
+
+   info - Constructor declarations should be before non-constructor declarations - lib\app\global_cubit\theme_state.dart:14:9 - sort_constructors_first
+   info - Missing a required trailing comma - lib\core\repositories\theme_repository_impl.dart:14:36 - require_trailing_commas
+   info - Sort directive sections alphabetically - lib\core\routes\app_router.dart:37:1 - directives_ordering
+   info - The imported package 'timezone' isn't a dependency of the importing package - lib\core\services\notification_service.dart:4:8 - depend_on_referenced_packages
+   info - Sort directive sections alphabetically - lib\core\services\notification_service.dart:5:1 - directives_ordering
+   info - The imported package 'timezone' isn't a dependency of the importing package - lib\core\services\notification_service.dart:5:8 - depend_on_referenced_packages
+   info - Sort directive sections alphabetically - lib\core\services\notification_service.dart:6:1 - directives_ordering
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:43:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:49:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:54:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:59:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:65:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:70:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:75:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:80:3 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\core\services\service_locator.dart:86:3 - cascade_invocations
+   info - Unnecessary use of an abstract class - lib\core\usecases\usecase.dart:5:16 - one_member_abstracts
+   info - The type parameter name 'Type' matches a visible type name - lib\core\usecases\usecase.dart:5:24 - avoid_types_as_parameter_names
+   info - Statement should be on a separate line - lib\core\utils\time_formatter.dart:20:23 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\admin\presentation\manager\admin_doctors_cubit.dart:118:32 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\admin\presentation\manager\admin_doctors_cubit.dart:188:34 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\admin\presentation\manager\admin_reviews_cubit.dart:97:29 - always_put_control_body_on_new_line
+   info - 'bool' parameters should be named parameters - lib\features\admin\presentation\manager\admin_users_cubit.dart:71:48 - avoid_positional_boolean_parameters
+   info - Statement should be on a separate line - lib\features\admin\presentation\views\add_edit_doctor_view.dart:502:37 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\admin\presentation\views\add_edit_doctor_view.dart:513:37 - always_put_control_body_on_new_line
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\views\manage_reviews_view.dart:92:56 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\presentation\views\manage_reviews_view.dart:93:57 - deprecated_member_use
+   info - Missing a required trailing comma - lib\features\admin\presentation\views\manage_users_view.dart:164:57 - require_trailing_commas
+   info - Missing a required trailing comma - lib\features\admin\presentation\views\manage_users_view.dart:207:66 - require_trailing_commas
+   info - Statement should be on a separate line - lib\features\admin\presentation\widgets\activity_feed_item.dart:51:30 - always_put_control_body_on_new_line
+   info - Missing a required trailing comma - lib\features\admin\presentation\widgets\activity_feed_item.dart:83:77 - require_trailing_commas
+   info - Missing a required trailing comma - lib\features\admin\presentation\widgets\dashboard_search_bar.dart:21:79 - require_trailing_commas
+   info - Missing a required trailing comma - lib\features\admin\presentation\widgets\dashboard_search_bar.dart:36:29 - require_trailing_commas
+   info - Missing a required trailing comma - lib\features\admin\presentation\widgets\dashboard_search_bar.dart:38:61 - require_trailing_commas
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:23:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:24:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:25:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:28:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:29:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:30:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:31:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:32:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:33:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:34:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:35:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:36:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:37:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:38:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:39:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:40:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:41:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:42:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:45:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\admin\presentation\widgets\export_dialog.dart:46:5 - cascade_invocations
+   info - Missing a required trailing comma - lib\features\admin\presentation\widgets\quick_action_button.dart:32:44 - require_trailing_commas
+   info - The parameter name 'sum' matches a visible type name - lib\features\analytics\presentation\manager\analytics_cubit.dart:94:8 - avoid_types_as_parameter_names
+   info - Unnecessary use of a block function body - lib\features\analytics\presentation\manager\analytics_cubit.dart:130:47 - prefer_expression_function_bodies
+   info - Missing a required trailing comma - lib\features\appointments\presentation\views\my_appointments_view.dart:303:70 - require_trailing_commas
+   info - Missing an 'await' for the 'Future' computed by this expression - lib\features\auth\presentation\auth_cubit\auth_cubit.dart:90:12 - unawaited_futures
+   info - Missing an 'await' for the 'Future' computed by this expression - lib\features\auth\presentation\auth_cubit\auth_cubit.dart:135:12 - unawaited_futures
+   info - 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\auth\presentation\widgets\custom_sign_up_form.dart:126:19 - deprecated_member_use
+   info - 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\auth\presentation\widgets\custom_sign_up_form.dart:127:19 - deprecated_member_use
+   info - 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\auth\presentation\widgets\custom_sign_up_form.dart:138:19 - deprecated_member_use
+   info - 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\auth\presentation\widgets\custom_sign_up_form.dart:139:19 - deprecated_member_use
+   info - Unnecessary instance of 'Container' - lib\features\auth\presentation\widgets\welcome_banner.dart:10:41 - avoid_unnecessary_containers
+   info - Statement should be on a separate line - lib\features\favorites\presentation\manager\favorites_cubit.dart:69:27 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\favorites\presentation\manager\favorites_cubit.dart:92:27 - always_put_control_body_on_new_line
+   info - Missing type annotation - lib\features\home\data\models\category_model.dart:9:36 - strict_top_level_inference
+   info - Statement should be on a separate line - lib\features\home\data\models\doctor_schedule_model.dart:57:43 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\home\data\models\doctors_model.dart:152:28 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\home\presentation\home_cubit\home_cubit.dart:254:33 - always_put_control_body_on_new_line
+   info - Unnecessary duplication of receiver - lib\features\home\presentation\views\doctor_view.dart:432:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\home\presentation\widgets\custom_doctor_card_widget.dart:33:5 - cascade_invocations
+   info - Missing type annotation - lib\features\on_boarding\presentation\view_model\cubit\on_boarding_cubit.dart:12:30 - strict_top_level_inference
+   info - Missing type annotation - lib\features\on_boarding\presentation\view_model\cubit\on_boarding_cubit.dart:16:40 - strict_top_level_inference
+   info - Unnecessary duplication of receiver - lib\features\profile\presentation\profile_cubit\profile_cubit.dart:28:9 - cascade_invocations
+   info - Missing a required trailing comma - lib\features\profile\presentation\views\edit_profile_view.dart:81:65 - require_trailing_commas
+   info - Sort directive sections alphabetically - lib\features\profile\presentation\widgets\custom_profile_view_list_tile.dart:7:1 - directives_ordering
+   info - Statement should be on a separate line - lib\features\profile\presentation\widgets\custom_profile_view_list_tile.dart:148:41 - always_put_control_body_on_new_line
+   info - 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor or activeTrackColor instead. This feature was deprecated after v3.31.0-2.0.pre - lib\features\profile\presentation\widgets\custom_profile_view_list_tile.dart:365:19 - deprecated_member_use
+   info - Statement should be on a separate line - lib\features\reviews\presentation\manager\review_cubit.dart:39:29 - always_put_control_body_on_new_line
+   info - Unnecessary duplication of receiver - lib\features\reviews\presentation\manager\review_cubit.dart:70:9 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\reviews\presentation\manager\review_cubit.dart:89:9 - cascade_invocations
+   info - Sort directive sections alphabetically - lib\features\search\presentation\manager\search_cubit.dart:2:1 - directives_ordering
+   info - 'bool' parameters should be named parameters - lib\features\search\presentation\manager\search_cubit.dart:67:29 - avoid_positional_boolean_parameters
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_cubit.dart:98:44 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_cubit.dart:152:34 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_cubit.dart:153:68 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_cubit.dart:154:29 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_cubit.dart:155:28 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_cubit.dart:156:34 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\search\presentation\manager\search_history_service.dart:16:24 - always_put_control_body_on_new_line
+   info - Unnecessary duplication of receiver - lib\features\search\presentation\manager\search_history_service.dart:22:5 - cascade_invocations
+   info - Unnecessary duplication of receiver - lib\features\search\presentation\manager\search_history_service.dart:25:5 - cascade_invocations
+   info - Statement should be on a separate line - lib\features\search\presentation\views\search_view.dart:248:24 - always_put_control_body_on_new_line
+   info - Statement should be on a separate line - lib\features\splash\presentation\views\splash_view.dart:44:21 - always_put_control_body_on_new_line
+   info - Use 'package:' imports for files in the 'lib' directory - lib\generated\intl\messages_all.dart:19:8 - always_use_package_imports
+   info - Use 'package:' imports for files in the 'lib' directory - lib\generated\intl\messages_all.dart:20:8 - always_use_package_imports
+   info - Local variables should be final - lib\generated\intl\messages_all.dart:41:3 - prefer_final_locals
+   info - Local variables should be final - lib\generated\intl\messages_all.dart:49:3 - prefer_final_locals
+   info - Closure should be a tearoff - lib\generated\intl\messages_all.dart:51:35 - unnecessary_lambdas
+   info - Local variables should be final - lib\generated\intl\messages_all.dart:65:3 - prefer_final_locals
+   info - Statement should be on a separate line - lib\generated\intl\messages_all.dart:70:29 - always_put_control_body_on_new_line
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:23:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:25:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:27:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:27:26 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:29:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:31:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:33:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:36:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:38:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:40:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:42:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:44:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:46:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:48:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:48:34 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:51:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:53:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:53:33 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:56:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:58:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:58:33 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_ar.dart:62:52 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:23:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:25:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:27:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:27:26 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:29:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:31:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:34:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:37:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:39:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:41:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:43:20 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:45:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:47:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:49:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:49:34 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:52:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:54:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:54:33 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:57:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:59:21 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:59:33 - strict_top_level_inference
+   info - Missing type annotation - lib\generated\intl\messages_en.dart:63:52 - strict_top_level_inference
+   info - Use 'package:' imports for files in the 'lib' directory - lib\generated\l10n.dart:4:8 - always_use_package_imports
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:53:43 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:58:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:63:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:73:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:83:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:93:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:103:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:113:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:123:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:133:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:143:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:148:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:153:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:163:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:173:42 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:183:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:193:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:198:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:203:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:208:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:218:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:228:19 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:233:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:243:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:253:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:258:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:263:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:273:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:283:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:293:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:303:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:313:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:323:43 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:333:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:343:19 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:348:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:353:17 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:358:19 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:363:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:373:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:378:18 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:388:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:393:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:398:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:408:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:418:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:428:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:438:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:448:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:453:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:463:43 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:473:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:478:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:483:18 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:488:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:498:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:503:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:508:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:513:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:518:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:523:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:533:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:538:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:548:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:558:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:563:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:568:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:573:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:578:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:583:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:588:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:593:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:598:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:603:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:608:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:613:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:618:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:623:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:628:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:638:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:648:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:653:19 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:658:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:663:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:668:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:678:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:688:44 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:698:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:708:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:718:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:728:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:733:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:738:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:748:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:753:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:758:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:763:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:773:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:783:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:793:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:798:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:803:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:808:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:818:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:823:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:833:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:843:19 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:848:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:858:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:868:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:878:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:888:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:898:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:908:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:918:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:928:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:938:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:948:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:958:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:968:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:978:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:988:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:998:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1008:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1018:46 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1028:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1033:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1038:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1048:48 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1058:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1068:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1073:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1083:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1093:49 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1103:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1113:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1123:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1133:46 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1143:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1153:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1163:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1173:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1183:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1188:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1198:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1208:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1218:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1223:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1233:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1243:56 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1253:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1258:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1268:42 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1278:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1288:46 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1298:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1303:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1308:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1313:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1318:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1328:71 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1338:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1348:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1353:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1358:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1368:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1378:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1388:19 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1393:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1403:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1413:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1423:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1433:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1443:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1453:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1463:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1468:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1478:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1488:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1493:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1498:18 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1503:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1513:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1523:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1533:44 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1543:46 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1553:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1563:42 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1573:42 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1583:46 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1593:47 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1603:41 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1613:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1618:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1628:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1638:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1648:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1658:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1668:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1673:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1683:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1693:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1698:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1708:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1718:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1723:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1728:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1733:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1743:44 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1753:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1763:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1768:52 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1778:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1788:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1798:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1803:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1813:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1823:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1833:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1838:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1843:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1848:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1858:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1868:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1878:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1888:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1898:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1903:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1913:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1923:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1933:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1938:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1948:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1958:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1968:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1978:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1988:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:1998:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2008:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2018:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2028:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2033:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2038:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2048:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2053:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2063:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2068:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2073:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2083:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2093:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2103:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2113:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2123:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2133:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2143:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2153:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2163:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2173:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2178:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2183:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2193:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2203:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2213:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2223:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2233:22 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2238:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2248:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2258:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2268:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2278:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2283:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2293:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2303:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2308:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2318:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2323:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2328:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2333:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2343:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2353:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2363:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2373:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2378:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2388:21 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2393:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2403:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2408:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2418:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2428:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2438:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2443:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2448:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2458:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2463:45 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2473:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2483:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2493:20 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2498:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2508:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2518:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2523:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2533:29 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2538:27 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2543:36 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2553:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2558:35 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2568:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2573:37 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2583:26 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2588:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2598:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2608:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2618:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2628:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2638:69 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2648:25 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2653:62 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2663:23 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2668:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2678:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2688:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2698:38 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2708:43 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2718:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2728:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2738:33 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2748:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2758:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2768:30 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2778:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2788:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2798:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2808:32 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2818:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2828:40 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2838:39 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2848:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2858:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2868:34 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2878:28 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2888:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2898:31 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2908:24 - prefer_expression_function_bodies
+   info - Unnecessary use of a block function body - lib\generated\l10n.dart:2916:37 - prefer_expression_function_bodies
+   info - Statement should be on a separate line - test\doctors_model_test.dart:80:26 - always_put_control_body_on_new_line
+

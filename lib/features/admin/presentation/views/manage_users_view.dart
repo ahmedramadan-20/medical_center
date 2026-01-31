@@ -5,7 +5,7 @@ import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_users_cubit.dart';
 import 'package:medical_center/features/admin/presentation/widgets/dashboard_search_bar.dart';
-import 'package:medical_center/features/home/data/models/user_model.dart';
+import 'package:medical_center/features/auth/data/models/user_model.dart';
 import 'package:medical_center/generated/l10n.dart';
 
 class ManageUsersScreen extends StatelessWidget {
@@ -160,8 +160,10 @@ class ManageUsersScreen extends StatelessWidget {
                                   ],
                                 ),
                                 trailing: PopupMenuButton<String>(
-                                  icon: const Icon(Icons.more_vert,
-                                      color: Colors.grey),
+                                  icon: const Icon(
+                                    Icons.more_vert,
+                                    color: Colors.grey,
+                                  ),
                                   onSelected: (value) {
                                     if (value == 'role') {
                                       _showRoleConfirmation(context, user);
@@ -204,7 +206,8 @@ class ManageUsersScreen extends StatelessWidget {
                                           Text(
                                             S.of(context).delete_user,
                                             style: const TextStyle(
-                                                color: Colors.red),
+                                              color: Colors.red,
+                                            ),
                                           ),
                                         ],
                                       ),

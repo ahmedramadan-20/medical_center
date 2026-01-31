@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_center/core/services/logger_service.dart';
-import 'package:medical_center/features/home/data/models/blood_type_model.dart';
+import 'package:medical_center/features/blood_type/data/models/blood_type_model.dart';
 
 abstract class AdminBloodState {}
 

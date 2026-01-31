@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medical_center/core/services/logger_service.dart';
-import 'package:medical_center/features/home/data/models/notification_model.dart';
+import 'package:medical_center/features/notifications/data/models/notification_model.dart';
 
 class NotificationsRepository {
   final _firestore = FirebaseFirestore.instance;
@@ -23,13 +23,17 @@ class NotificationsRepository {
         .collection('notifications')
         .orderBy('createdAt', descending: true)
         .snapshots()
-        .map((snapshot) => snapshot.docs
-          .map((doc) => NotificationModel.fromJson({
-                ...doc.data(),
-                'id': doc.id,
-              }),)
-          .where((n) => n.userId == null || n.userId == userId)
-          .toList(),);
+        .map(
+          (snapshot) => snapshot.docs
+              .map(
+                (doc) => NotificationModel.fromJson({
+                  ...doc.data(),
+                  'id': doc.id,
+                }),
+              )
+              .where((n) => n.userId == null || n.userId == userId)
+              .toList(),
+        );
   }
 
   /// Marks a specific notification as read.

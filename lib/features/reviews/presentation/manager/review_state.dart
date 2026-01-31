@@ -1,4 +1,4 @@
-import 'package:medical_center/features/appointments/data/models/review_model.dart';
+import 'package:medical_center/features/reviews/data/models/review_model.dart';
 
 abstract class ReviewState {}
 

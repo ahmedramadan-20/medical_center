@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
-import 'package:medical_center/features/appointments/data/models/review_model.dart';
+import 'package:medical_center/features/reviews/data/models/review_model.dart';
 import 'package:medical_center/features/appointments/presentation/manager/appointment_cubit.dart';
 import 'package:medical_center/features/appointments/presentation/manager/appointment_state.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';

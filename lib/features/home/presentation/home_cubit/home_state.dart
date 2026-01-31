@@ -1,4 +1,4 @@
-import 'package:medical_center/features/home/data/models/user_model.dart';
+import 'package:medical_center/features/auth/data/models/user_model.dart';
 
 class HomeState {}
 

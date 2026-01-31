@@ -6,7 +6,7 @@ import 'package:medical_center/features/blood_type/presentation/blood_types_cubi
 import 'package:medical_center/features/blood_type/presentation/blood_types_cubit/blood_state.dart';
 import 'package:medical_center/features/blood_type/presentation/widgets/blood_type_list_item.dart';
 import 'package:medical_center/features/blood_type/presentation/widgets/empty_blood_types.dart';
-import 'package:medical_center/features/home/data/models/blood_type_model.dart';
+import 'package:medical_center/features/blood_type/data/models/blood_type_model.dart';
 import 'package:medical_center/generated/l10n.dart';
 
 class BloodTypesListTile extends StatelessWidget {
