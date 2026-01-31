@@ -9,6 +9,7 @@ import 'package:medical_center/core/theme/app_theme.dart';
 import 'package:medical_center/features/favorites/presentation/manager/favorites_cubit.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
 import 'package:medical_center/features/notifications/presentation/manager/notifications_cubit.dart';
+import 'package:medical_center/features/profile/presentation/profile_cubit/profile_cubit.dart';
 import 'package:medical_center/generated/l10n.dart';
 
 /// Root widget of the Medical Center application.
@@ -32,7 +33,11 @@ class MedicalCenter extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => getIt<NotificationsCubit>()
-              ..getNotifications(FirebaseAuth.instance.currentUser!.email!),
+              ..getNotifications(
+                  FirebaseAuth.instance.currentUser?.email ?? ''),
+          ),
+          BlocProvider(
+            create: (context) => getIt<ProfileCubit>()..getUserData(),
           ),
         ],
         child: BlocBuilder<LocaleCubit, LocaleState>(

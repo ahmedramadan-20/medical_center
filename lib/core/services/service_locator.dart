@@ -13,6 +13,7 @@ import 'package:medical_center/features/auth/presentation/auth_cubit/auth_cubit.
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
 import 'package:medical_center/features/notifications/data/repositories/notifications_repository.dart';
 import 'package:medical_center/features/notifications/presentation/manager/notifications_cubit.dart';
+import 'package:medical_center/features/profile/presentation/profile_cubit/profile_cubit.dart';
 import 'package:medical_center/features/splash/data/datasource/lang_local_data_source.dart';
 import 'package:medical_center/features/splash/data/repositories/lang_repository_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -109,5 +110,8 @@ Future<void> setupServiceLocator() async {
     // Notifications cubit
     ..registerFactory<NotificationsCubit>(
       () => NotificationsCubit(getIt()),
-    );
+    )
+
+    // Profile cubit
+    ..registerFactory<ProfileCubit>(ProfileCubit.new);
 }

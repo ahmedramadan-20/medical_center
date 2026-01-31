@@ -5,7 +5,6 @@ import 'package:medical_center/features/appointments/presentation/views/my_appoi
 import 'package:medical_center/features/blood_type/presentation/blood_types_cubit/blood_cubit.dart';
 import 'package:medical_center/features/blood_type/presentation/views/blood_type_view.dart';
 import 'package:medical_center/features/home/presentation/views/home_view.dart';
-import 'package:medical_center/features/profile/presentation/profile_cubit/profile_cubit.dart';
 import 'package:medical_center/features/profile/presentation/views/profile_view.dart';
 import 'package:medical_center/generated/l10n.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -66,10 +65,7 @@ List<PersistentTabConfig> _buildTabs(BuildContext context) => [
         ),
       ),
       PersistentTabConfig(
-        screen: BlocProvider(
-          create: (context) => ProfileCubit()..getUserData(),
-          child: const ProfileView(),
-        ),
+        screen: const ProfileView(),
         item: ItemConfig(
           icon: const Icon(Icons.person),
           inactiveIcon: const Icon(Icons.person_outline),
