@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../generated/l10n.dart';
-import '../../../home/data/models/blood_type_model.dart';
-import 'blood_state.dart';
+import 'package:medical_center/features/blood_type/presentation/blood_types_cubit/blood_state.dart';
+import 'package:medical_center/features/home/data/models/blood_type_model.dart';
+import 'package:medical_center/generated/l10n.dart';
 
 class BloodCubit extends Cubit<BloodState> {
   BloodCubit() : super(BloodInitial());
@@ -21,7 +20,7 @@ class BloodCubit extends Cubit<BloodState> {
 
   int bloodTypeIndex = 0;
 
-  void changeIndex(int index,context) {
+  void changeIndex(int index, context) {
     bloodTypeIndex = index;
     emit(ChangeBloodTypeIndexState());
 
@@ -34,39 +33,35 @@ class BloodCubit extends Cubit<BloodState> {
 
   List<BloodTypeModel> firebaseBloodTypes = [];
 
-  void getAllBloodTypes() {
+  Future<void> getAllBloodTypes() async {
     emit(GettingBloodTypesLoadingState());
-    FirebaseFirestore.instance
-        .collection('bloodTypes')
-        .where('gender', isEqualTo: 'male')
-        .get()
-        .then((value) {
-      firebaseBloodTypes.clear();
-      for (var element in value.docs) {
-        firebaseBloodTypes.add(BloodTypeModel.fromJson(element.data()));
-      }
-      emit(GettingBloodTypesSuccessState());
-    }).catchError((e) {
+    try {
+      final snapshot =
+          await FirebaseFirestore.instance.collection('bloodTypes').get();
+      firebaseBloodTypes = snapshot.docs
+          .map((doc) => BloodTypeModel.fromJson(doc.data()))
+          .toList();
+      emit(GettingBloodTypesSuccessState(List.from(firebaseBloodTypes)));
+    } catch (e) {
       emit(GettingBloodTypesErrorState(error: e.toString()));
-    });
+    }
   }
 
-  void getSpecificBloodType(String bloodType) {
+  Future<void> getSpecificBloodType(String bloodType) async {
     emit(GettingSpecificBloodTypesLoadingState());
-    FirebaseFirestore.instance
-        .collection('bloodTypes')
-        .where('gender', isEqualTo: 'male')
-        .where('bloodType', isEqualTo: bloodType)
-        .get()
-        .then((value) {
-      firebaseBloodTypes
-          .clear(); // Clear the list before adding new blood types
-      for (var element in value.docs) {
-        firebaseBloodTypes.add(BloodTypeModel.fromJson(element.data()));
-      }
-      emit(GettingSpecificBloodTypesSuccessState());
-    }).catchError((e) {
+    try {
+      final snapshot = await FirebaseFirestore.instance
+          .collection('bloodTypes')
+          .where('bloodType', isEqualTo: bloodType)
+          .get();
+      firebaseBloodTypes = snapshot.docs
+          .map((doc) => BloodTypeModel.fromJson(doc.data()))
+          .toList();
+      emit(
+        GettingSpecificBloodTypesSuccessState(List.from(firebaseBloodTypes)),
+      );
+    } catch (e) {
       emit(GettingSpecificBloodTypesErrorState(error: e.toString()));
-    });
+    }
   }
 }

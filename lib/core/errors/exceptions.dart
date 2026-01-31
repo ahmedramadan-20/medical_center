@@ -1,47 +1,31 @@
 import 'package:equatable/equatable.dart';
 
+/// Base exception class for server-related errors.
+///
+/// This exception is thrown when there are issues communicating
+/// with remote services or APIs.
 class ServerException extends Equatable implements Exception {
-  final String? message;
-
-  const ServerException([this.message]);
+  const ServerException(this.message);
+  final String message;
 
   @override
   List<Object?> get props => [message];
 
   @override
-  String toString() {
-    return '$message';
-  }
+  String toString() => message;
 }
 
-class FetchDataException extends ServerException {
-  const FetchDataException([message]) : super("Error During Communication");
-}
+/// Exception thrown when cache operations fail.
+///
+/// This exception is thrown when there are issues with local
+/// storage or cache operations.
+class CacheException extends Equatable implements Exception {
+  const CacheException(this.message);
+  final String message;
 
-class BadRequestException extends ServerException {
-  const BadRequestException([message]) : super("Bad Request");
-}
+  @override
+  List<Object?> get props => [message];
 
-class UnauthorizedException extends ServerException {
-  const UnauthorizedException([message]) : super("Unauthorized");
+  @override
+  String toString() => message;
 }
-
-class NotFoundException extends ServerException {
-  const NotFoundException([message]) : super("Requested Info Not Found");
-}
-
-class ConflictException extends ServerException {
-  const ConflictException([message]) : super("Conflict Occurred");
-}
-
-class InternalServerErrorException extends ServerException {
-  const InternalServerErrorException([message])
-      : super("Internal Server Error");
-}
-
-class NoInternetConnectionException extends ServerException {
-  const NoInternetConnectionException([message])
-      : super("No Internet Connection");
-}
-
-class CacheException implements Exception {}

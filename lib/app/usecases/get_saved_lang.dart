@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:medical_center/app/repositories/lang_repository.dart';
 import 'package:medical_center/core/errors/failures.dart';
 import 'package:medical_center/core/usecases/usecase.dart';
 
-import '../repositories/lang_repository.dart';
-
+/// Use case for retrieving the saved language preference.
 class GetSavedLangUseCase implements UseCase<String, NoParams> {
+  GetSavedLangUseCase({required this.langRepository});
   final LangRepository langRepository;
 
-  GetSavedLangUseCase({required this.langRepository});
   @override
-  Future<Either<Failure, String>> call(NoParams params) async =>
-      await langRepository.getSavedLang();
+  Future<Either<Failure, String>> call(NoParams params) =>
+      langRepository.getSavedLang();
 }

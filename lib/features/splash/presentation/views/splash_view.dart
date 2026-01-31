@@ -1,12 +1,13 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_center/core/database/cache/cache_helper.dart';
+import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
 import 'package:medical_center/core/utils/app_colors.dart';
-
-import '../../../../core/functions/navigator.dart';
-import '../../../../core/services/service_locator.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,48 +17,60 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  Timer? _navigationTimer;
+
   @override
   void initState() {
-    bool isOnBoardingVisited =
+    super.initState();
+
+    final isOnBoardingVisited =
         getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
+
+    final String nextRoute;
     if (isOnBoardingVisited == true) {
-      FirebaseAuth.instance.currentUser == null
-          ? delayedNavigation(context, '/signIn')
-          : FirebaseAuth.instance.currentUser!.emailVerified == true
-              ? delayedNavigation(context, '/homeNavBar')
-              : delayedNavigation(context, '/signIn');
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        nextRoute = '/signIn';
+      } else if (user.emailVerified == true) {
+        nextRoute = '/homeNavBar';
+      } else {
+        nextRoute = '/signIn';
+      }
     } else {
-      delayedNavigation(context, '/onBoarding');
+      nextRoute = '/onBoarding';
     }
 
-    super.initState();
+    // Schedule navigation; cancel in dispose to avoid pending timers.
+    _navigationTimer = Timer(const Duration(seconds: 4), () {
+      if (!mounted) return;
+      context.go(nextRoute);
+    });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.offWhite,
-      body: Center(
-        child: Lottie.asset(
-          AppAssets.splashLogo,
-          repeat: false,
-        ),
-        // FadeAnimation(
-        //
-        //   delay: 0.2,
-        //   child: Image.asset(
-        //     AppAssets.splashIcon,
-        //     width: 200,
-        //     height: 200,
-        //   ),
-        // ),
-      ),
-    );
+  void dispose() {
+    _navigationTimer?.cancel();
+    super.dispose();
   }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: AppColors.offWhite,
+        body: Center(
+          child: Lottie.asset(
+            AppAssets.splashLogo,
+            repeat: false,
+          ),
+          // FadeAnimation(
+          //
+          //   delay: 0.2,
+          //   child: Image.asset(
+          //     AppAssets.splashIcon,
+          //     width: 200,
+          //     height: 200,
+          //   ),
+          // ),
+        ),
+      );
 }
 
-void delayedNavigation(context, path) {
-  Future.delayed(const Duration(seconds: 4), () {
-    navigateReplacement(context, path);
-  });
-}

@@ -1,30 +1,29 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:medical_center/app/medical_center_app.dart';
-
+import 'package:medical_center/core/services/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+
+    // Widget tests don't have real platform plugins.
+    // Mock SharedPreferences so our service locator can register it.
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+
+    // The app relies on GetIt registrations (LocaleCubit, etc.).
+    // In production this is done before runApp; in tests we must do it manually.
+    await setupServiceLocator();
+  });
+
+  testWidgets('App smoke test (builds without crashing)', (tester) async {
     await tester.pumpWidget(const MedicalCenter());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Pump a frame. We intentionally do NOT use pumpAndSettle() here because
+    // the Splash screen schedules a delayed navigation timer.
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // If we got here, the widget tree built successfully.
+    expect(find.byType(MedicalCenter), findsOneWidget);
   });
 }

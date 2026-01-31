@@ -2,19 +2,24 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/utils/app_text_styles.dart';
-import '../../../../generated/l10n.dart';
-import '../../data/models/doctors_model.dart';
-import '../home_cubit/home_cubit.dart';
-import '../home_cubit/home_state.dart';
+import 'package:intl/intl.dart';
+import 'package:medical_center/core/functions/custom_toast.dart';
+import 'package:medical_center/core/utils/app_colors.dart';
+import 'package:medical_center/core/utils/app_strings.dart';
+import 'package:medical_center/core/utils/app_text_styles.dart';
+import 'package:medical_center/core/utils/time_formatter.dart';
+import 'package:medical_center/features/favorites/presentation/manager/favorites_cubit.dart';
+import 'package:medical_center/features/favorites/presentation/manager/favorites_state.dart';
+import 'package:medical_center/features/home/data/models/doctors_model.dart';
+import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
+import 'package:medical_center/features/home/presentation/home_cubit/home_state.dart';
+import 'package:medical_center/generated/l10n.dart';
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
+    required this.model,
+    required this.onTap,
     super.key,
-    required this.model, required this.onTap,
   });
 
   final DoctorsModel model;
@@ -22,171 +27,243 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> workingDays = model.workingHours.keys.toList();
-    // Map<String, dynamic> workingHours = model.workinghours;
-
     // Format day names based on app language
-    List<String> localizedDays =
-        context.read<HomeCubit>().formatLocalizedDays(workingDays, context);
-    // Format working hours based on app language
-    // Map<String, String> localizedHours =
-    // context.read<HomeCubit>().formatLocalizedHours(workingHours, context);
+    final localizedDaysTyped = <String>[];
+    final sortedSchedules = List.of(model.schedules);
+    sortedSchedules.sort((a, b) => a.dayOfWeek.compareTo(b.dayOfWeek));
 
-    // DateTime now = DateTime.now();
-    // DateTime start = DateFormat('hh:mm a', AppStrings.englishCode)
-    //     .parse(workingHours['start']);
-    // DateTime end = DateFormat('hh:mm a', AppStrings.englishCode)
-    //     .parse(workingHours['end']);
-    //Format working hours based on app language
-    // Map<String, String> localizedHours = {};
-    // workingDays.forEach((day) {
-    //   String start = workingHours[day]['start'];
-    //   String end = workingHours[day]['end'];
-    //   localizedHours[day] =
-    //       '(${_formatHour(start, context)} - ${_formatHour(end, context)})';
-    // });
-    return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
+    for (final schedule in sortedSchedules) {
+      localizedDaysTyped.add(_localizedDayHelper(schedule.dayOfWeek, context));
+    }
+
+    return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 10.0, right: 10, left: 10),
-          child: InkWell(
-            onTap: onTap,
-            child:Container(
-              padding: const EdgeInsetsDirectional.symmetric(vertical: 5),
-              decoration: BoxDecoration(
-                color: AppColors.babyBlue,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.babyBlue.withOpacity(0.6),
-                    blurRadius: 5,
-                    offset: const Offset(0, 7), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  const SizedBox(width: 5,),
-                  Container(
-                    // padding: const EdgeInsetsDirectional.all(20),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+        final favoritesCubit = context.watch<FavoritesCubit>();
+        final isFavorite = favoritesCubit.isFavorite(model.id.toString());
 
-                    ),
-                    child: Hero(
-                      tag: model.enName,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: CachedNetworkImage(
-                          imageUrl: model.image,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) =>
-                              Animate(
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  color: AppColors.grey,
-                                  borderRadius: BorderRadius.circular(5)),
-                            ).animate().shimmer(),
-                          ),
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 5,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.04),
+                blurRadius: 15,
+                offset: const Offset(0, 8),
+              ),
+            ],
+            border: Border.all(
+              color: AppColors.babyBlue.withValues(alpha: 0.08),
+              width: 1.5,
+            ),
+          ),
+          child: Stack(
+            children: [
+              InkWell(
+                onTap: onTap,
+                borderRadius: BorderRadius.circular(24),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
                     children: [
-                      SizedBox(
-                        width: 230,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              S.of(context).dr,
-                              style: AppTextStyles.cairo400Style20.copyWith(
-                                color: AppColors.deepBlue,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                Localizations.localeOf(context).languageCode ==
-                                        AppStrings.arabicCode
-                                    ? model.arName
-                                    : model.enName,
-                                style: AppTextStyles.cairo400Style20
-                                    .copyWith(color: AppColors.deepBlue),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.1),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4),
                             ),
                           ],
                         ),
+                        child: Hero(
+                          tag: model.enName,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: CachedNetworkImage(
+                              imageUrl: model.image,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => Animate(
+                                child: Container(
+                                  color: Colors.grey[200],
+                                ),
+                              ).shimmer(),
+                              errorWidget: (context, url, error) => Container(
+                                color: Colors.grey[100],
+                                child: const Icon(
+                                  Icons.person,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      Text(
-                        Localizations.localeOf(context).languageCode ==
-                                AppStrings.arabicCode
-                            ? model.arSpecialization
-                            : model.enSpecialization,
-                        style: AppTextStyles.cairo400Style20
-                            .copyWith(color: AppColors.deepBlue, fontSize: 14),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    '${S.of(context).dr}${Localizations.localeOf(context).languageCode == AppStrings.arabicCode ? model.arName : model.enName}',
+                                    style:
+                                        AppTextStyles.cairo400Style20.copyWith(
+                                      color: AppColors.deepBlue,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.babyBlue
+                                        .withValues(alpha: 0.1),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 14,
+                                    color: AppColors.babyBlue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              Localizations.localeOf(context).languageCode ==
+                                      AppStrings.arabicCode
+                                  ? model.arSpecialization
+                                  : model.enSpecialization,
+                              style: AppTextStyles.cairo300style16.copyWith(
+                                color: AppColors.babyBlue,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.calendar_month_outlined,
+                                  size: 14,
+                                  color: Colors.grey,
+                                ),
+                                const SizedBox(width: 6),
+                                Expanded(
+                                  child: Text(
+                                    localizedDaysTyped.join(', '),
+                                    style:
+                                        AppTextStyles.cairo300style16.copyWith(
+                                      fontSize: 11,
+                                      color: Colors.grey[600],
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            if (model.schedules.isNotEmpty)
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.access_time_rounded,
+                                    size: 14,
+                                    color: Colors.grey,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      TimeFormatter.formatTimeRange(
+                                        model.schedules.first.startTime,
+                                        model.schedules.first.endTime,
+                                        context,
+                                      ),
+                                      style: AppTextStyles.cairo300style16
+                                          .copyWith(
+                                        fontSize: 11,
+                                        color: Colors.grey[600],
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                          ],
+                        ),
                       ),
-                      // Text(
-                      //   'Working Days: ${localizedDays.join(', ')}',
-                      //   style: AppTextStyles.cairo400Style20.copyWith(
-                      //     color: AppColors.white,
-                      //   ),
-                      // ),
-
-                      // Display working hours
-                      // Text(
-                      //   'Working Hours: ${localizedHours.values.join(', ')}',
-                      //   style: AppTextStyles.cairo400Style20.copyWith(
-                      //     color: AppColors.white,
-                      //   ),
-                      // ),
-
-                      // for (int i = 0; i < workingDays.length; i++)
-                      const SizedBox(height: 5,),
-                      Text(
-                          '${S.of(context).workingDays}\n${localizedDays.join(', ')}',
-                          // '${localizedDays[i]}: ${_formatHour(workingHours[workingDays[i]]['start'], context)}',
-
-                          style: AppTextStyles.cairo300style16
-                              .copyWith(fontSize: 12,color: AppColors.deepBlue),),
-                      // Display working hours
-                      // for (var entry in localizedHours.entries)
-                      //   Container(
-                      //     padding: const EdgeInsets.symmetric(horizontal: 7),
-                      //     margin: const EdgeInsets.symmetric(vertical: 5),
-                      //     decoration: BoxDecoration(
-                      //         color: AppColors.offWhite,
-                      //         borderRadius: BorderRadius.circular(5)),
-                      //     child: Text(
-                      //       entry.value,
-                      //       style: AppTextStyles.cairo300style16,
-                      //     ),
-                      //   ),
-                      // for (var day in workingDays)
-                      //   Text(
-                      //     '$day: ${workingHours[day]['start']} - ${workingHours[day]['end']}',
-                      //     style: AppTextStyles.cairo400Style20.copyWith(
-                      //       color: AppColors.white,
-                      //     ),
-                      //   ),
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
-            ),
+              // Favorite Button
+              Positioned(
+                top: 4,
+                right: 4,
+                child: BlocListener<FavoritesCubit, FavoritesState>(
+                  listener: (context, favState) {
+                    if (favState is FavoriteAdded) {
+                      showToast(S.of(context).favorite_added);
+                    } else if (favState is FavoriteRemoved) {
+                      showToast(S.of(context).favorite_removed);
+                    }
+                  },
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        favoritesCubit.toggleFavorite(model.id.toString());
+                      },
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.9),
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.1),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorite ? Colors.red : AppColors.deepGrey,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },
     );
+  }
+
+  String _localizedDayHelper(int dayOfWeek, BuildContext context) {
+    // dayOfWeek 1 = Monday
+    final now = DateTime.now();
+    final daysUntil = (dayOfWeek - now.weekday + 7) % 7;
+    final date = now.add(Duration(days: daysUntil));
+
+    return DateFormat.EEEE(Localizations.localeOf(context).languageCode)
+        .format(date);
   }
 }
