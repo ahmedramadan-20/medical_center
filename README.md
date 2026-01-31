@@ -24,7 +24,7 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 ## ✨ Features
 
-### �️ Admin Dashboard (New)
+### 🛡️ Admin Dashboard (New)
 *   **Real-time Statistics**: Live monitoring of total users, doctors, appointments, and user reviews.
 *   **Appointment Analytics**: Visual status breakdown (Pending, Confirmed, Completed, Cancelled) with progress indicators.
 *   **Quick Action Hub**: 8 specialized management tiles for streamlined operations:
@@ -58,16 +58,15 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 | Splash Screen | Onboarding (EN) | Onboarding (AR) |
 |:---:|:---:|:---:|
-| <img width="280" alt="Splash" src="assets/screenshots/splashscrean.jpg" /> | <img width="280" alt="Onboarding 1" src="assets/screenshots/onboarding1en.jpg" /> | <img width="280" alt="Onboarding 1 AR" src="assets/screenshots/onboarding1ar.jpg" /> |
+| ![Splash](assets/screenshots/splashscrean.jpg) | ![Onboarding 1](assets/screenshots/onboarding1en.jpg) | ![Onboarding 1 AR](assets/screenshots/onboarding1ar.jpg) |
 
 | Onboarding 3 | Login | Sign Up |
 |:---:|:---:|:---:|
-| <img width="280" alt="Onboarding 3" src="assets/screenshots/onboarding3.jpg" /> | <img width="280" alt="Login" src="assets/screenshots/loginen.jpg" /> | <img width="280" alt="Sign Up" src="assets/screenshots/signupen.jpg" /> |
+| ![Onboarding 3](assets/screenshots/onboarding3.jpg) | ![Login](assets/screenshots/loginen.jpg) | ![Sign Up](assets/screenshots/signupen.jpg) |
 
 | Forget Password |
 |:---:|
-| <img width="280" alt="Forgot Password" src="assets/screenshots/forgetpassworden.jpg" /> |
-
+| ![Forgot Password](assets/screenshots/forgetpassworden.jpg) |
 
 </div>
 
@@ -92,6 +91,7 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 [Click here to watch the full walkthrough video](assets/videos/walkthrough.mp4)
 
+---
 
 ## 🏗️ Project Architecture
 
@@ -104,6 +104,13 @@ medical_center/
 ├── Domain Layer         (Entities, Use Cases, Repository Interfaces)
 └── Core Layer           (Theme, Services, Utilities, Routes, Logging)
 ```
+
+### Design Patterns Used
+- **BLoC/Cubit** - State management
+- **Repository Pattern** - Data abstraction
+- **Service Locator (GetIt)** - Dependency injection
+- **Go Router** - Navigation
+- **Firebase** - Backend services
 
 ---
 
@@ -127,7 +134,7 @@ lib/
 
 ---
 
-## �️ Development Workflow
+## 🛤️ Development Workflow
 
 The repository adopts a **Professional Git Workflow**:
 
