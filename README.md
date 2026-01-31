@@ -1,8 +1,8 @@
 # 🏥 Medical Center - Flutter Healthcare Application
 
-A comprehensive Flutter-based healthcare management application with Firebase backend integration. The app provides seamless user authentication, appointment booking, doctor discovery, and an advanced administrative dashboard.
+A comprehensive Flutter-based healthcare management application with Firebase backend integration. The app provides seamless user authentication, appointment booking, doctor discovery, and a professional-grade administrative dashboard.
 
-**Current Version:** 1.1.0  
+**Current Version:** 1.2.0  
 **Flutter SDK:** >=3.1.3 <4.0.0  
 **Repository:** [ahmedramadan-20/medical_center](https://github.com/ahmedramadan-20/medical_center)
 
@@ -14,55 +14,40 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 - [Screenshots](#screenshots)
 - [Project Architecture](#project-architecture)
 - [Project Structure](#project-structure)
-- [Installation & Setup](#installation--setup)
-- [Dependencies](#dependencies)
+- [Development Workflow](#development-workflow)
 - [Key Technologies](#key-technologies)
-- [Routing](#routing)
-- [Localization](#localization)
+- [Installation & Setup](#installation--setup)
 - [Firebase Integration](#firebase-integration)
-- [Development Guidelines](#development-guidelines)
-- [Building & Deployment](#building--deployment)
+- [License](#license)
 
 ---
 
 ## ✨ Features
 
+### �️ Admin Dashboard (New)
+*   **Real-time Statistics**: Live monitoring of total users, doctors, appointments, and user reviews.
+*   **Appointment Analytics**: Visual status breakdown (Pending, Confirmed, Completed, Cancelled) with progress indicators.
+*   **Quick Action Hub**: 8 specialized management tiles for streamlined operations:
+    - Doctor & Specialty Management
+    - Appointment Control
+    - User Role management (Admin/User)
+    - Blood Donation Records
+    - Review Moderation
+    - System Notifications & Analytics
+*   **System Integrity**: Integrated `LoggerService` for granular debugging and system monitoring.
+
 ### 👤 User Features
-- **Authentication**
-  - Secure Sign Up/Sign In with Firebase
-  - Password recovery flow
-  - Robust null-safe user profiles
-- **Doctor Discovery**
-  - Browse doctors by specialty
-  - Real-time category filtering
-  - Detailed doctor profiles with robust scheduling
-- **Appointments**
-  - **Today's Booking**: Intelligent booking enabled based on real-time doctor schedules.
-  - **Patient Profiles**: Flexible booking for self or family members.
-  - **My Appointments**: Real-time list to track status (Pending/Confirmed/Cancelled).
-- **Health Management**
-  - Profile customization
-  - Blood type tracking and records
+*   **Smart Discovery**: Browse doctors by specialty with real-time Firestore-backed filtering.
+*   **Intelligent Booking**: Real-time availability checks with support for "Today" bookings.
+*   **Patient Profiles**: Comprehensive booking system for self or family members.
+*   **Secure Auth**: Firebase-powered Sign Up/Sign In with password recovery and robust profile management.
 
-### 🛡️ Admin Features
-- **Dynamic Dashboard**
-  - High-level overview of system statistics
-  - Quick action shortcuts
-- **User Management**
-  - Promote/Demote administrators
-  - Securely delete user accounts
-- **Doctor & Specialty Management**
-  - Full CRUD for doctors with advanced scheduling logic
-  - Manage specialties and blood records
-- **Data Integrity**
-  - Robust error handling for empty/null Firestore fields
-
-### 🛠️ Technical Features
-- **Clean Architecture**: Modular and testable code structure.
-- **Multi-language**: Fully localized in English (en) & Arabic (ar).
-- **V2 Navigation**: Migrated to `persistent_bottom_nav_bar_v2`.
-- **Offline First**: Local caching with Shared Preferences.
-- **Premium UI**: Modern design with Lottie animations and glassmorphism elements.
+### 🛠️ Technical Excellence
+*   **Clean Architecture**: Strict separation of concerns (Presentation, Domain, Data, Core).
+*   **Feature-Based Folder Structure**: Highly scalable organization of modules.
+*   **Multi-language**: Seamless English (en) & Arabic (ar) support with RTL layout handling.
+*   **V2 Navigation**: Modern bottom navigation utilizing `persistent_bottom_nav_bar_v2`.
+*   **Performance**: Lazy-loaded lists, image caching, and optimized Firestore listeners.
 
 ---
 
@@ -70,9 +55,9 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 <div align="center">
 
-| Admin Dashboard | User Management | Doctor Booking |
+| Admin Dashboard | Appointment Analysis | User Management |
 |:---:|:---:|:---:|
-| <img width="280" height="500" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/1766059401281" /> | <img width="280" height="500" alt="User Management" src="https://github.com/user-attachments/assets/1766059612490" /> | <img width="280" height="500" alt="Booking Screen" src="https://github.com/user-attachments/assets/c1f93798-b42f-4e27-b582-6cc986e8afc3" /> |
+| <img width="280" height="500" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/1766059401281" /> | <img width="280" height="500" alt="Appointment Dashboard" src="https://github.com/user-attachments/assets/1766059612490" /> | <img width="280" height="500" alt="User Management" src="https://github.com/user-attachments/assets/c1f93798-b42f-4e27-b582-6cc986e8afc3" /> |
 
 </div>
 
@@ -80,14 +65,14 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 ## 🏗️ Project Architecture
 
-The project follows **Clean Architecture** principles with **BLoC/Cubit** for state management:
+The project follows **Clean Architecture** with **BLoC/Cubit** for state management:
 
 ```
 medical_center/
 ├── Presentation Layer    (UI, Pages, Widgets, BLoCs/Cubits)
 ├── Data Layer           (Models, Repositories, Data Sources)
 ├── Domain Layer         (Entities, Use Cases, Repository Interfaces)
-└── Core Layer           (Database, Services, Utilities, Routes)
+└── Core Layer           (Theme, Services, Utilities, Routes, Logging)
 ```
 
 ---
@@ -96,53 +81,55 @@ medical_center/
 
 ```
 lib/
-├── main.dart                          # App entry point
-├── core/                              # Shared utilities & services
-│   ├── routes/app_router.dart         # Go Router configuration
-│   └── widgets/                       # Shared/reusable widgets
-├── features/                          # Feature modules
-│   ├── admin/                         # Admin dashboard & management
-│   ├── appointments/                  # Reservation system
-│   ├── home/                          # Doctor discovery & home view
-│   ├── auth/                          # Authentication flow
-│   ├── blood_type/                    # Blood record management
-│   ├── profile/                       # User profile management
-│   └── on_boarding/                  # First-time user experience
-└── l10n/                              # Localization files (AR/EN)
+├── main.dart                          # App entry point & Initialization
+├── core/                              # Shared singleton services & utilities
+│   ├── routes/app_router.dart         # Go Router declarative navigation
+│   ├── theme/                         # Centralized Material 3 theming
+│   └── services/logger_service.dart   # Structured application logging
+├── features/                          # Feature-contained modules
+│   ├── admin/                         # Admin dashboard & management logic
+│   ├── home/                          # Doctor discovery & patient home
+│   ├── auth/                          # Authentication & profile management
+│   ├── appointments/                  # Booking & scheduling system
+│   └── blood_type/                    # Blood record registry
+└── l10n/                              # Localization delegates (AR/EN)
 ```
 
 ---
 
-## 📦 Key Dependencies
+## �️ Development Workflow
 
-- **State Management**: `flutter_bloc`, `bloc`
-- **Dependency Injection**: `get_it`
-- **Navigation**: `go_router`, `persistent_bottom_nav_bar_v2`
-- **Backend**: `firebase_core`, `firebase_auth`, `cloud_firestore`
-- **Animations**: `lottie`, `flutter_animate`
-- **Utilities**: `shared_preferences`, `intl`, `uuid`, `cached_network_image`
+The repository adopts a **Professional Git Workflow**:
+
+*   **`master`**: Production-ready code only.
+*   **`dev`**: The main development branch for integration.
+*   **`feat/*`**: Feature-specific branches (e.g., `feat/admin-dashboard`) for isolated work.
+
+Standard Commit Convention: `type(scope): description` (e.g., `feat(admin): implement dashboard analytics`).
+
+---
+
+## 📦 Key Technologies
+
+*   **State Management**: `flutter_bloc`
+*   **Dependency Injection**: `get_it`
+*   **Navigation**: `go_router` (V2)
+*   **Backend**: `firebase_auth`, `cloud_firestore`, `firebase_core`
+*   **UI/UX**: Custom Glassmorphism, Material 3, `google_fonts` (Cairo/Poppins)
+*   **Logging**: `LoggerService` based on `dart:developer`
 
 ---
 
 ## 🚀 Quick Setup
 
-1. **Pub Get**: `flutter pub get`
-2. **Localization**: `flutter pub run intl_utils:generate`
-3. **Run**: `flutter run`
-
----
-
-## 📊 Project Statistics
-
-- **Features**: 8 Major modules
-- **Screens**: 15+ Advanced screens
-- **Localization**: Full English & Arabic support
-- **Safety**: 100% Robust null-handling for Firebase data
+1. **Get Packages**: `flutter pub get`
+2. **Generate L10n**: `flutter pub run intl_utils:generate`
+3. **Run App**: `flutter run`
 
 ---
 
 ## 📝 License
 
 Maintainer: [ahmedramadan-20](https://github.com/ahmedramadan-20)  
-**Last Updated:** December 2024  
-**Status:** Feature Rich & Stable
+**Last Updated:** January 2026  
+**Status:** ✅ Production Ready | High-Performance
