@@ -71,20 +71,26 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 </div>
 
-### 🛡️ Administrative Dashboard (Placeholders)
+### 🛡️ Administrative Dashboard
 <div align="center">
 
 | Admin Dashboard | Appointment Analysis | User Management |
 |:---:|:---:|:---:|
-| (MISSING: admin_dashboard.jpg) | (MISSING: appointment_analytics.jpg) | (MISSING: user_management.jpg) |
+| ![Admin Dashboard](assets/screenshots/admin_dashboard.jpg) | ![Appointment Analysis](assets/screenshots/appointment_analytics.jpg) | ![User Management](assets/screenshots/user_management.jpg) |
 
 </div>
 
 ---
 
 ## 📹 Application Walkthrough
-> [!NOTE]
-> Adding a short (30-60s) video or GIF of the app in action (especially the new Admin Dashboard) significantly enhances the repository's professional appeal on GitHub.
+
+<div align="center">
+  <video src="assets/videos/walkthrough.mp4" width="100%" controls>
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+[Click here to watch the full walkthrough video](assets/videos/walkthrough.mp4)
 
 
 ## 🏗️ Project Architecture
