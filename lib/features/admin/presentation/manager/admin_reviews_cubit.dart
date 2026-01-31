@@ -54,13 +54,24 @@ class AdminReviewsCubit extends Cubit<AdminReviewsState> {
     );
   }
 
+  Future<void> approveReview(String reviewId) async {
+    try {
+      await _firestore
+          .collection('reviews')
+          .doc(reviewId)
+          .update({'isApproved': true});
+      _logger.info('Review approved: $reviewId');
+    } catch (e) {
+      _logger.error('Error approving review', e);
+      emit(AdminReviewsError(e.toString()));
+    }
+  }
+
   Future<void> deleteReview(ReviewModel review) async {
     try {
-      // Note: In a real app, deleting a review should also re-calculate the doctor's average rating.
-      // For now, we'll just delete the record.
       await _firestore.collection('reviews').doc(review.id).delete();
+      _logger.info('Review deleted: ${review.id}');
 
-      // Also reset the appointment reviewed status if we want to allow re-reviewing
       if (review.appointmentId.isNotEmpty) {
         await _firestore
             .collection('appointments')
@@ -68,9 +79,9 @@ class AdminReviewsCubit extends Cubit<AdminReviewsState> {
             .update({'isReviewed': false});
       }
 
-      // Aggregation update (decrement)
       await _updateDoctorRatingOnDelete(review.doctorId, review.rating);
     } catch (e) {
+      _logger.error('Error deleting review', e);
       emit(AdminReviewsError(e.toString()));
     }
   }

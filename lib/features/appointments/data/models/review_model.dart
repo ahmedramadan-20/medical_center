@@ -8,6 +8,7 @@ class ReviewModel {
     required this.comment,
     required this.createdAt,
     this.id,
+    this.isApproved = false,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) => ReviewModel(
@@ -19,6 +20,7 @@ class ReviewModel {
         rating: (json['rating'] ?? 0.0).toDouble(),
         comment: json['comment'] ?? '',
         createdAt: json['createdAt'] ?? '',
+        isApproved: json['isApproved'] ?? false,
       );
   final String? id;
   final String appointmentId;
@@ -28,6 +30,7 @@ class ReviewModel {
   final double rating;
   final String comment;
   final String createdAt;
+  final bool isApproved;
 
   Map<String, dynamic> toMap() => {
         'id': id,
@@ -38,6 +41,7 @@ class ReviewModel {
         'rating': rating,
         'comment': comment,
         'createdAt': createdAt,
+        'isApproved': isApproved,
       };
 
   ReviewModel copyWith({
@@ -49,6 +53,7 @@ class ReviewModel {
     double? rating,
     String? comment,
     String? createdAt,
+    bool? isApproved,
   }) =>
       ReviewModel(
         id: id ?? this.id,
@@ -59,5 +64,6 @@ class ReviewModel {
         rating: rating ?? this.rating,
         comment: comment ?? this.comment,
         createdAt: createdAt ?? this.createdAt,
+        isApproved: isApproved ?? this.isApproved,
       );
 }

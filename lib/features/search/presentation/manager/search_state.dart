@@ -14,11 +14,12 @@ class SearchInitial extends SearchState {}
 
 /// Search results loaded
 class SearchLoaded extends SearchState {
-  const SearchLoaded(this.doctors);
+  const SearchLoaded(this.doctors, {this.history = const []});
   final List<DoctorsModel> doctors;
+  final List<String> history;
 
   @override
-  List<Object?> get props => [doctors];
+  List<Object?> get props => [doctors, history];
 }
 
 /// Search error

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:medical_center/core/services/logger_service.dart';
 import 'package:medical_center/core/services/notification_service.dart';
 import 'package:medical_center/features/appointments/data/models/appointment_model.dart';
@@ -66,10 +67,34 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         data: {'type': 'appointment', 'id': appointment.id},
       );
 
+      // Schedule local reminder for the user
+      _scheduleReminder(appointment);
+
       emit(AppointmentSuccess('Appointment booked successfully'));
     } catch (e, stackTrace) {
       _logger.error('Failed to book appointment', e, stackTrace);
       emit(AppointmentError(e.toString()));
+    }
+  }
+
+  void _scheduleReminder(AppointmentModel appointment) {
+    try {
+      final dateStr = appointment.date; // yyyy-MM-dd
+      final timeStr = appointment.time; // h:mm a
+
+      final dateTimeStr = '$dateStr $timeStr';
+      final format = DateFormat('yyyy-MM-dd h:mm a');
+      final scheduledDateTime = format.parse(dateTimeStr);
+
+      NotificationService().scheduleAppointmentReminder(
+        id: appointment.hashCode,
+        title: 'Appointment Reminder',
+        body:
+            'Your appointment with Dr. ${appointment.doctorName} is in 30 minutes.',
+        scheduledDate: scheduledDateTime,
+      );
+    } catch (e) {
+      _logger.warning('Failed to schedule reminder: $e');
     }
   }
 

@@ -57,12 +57,13 @@ class ReviewCubit extends Cubit<ReviewState> {
     _firestore
         .collection('reviews')
         .where('doctorId', isEqualTo: doctorId)
+        .where('isApproved', isEqualTo: true)
         .snapshots()
         .listen(
       (snapshot) {
         final reviews = snapshot.docs.map((doc) {
           final data = doc.data();
-          return ReviewModel.fromJson(data).copyWith(id: doc.id);
+          return ReviewModel.fromJson(data);
         }).toList();
 
         // Sort in memory to avoid requiring a composite index
@@ -74,5 +75,44 @@ class ReviewCubit extends Cubit<ReviewState> {
         emit(ReviewError(e.toString()));
       },
     );
+  }
+
+  void getAllReviewsForAdmin() {
+    emit(ReviewLoading());
+    _firestore.collection('reviews').snapshots().listen(
+      (snapshot) {
+        final reviews = snapshot.docs.map((doc) {
+          final data = doc.data();
+          return ReviewModel.fromJson(data);
+        }).toList();
+
+        reviews.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+        emit(ReviewSuccess(reviews));
+      },
+      onError: (e) {
+        emit(ReviewError(e.toString()));
+      },
+    );
+  }
+
+  Future<void> approveReview(String reviewId) async {
+    try {
+      await _firestore
+          .collection('reviews')
+          .doc(reviewId)
+          .update({'isApproved': true});
+      emit(ReviewActionSuccess('Review approved successfully'));
+    } catch (e) {
+      emit(ReviewError(e.toString()));
+    }
+  }
+
+  Future<void> deleteReview(String reviewId) async {
+    try {
+      await _firestore.collection('reviews').doc(reviewId).delete();
+      emit(ReviewActionSuccess('Review deleted successfully'));
+    } catch (e) {
+      emit(ReviewError(e.toString()));
+    }
   }
 }

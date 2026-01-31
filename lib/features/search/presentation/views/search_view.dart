@@ -126,6 +126,8 @@ class _SearchViewState extends State<SearchView> {
               ),
             ),
             const SizedBox(height: 12),
+            _buildRecentSearches(),
+            const SizedBox(height: 12),
             Row(
               children: [
                 Expanded(
@@ -156,6 +158,8 @@ class _SearchViewState extends State<SearchView> {
                   ),
                 ),
                 const SizedBox(width: 12),
+                _buildSortOptions(),
+                const SizedBox(width: 12),
                 BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {
                     final searchCubit = context.read<SearchCubit>();
@@ -177,6 +181,67 @@ class _SearchViewState extends State<SearchView> {
             ),
           ],
         ),
+      );
+
+  Widget _buildRecentSearches() => BlocBuilder<SearchCubit, SearchState>(
+        builder: (context, state) {
+          if (state is SearchLoaded &&
+              state.history.isNotEmpty &&
+              _searchController.text.isEmpty) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Recent Searches',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  children: state.history
+                      .map(
+                        (query) => InputChip(
+                          label: Text(query),
+                          onPressed: () {
+                            _searchController.text = query;
+                            context
+                                .read<SearchCubit>()
+                                .updateSearchQuery(query);
+                            setState(() {});
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
+            );
+          }
+          return const SizedBox.shrink();
+        },
+      );
+
+  Widget _buildSortOptions() => PopupMenuButton<SearchSortType>(
+        icon: Icon(
+          Icons.sort_rounded,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        onSelected: (sortType) {
+          context.read<SearchCubit>().updateSortType(sortType);
+        },
+        itemBuilder: (context) => [
+          const PopupMenuItem(
+            value: SearchSortType.rating,
+            child: Text('Sort by Rating'),
+          ),
+          const PopupMenuItem(
+            value: SearchSortType.experience,
+            child: Text('Sort by Experience'),
+          ),
+        ],
       );
 
   Widget _buildFilterChips() {

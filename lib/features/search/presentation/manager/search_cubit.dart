@@ -1,32 +1,47 @@
+import 'package:medical_center/features/search/presentation/manager/search_history_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_center/features/home/data/models/doctors_model.dart';
 import 'package:medical_center/features/search/presentation/manager/search_state.dart';
+
+enum SearchSortType { rating, experience }
 
 /// Cubit for managing doctor search and filtering.
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInitial());
 
+  final SearchHistoryService _historyService = SearchHistoryService();
   List<DoctorsModel> _allDoctors = [];
   List<DoctorsModel> _filteredDoctors = [];
+  List<String> _history = [];
 
   String _searchQuery = '';
   String? _selectedSpecialty;
   double? _minRating;
   double? _maxPrice;
   bool? _availableOnly;
+  SearchSortType _sortType = SearchSortType.rating;
 
   List<DoctorsModel> get filteredDoctors => _filteredDoctors;
 
-  /// Initialize search with all doctors
-  void initializeSearch(List<DoctorsModel> doctors) {
+  /// Initialize search with all doctors and load history
+  Future<void> initializeSearch(List<DoctorsModel> doctors) async {
     _allDoctors = doctors;
     _filteredDoctors = doctors;
-    emit(SearchLoaded(_filteredDoctors));
+    await _loadHistory();
+    _applyFilters();
   }
 
-  /// Update search query
-  void updateSearchQuery(String query) {
+  Future<void> _loadHistory() async {
+    _history = await _historyService.getHistory();
+  }
+
+  /// Update search query and save to history
+  Future<void> updateSearchQuery(String query) async {
     _searchQuery = query.toLowerCase();
+    if (_searchQuery.isNotEmpty) {
+      await _historyService.addQuery(query);
+      await _loadHistory();
+    }
     _applyFilters();
   }
 
@@ -54,6 +69,12 @@ class SearchCubit extends Cubit<SearchState> {
     _applyFilters();
   }
 
+  /// Change sorting type
+  void updateSortType(SearchSortType sortType) {
+    _sortType = sortType;
+    _applyFilters();
+  }
+
   /// Clear all filters
   void clearFilters() {
     _searchQuery = '';
@@ -64,7 +85,7 @@ class SearchCubit extends Cubit<SearchState> {
     _applyFilters();
   }
 
-  /// Apply all active filters
+  /// Apply all active filters and sorting
   void _applyFilters() {
     _filteredDoctors = _allDoctors.where((doctor) {
       // Search query filter (name or specialty)
@@ -106,13 +127,16 @@ class SearchCubit extends Cubit<SearchState> {
       return true;
     }).toList();
 
-    // Sort by rating (highest first) if no search query
-    if (_searchQuery.isEmpty) {
+    // Sorting logic
+    if (_sortType == SearchSortType.rating) {
       _filteredDoctors
           .sort((a, b) => b.averageRating.compareTo(a.averageRating));
+    } else if (_sortType == SearchSortType.experience) {
+      _filteredDoctors
+          .sort((a, b) => b.experienceYears.compareTo(a.experienceYears));
     }
 
-    emit(SearchLoaded(_filteredDoctors));
+    emit(SearchLoaded(_filteredDoctors, history: _history));
   }
 
   /// Get current filter status

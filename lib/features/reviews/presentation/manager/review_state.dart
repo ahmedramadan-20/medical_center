@@ -18,6 +18,11 @@ class AddReviewSuccess extends ReviewState {
   final String message;
 }
 
+class ReviewActionSuccess extends ReviewState {
+  ReviewActionSuccess(this.message);
+  final String message;
+}
+
 class ReviewError extends ReviewState {
   ReviewError(this.message);
   final String message;
