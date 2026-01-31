@@ -18,7 +18,7 @@ class DashboardSearchBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
               color:
-                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)),
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
@@ -33,9 +33,9 @@ class DashboardSearchBar extends StatelessWidget {
             hintText: hintText,
             hintStyle: TextStyle(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
-                fontSize: 14),
+                fontSize: 14,),
             prefixIcon: Icon(Icons.search,
-                color: Theme.of(context).colorScheme.primary),
+                color: Theme.of(context).colorScheme.primary,),
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,

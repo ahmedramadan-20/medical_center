@@ -1,8 +1,11 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_center/core/network/network_info.dart';
 import 'package:medical_center/core/services/logger_service.dart';
 import 'package:medical_center/features/reviews/data/models/review_model.dart';
+import 'package:medical_center/generated/l10n.dart';
 
 abstract class AdminReviewsState {}
 
@@ -24,7 +27,9 @@ class AdminReviewsError extends AdminReviewsState {
 ///
 /// Handles loading and monitoring all reviews in the system with real-time updates.
 class AdminReviewsCubit extends Cubit<AdminReviewsState> {
-  AdminReviewsCubit() : super(AdminReviewsInitial());
+  AdminReviewsCubit(this._networkInfo) : super(AdminReviewsInitial());
+
+  final NetworkInfo _networkInfo;
 
   final _logger = LoggerService('AdminReviewsCubit');
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -55,6 +60,10 @@ class AdminReviewsCubit extends Cubit<AdminReviewsState> {
   }
 
   Future<void> approveReview(String reviewId) async {
+    if (!await _networkInfo.isConnected) {
+      emit(AdminReviewsError(S.current.offline_error));
+      return;
+    }
     try {
       await _firestore
           .collection('reviews')
@@ -68,6 +77,10 @@ class AdminReviewsCubit extends Cubit<AdminReviewsState> {
   }
 
   Future<void> deleteReview(ReviewModel review) async {
+    if (!await _networkInfo.isConnected) {
+      emit(AdminReviewsError(S.current.offline_error));
+      return;
+    }
     try {
       await _firestore.collection('reviews').doc(review.id).delete();
       _logger.info('Review deleted: ${review.id}');

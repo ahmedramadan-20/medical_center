@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/features/admin/presentation/manager/admin_reviews_cubit.dart';
 import 'package:medical_center/generated/l10n.dart';
@@ -10,7 +11,7 @@ class ManageReviewsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => AdminReviewsCubit()..getReviews(),
+        create: (context) => getIt<AdminReviewsCubit>()..getReviews(),
         child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(

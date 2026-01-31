@@ -1,9 +1,13 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:medical_center/core/network/network_info.dart';
 import 'package:medical_center/core/services/logger_service.dart';
 import 'package:medical_center/core/services/notification_service.dart';
+import 'package:medical_center/core/services/sync/sync_action_model.dart';
+import 'package:medical_center/core/services/sync/sync_service.dart';
 import 'package:medical_center/features/appointments/data/models/appointment_model.dart';
 import 'package:medical_center/features/appointments/presentation/manager/appointment_state.dart';
 
@@ -25,8 +29,11 @@ import 'package:medical_center/features/appointments/presentation/manager/appoin
 /// await cubit.getUserAppointments(userId);
 /// ```
 class AppointmentCubit extends Cubit<AppointmentState> {
-  AppointmentCubit() : super(AppointmentInitial());
+  AppointmentCubit(this._networkInfo, this._syncService)
+      : super(AppointmentInitial());
 
+  final NetworkInfo _networkInfo;
+  final SyncService _syncService;
   final _logger = LoggerService('AppointmentCubit');
   final CollectionReference appointmentsCollection =
       FirebaseFirestore.instance.collection('appointments');
@@ -46,6 +53,21 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   /// Emits [AppointmentLoading] during processing, then either
   /// [AppointmentSuccess] with message or [AppointmentError].
   Future<void> bookAppointment(AppointmentModel appointment) async {
+    // 1. Offline Check
+    if (!await _networkInfo.isConnected) {
+      await _syncService.addToQueue(
+        type: SyncActionModel.bookAppointment,
+        payload: appointment.toMap(),
+      );
+      // Optimistic Success for booking
+      emit(
+        AppointmentSuccess(
+          'Request saved locally. Will be booked when online.',
+        ),
+      );
+      return;
+    }
+
     emit(AppointmentLoading());
     _logger.info(
       'Booking appointment for ${appointment.patientName} with Dr. ${appointment.doctorName}',
@@ -153,6 +175,16 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   /// **Note:** Does not emit loading/success states as the stream
   /// listener will handle the UI update automatically.
   Future<void> cancelAppointment(String appointmentId) async {
+    if (!await _networkInfo.isConnected) {
+      await _syncService.addToQueue(
+        type: SyncActionModel.cancelAppointment,
+        payload: {'appointmentId': appointmentId},
+      );
+      // No easy way to show optimistic UI for stream cancellations without local filtering wrapper
+      // But we can show a message. The list won't update until online.
+      emit(AppointmentSuccess('Cancellation saved locally.'));
+      return;
+    }
     _logger.info('Cancelling appointment: $appointmentId');
 
     try {

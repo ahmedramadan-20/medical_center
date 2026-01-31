@@ -11,7 +11,7 @@ class ThemeRepositoryImpl implements ThemeRepository {
 
   @override
   Future<Either<Failure, bool>> changeTheme(
-      {required ThemeMode themeMode}) async {
+      {required ThemeMode themeMode,}) async {
     try {
       final isChanged =
           await themeLocalDataSource.changeTheme(themeMode: themeMode);

@@ -9,9 +9,9 @@ import 'package:medical_center/core/services/logger_service.dart';
 import 'package:medical_center/core/utils/app_assets.dart';
 import 'package:medical_center/core/utils/app_strings.dart';
 import 'package:medical_center/core/utils/time_formatter.dart';
+import 'package:medical_center/features/auth/data/models/user_model.dart';
 import 'package:medical_center/features/home/data/models/category_model.dart';
 import 'package:medical_center/features/home/data/models/doctors_model.dart';
-import 'package:medical_center/features/auth/data/models/user_model.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_state.dart';
 import 'package:medical_center/generated/l10n.dart';
 

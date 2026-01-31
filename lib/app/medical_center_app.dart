@@ -33,7 +33,7 @@ class MedicalCenter extends StatelessWidget {
             create: (context) => getIt<HomeCubit>(),
           ),
           BlocProvider(
-            create: (context) => FavoritesCubit(),
+            create: (context) => getIt<FavoritesCubit>()..loadFavorites(),
           ),
           BlocProvider(
             create: (context) => getIt<NotificationsCubit>()

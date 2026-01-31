@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-
+import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_button.dart';
 import 'package:medical_center/features/appointments/data/models/appointment_model.dart';
@@ -68,7 +68,7 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => AppointmentCubit(),
+        create: (context) => getIt<AppointmentCubit>(),
         child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(

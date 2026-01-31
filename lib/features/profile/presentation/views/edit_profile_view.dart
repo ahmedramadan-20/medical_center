@@ -78,7 +78,7 @@ class _EditProfileViewState extends State<EditProfileView> {
               const SizedBox(height: 20),
               ListTile(
                 leading: Icon(Icons.camera_alt,
-                    color: Theme.of(context).colorScheme.primary),
+                    color: Theme.of(context).colorScheme.primary,),
                 title: Text(S.of(context).camera),
                 onTap: () {
                   Navigator.pop(context);

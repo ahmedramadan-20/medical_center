@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medical_center/app/global_cubit/theme_cubit.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_change_lang_button.dart';
-import 'package:medical_center/app/global_cubit/theme_cubit.dart';
 import 'package:medical_center/features/profile/presentation/profile_cubit/profile_cubit.dart';
 import 'package:medical_center/generated/l10n.dart';
 

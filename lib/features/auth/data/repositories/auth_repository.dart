@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:medical_center/core/errors/failures.dart';
+import 'package:medical_center/core/network/network_info.dart';
 import 'package:medical_center/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:medical_center/generated/l10n.dart';
 
@@ -33,9 +34,13 @@ abstract class AuthRepository {
 
 /// Implementation of [AuthRepository].
 class AuthRepositoryImpl implements AuthRepository {
-  AuthRepositoryImpl({required AuthRemoteDataSource remoteDataSource})
-      : _remoteDataSource = remoteDataSource;
+  AuthRepositoryImpl({
+    required AuthRemoteDataSource remoteDataSource,
+    required NetworkInfo networkInfo,
+  })  : _remoteDataSource = remoteDataSource,
+        _networkInfo = networkInfo;
   final AuthRemoteDataSource _remoteDataSource;
+  final NetworkInfo _networkInfo;
 
   @override
   Future<Either<Failure, void>> signUp({
@@ -48,38 +53,42 @@ class AuthRepositoryImpl implements AuthRepository {
     required String bloodType,
     required String image,
   }) async {
-    try {
-      await _remoteDataSource.signUpWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+    if (await _networkInfo.isConnected) {
+      try {
+        await _remoteDataSource.signUpWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
 
-      await _remoteDataSource.createUserProfile(
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        phone: phone,
-        gender: gender,
-        bloodType: bloodType,
-        image: image,
-      );
+        await _remoteDataSource.createUserProfile(
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          gender: gender,
+          bloodType: bloodType,
+          image: image,
+        );
 
-      await _remoteDataSource.createBloodTypeRecord(
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        phone: phone,
-        gender: gender,
-        bloodType: bloodType,
-      );
+        await _remoteDataSource.createBloodTypeRecord(
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          gender: gender,
+          bloodType: bloodType,
+        );
 
-      await _remoteDataSource.sendEmailVerification();
+        await _remoteDataSource.sendEmailVerification();
 
-      return const Right(null);
-    } on FirebaseAuthException catch (e) {
-      return Left(_handleFirebaseAuthException(e));
-    } catch (e) {
-      return Left(ServerFailure(message: e.toString()));
+        return const Right(null);
+      } on FirebaseAuthException catch (e) {
+        return Left(_handleFirebaseAuthException(e));
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return Left(OfflineFailure(message: S.current.offline_error));
     }
   }
 
@@ -88,16 +97,20 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    try {
-      await _remoteDataSource.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return const Right(null);
-    } on FirebaseAuthException catch (e) {
-      return Left(_handleFirebaseAuthException(e));
-    } catch (e) {
-      return Left(ServerFailure(message: e.toString()));
+    if (await _networkInfo.isConnected) {
+      try {
+        await _remoteDataSource.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        return const Right(null);
+      } on FirebaseAuthException catch (e) {
+        return Left(_handleFirebaseAuthException(e));
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return Left(OfflineFailure(message: S.current.offline_error));
     }
   }
 
@@ -105,11 +118,15 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, void>> resetPassword({
     required String email,
   }) async {
-    try {
-      await _remoteDataSource.sendPasswordResetEmail(email: email);
-      return const Right(null);
-    } catch (e) {
-      return Left(ServerFailure(message: e.toString()));
+    if (await _networkInfo.isConnected) {
+      try {
+        await _remoteDataSource.sendPasswordResetEmail(email: email);
+        return const Right(null);
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return Left(OfflineFailure(message: S.current.offline_error));
     }
   }
 

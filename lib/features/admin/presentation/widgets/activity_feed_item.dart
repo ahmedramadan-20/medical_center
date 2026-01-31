@@ -80,7 +80,7 @@ class ActivityFeedItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
             color:
-                Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)),
+                Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),),
       ),
       child: Row(
         children: [

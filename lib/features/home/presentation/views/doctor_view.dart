@@ -1,10 +1,11 @@
 import 'dart:ui' as ui;
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-
+import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/utils/app_strings.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/utils/time_formatter.dart';
@@ -23,7 +24,8 @@ class DoctorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => ReviewCubit()..getDoctorReviews(model.docId ?? ''),
+        create: (context) =>
+            getIt<ReviewCubit>()..getDoctorReviews(model.docId ?? ''),
         child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.surface,
           body: Stack(

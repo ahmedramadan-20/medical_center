@@ -1,14 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_center/core/network/network_info.dart';
+import 'package:medical_center/core/services/sync/sync_action_model.dart';
+import 'package:medical_center/core/services/sync/sync_service.dart';
 import 'package:medical_center/features/reviews/data/models/review_model.dart';
 import 'package:medical_center/features/reviews/presentation/manager/review_state.dart';
 
 class ReviewCubit extends Cubit<ReviewState> {
-  ReviewCubit() : super(ReviewInitial());
+  ReviewCubit({
+    required NetworkInfo networkInfo,
+    required SyncService syncService,
+  })  : _networkInfo = networkInfo,
+        _syncService = syncService,
+        super(ReviewInitial());
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final NetworkInfo _networkInfo;
+  final SyncService _syncService;
 
   Future<void> submitReview(ReviewModel review) async {
+    // 1. Offline Check
+    if (!await _networkInfo.isConnected) {
+      await _syncService.addToQueue(
+        type: SyncActionModel.addReview,
+        payload: review
+            .toMap(), // review.toMap() handles id usually, but here we might need a clean map
+      );
+      emit(AddReviewSuccess('Review saved locally.'));
+      return;
+    }
+
     emit(AddReviewLoading());
     try {
       // 1. Add review to 'reviews' collection

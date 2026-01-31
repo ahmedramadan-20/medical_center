@@ -458,6 +458,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "of_medical_specialists": MessageLookupByLibrary.simpleMessage(
       "من التخصصات الطبية لاحتياجاتك الصحية",
     ),
+    "offline_error": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد اتصال بالإنترنت",
+    ),
     "on_specific_days": MessageLookupByLibrary.simpleMessage(
       "في أيام معينة لتخطيط زيارتك بسهولة",
     ),

@@ -1,16 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+/// Cubit for managing user's favorite doctors.
+import 'package:medical_center/core/network/network_info.dart';
+import 'package:medical_center/core/services/sync/sync_action_model.dart';
+import 'package:medical_center/core/services/sync/sync_service.dart';
 import 'package:medical_center/features/favorites/data/models/favorite_model.dart';
 import 'package:medical_center/features/favorites/presentation/manager/favorites_state.dart';
 import 'package:medical_center/features/home/data/models/doctors_model.dart';
 
 /// Cubit for managing user's favorite doctors.
 class FavoritesCubit extends Cubit<FavoritesState> {
-  FavoritesCubit() : super(FavoritesInitial());
+  FavoritesCubit({
+    required NetworkInfo networkInfo,
+    required SyncService syncService,
+  })  : _networkInfo = networkInfo,
+        _syncService = syncService,
+        super(FavoritesInitial());
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final NetworkInfo _networkInfo;
+  final SyncService _syncService;
 
   List<String> _favoriteDoctorIds = [];
   List<DoctorsModel> _favoriteDoctors = [];
@@ -62,12 +73,33 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     }
   }
 
-  /// Add a doctor to favorites
+  /// Add a doctor to favorites with offline support
   Future<void> addFavorite(String doctorId) async {
-    try {
-      final userId = _auth.currentUser?.email;
-      if (userId == null) return;
+    final userId = _auth.currentUser?.email;
+    if (userId == null) return;
 
+    // 1. Optimistic Update
+    if (!_favoriteDoctorIds.contains(doctorId)) {
+      _favoriteDoctorIds.add(doctorId);
+      emit(FavoriteAdded(doctorId));
+    }
+
+    // 2. Offline Check
+    if (!await _networkInfo.isConnected) {
+      final favorite = FavoriteModel(
+        userId: userId,
+        doctorId: doctorId,
+        addedAt: DateTime.now(),
+      );
+
+      await _syncService.addToQueue(
+        type: SyncActionModel.addFavorite,
+        payload: favorite.toJson(),
+      );
+      return;
+    }
+
+    try {
       final favorite = FavoriteModel(
         userId: userId,
         doctorId: doctorId,
@@ -75,22 +107,40 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       );
 
       await _firestore.collection('favorites').add(favorite.toJson());
-
-      _favoriteDoctorIds.add(doctorId);
       await loadFavorites();
-
       emit(FavoriteAdded(doctorId));
     } catch (e) {
+      // Revert on error
+      _favoriteDoctorIds.remove(doctorId);
       emit(FavoritesError(e.toString()));
     }
   }
 
-  /// Remove a doctor from favorites
+  /// Remove a doctor from favorites with offline support
   Future<void> removeFavorite(String doctorId) async {
-    try {
-      final userId = _auth.currentUser?.email;
-      if (userId == null) return;
+    final userId = _auth.currentUser?.email;
+    if (userId == null) return;
 
+    // 1. Optimistic Update
+    if (_favoriteDoctorIds.contains(doctorId)) {
+      _favoriteDoctorIds.remove(doctorId);
+      _favoriteDoctors.removeWhere((doc) => doc.id == doctorId);
+      emit(FavoriteRemoved(doctorId));
+    }
+
+    // 2. Offline Check
+    if (!await _networkInfo.isConnected) {
+      await _syncService.addToQueue(
+        type: SyncActionModel.removeFavorite,
+        payload: {
+          'userId': userId,
+          'doctorId': doctorId,
+        },
+      );
+      return;
+    }
+
+    try {
       final snapshot = await _firestore
           .collection('favorites')
           .where('userId', isEqualTo: userId)
@@ -101,11 +151,12 @@ class FavoritesCubit extends Cubit<FavoritesState> {
         await doc.reference.delete();
       }
 
-      _favoriteDoctorIds.remove(doctorId);
       await loadFavorites();
-
       emit(FavoriteRemoved(doctorId));
     } catch (e) {
+      // Revert on error (complex to revert fully without re-fetching,
+      // but we can re-add ID at least)
+      _favoriteDoctorIds.add(doctorId);
       emit(FavoritesError(e.toString()));
     }
   }

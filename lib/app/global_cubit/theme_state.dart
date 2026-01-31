@@ -10,8 +10,8 @@ abstract class ThemeState extends Equatable {
 class ThemeInitial extends ThemeState {}
 
 class ChangeThemeState extends ThemeState {
-  final ThemeMode themeMode;
   const ChangeThemeState(this.themeMode);
+  final ThemeMode themeMode;
 
   @override
   List<Object> get props => [themeMode];

@@ -1,15 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_center/core/network/network_info.dart';
 import 'package:medical_center/core/services/logger_service.dart';
+import 'package:medical_center/core/services/sync/sync_action_model.dart';
+import 'package:medical_center/core/services/sync/sync_service.dart';
 import 'package:medical_center/features/auth/data/models/user_model.dart';
 import 'package:medical_center/features/profile/presentation/profile_cubit/profile_state.dart';
 import 'package:medical_center/generated/l10n.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit() : super(ProfileInitial());
+  ProfileCubit({
+    required NetworkInfo networkInfo,
+    required SyncService syncService,
+  })  : _networkInfo = networkInfo,
+        _syncService = syncService,
+        super(ProfileInitial());
 
   final _logger = LoggerService('ProfileCubit');
+  final NetworkInfo _networkInfo;
+  final SyncService _syncService;
   UserModel? originalUser;
   String? _userDocId; // Store the document ID
 
@@ -35,9 +45,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  /// Update user profile information.
-  ///
-  /// Updates firstName, lastName, phone, and optionally profile photo.
+  /// Update user profile information with offline support.
   Future<void> updateProfile({
     required String name,
     required String phone,
@@ -66,21 +74,55 @@ class ProfileCubit extends Cubit<ProfileState> {
         'firstName': firstName,
         'lastName': lastName,
         'phone': phone,
-        'updatedAt': FieldValue.serverTimestamp(),
+        'updatedAt': FieldValue.serverTimestamp()
+            .toString(), // Convert to string for serialization
       };
 
-      // Add photo if provided (field name is 'image' not 'profilePhoto')
       if (profilePhotoBase64 != null && profilePhotoBase64.isNotEmpty) {
         updateData['image'] = profilePhotoBase64;
       }
 
-      // Update in Firestore using the stored document ID
+      // 1. Optimistic Update (Local State)
+      // Update originalUser immediately so UI reflects changes
+      if (originalUser != null) {
+        final updatedUserAsMap = originalUser!.toMap();
+        updatedUserAsMap['firstName'] = firstName;
+        updatedUserAsMap['lastName'] = lastName;
+        updatedUserAsMap['phone'] = phone;
+        if (profilePhotoBase64 != null && profilePhotoBase64.isNotEmpty) {
+          updatedUserAsMap['image'] = profilePhotoBase64;
+        }
+        originalUser = UserModel.fromJson(updatedUserAsMap);
+      }
+
+      // 2. Check Connectivity
+      if (!await _networkInfo.isConnected) {
+        _logger.info('Offline: Queueing profile update');
+
+        await _syncService.addToQueue(
+          type: SyncActionModel.updateProfile,
+          payload: {
+            'userId': _userDocId,
+            'data': updateData,
+          },
+        );
+
+        emit(ProfileUpdateSuccess('Saved locally. Will sync when online.'));
+        return;
+      }
+
+      // 3. Online Update
+      // Use FieldValue.serverTimestamp() for actual Firestore update
+      // We need a clean map for Firestore, re-creating it to use proper FieldValue
+      final firestoreData = Map<String, dynamic>.from(updateData);
+      firestoreData['updatedAt'] = FieldValue.serverTimestamp();
+
       await FirebaseFirestore.instance
           .collection('users')
           .doc(_userDocId)
-          .update(updateData);
+          .update(firestoreData);
 
-      // Update local user data
+      // Refresh local data to be sure (optional if optimistic update is trusted)
       await getUserData();
 
       emit(ProfileUpdateSuccess('Profile updated successfully'));

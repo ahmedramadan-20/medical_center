@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-
+import 'package:medical_center/core/services/service_locator.dart';
 import 'package:medical_center/core/utils/app_text_styles.dart';
 import 'package:medical_center/core/widgets/custom_empty_widget.dart';
-import 'package:medical_center/features/reviews/data/models/review_model.dart';
 import 'package:medical_center/features/appointments/presentation/manager/appointment_cubit.dart';
 import 'package:medical_center/features/appointments/presentation/manager/appointment_state.dart';
 import 'package:medical_center/features/home/presentation/home_cubit/home_cubit.dart';
+import 'package:medical_center/features/reviews/data/models/review_model.dart';
 import 'package:medical_center/features/reviews/presentation/manager/review_cubit.dart';
 import 'package:medical_center/features/reviews/presentation/manager/review_state.dart';
 import 'package:medical_center/generated/l10n.dart';
@@ -20,12 +20,12 @@ class MyAppointmentsView extends StatelessWidget {
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => AppointmentCubit()
+            create: (context) => getIt<AppointmentCubit>()
               ..getUserAppointments(
                 FirebaseAuth.instance.currentUser?.email ?? '',
               ),
           ),
-          BlocProvider(create: (context) => ReviewCubit()),
+          BlocProvider(create: (context) => getIt<ReviewCubit>()),
         ],
         child: BlocListener<ReviewCubit, ReviewState>(
           listener: (context, state) {
@@ -300,7 +300,8 @@ class MyAppointmentsView extends StatelessWidget {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                    content: Text('Rescheduling feature coming soon')),
+                  content: Text('Rescheduling feature coming soon'),
+                ),
               );
               Navigator.pop(dialogContext);
             },

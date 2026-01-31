@@ -1,9 +1,16 @@
 # 🏥 Medical Center - Flutter Healthcare Application
 
-A comprehensive Flutter-based healthcare management application with Firebase backend integration. The app provides seamless user authentication, appointment booking, doctor discovery, and a professional-grade administrative dashboard.
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![IOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
+![License](https://img.shields.io/github/license/ahmedramadan-20/medical_center?style=for-the-badge)
 
-**Current Version:** 1.2.0  
-**Flutter SDK:** >=3.1.3 <4.0.0  
+A comprehensive, production-ready healthcare management application built with Flutter. Featuring real-time appointment booking, doctor discovery, offline-first synchronization, and a robust administrative dashboard.
+
+**Current Version:** 1.2.0
+**Flutter SDK:** >=3.1.3 <4.0.0
 **Repository:** [ahmedramadan-20/medical_center](https://github.com/ahmedramadan-20/medical_center)
 
 ---

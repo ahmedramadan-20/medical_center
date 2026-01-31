@@ -471,6 +471,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "of_medical_specialists": MessageLookupByLibrary.simpleMessage(
       "Of medical specialties for your healthcare needs.",
     ),
+    "offline_error": MessageLookupByLibrary.simpleMessage(
+      "No Internet Connection",
+    ),
     "on_specific_days": MessageLookupByLibrary.simpleMessage(
       "On specific days for easy planning of your visit.",
     ),

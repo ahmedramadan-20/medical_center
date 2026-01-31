@@ -1,6 +1,6 @@
-import 'package:medical_center/features/search/presentation/manager/search_history_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_center/features/home/data/models/doctors_model.dart';
+import 'package:medical_center/features/search/presentation/manager/search_history_service.dart';
 import 'package:medical_center/features/search/presentation/manager/search_state.dart';
 
 enum SearchSortType { rating, experience }

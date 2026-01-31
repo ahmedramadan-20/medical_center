@@ -12,7 +12,6 @@ import 'package:medical_center/features/admin/presentation/manager/admin_users_c
 import 'package:medical_center/features/admin/presentation/views/add_edit_doctor_view.dart';
 import 'package:medical_center/features/admin/presentation/views/admin_dashboard_view.dart';
 import 'package:medical_center/features/admin/presentation/views/admin_send_notification_view.dart';
-
 import 'package:medical_center/features/admin/presentation/views/manage_appointments_view.dart';
 import 'package:medical_center/features/admin/presentation/views/manage_blood_records_view.dart';
 import 'package:medical_center/features/admin/presentation/views/manage_doctors_view.dart';
@@ -33,8 +32,8 @@ import 'package:medical_center/features/notifications/presentation/manager/notif
 import 'package:medical_center/features/notifications/presentation/views/notifications_view.dart';
 import 'package:medical_center/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import 'package:medical_center/features/on_boarding/presentation/views/on_boarding_view.dart';
-import 'package:medical_center/features/search/presentation/views/search_view.dart';
 import 'package:medical_center/features/profile/presentation/views/edit_profile_view.dart';
+import 'package:medical_center/features/search/presentation/views/search_view.dart';
 import 'package:medical_center/features/splash/presentation/views/splash_view.dart';
 
 final GoRouter router = GoRouter(
@@ -136,7 +135,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/manageReviews',
       builder: (context, state) => BlocProvider(
-        create: (context) => AdminReviewsCubit()..getReviews(),
+        create: (context) => getIt<AdminReviewsCubit>()..getReviews(),
         child: const ManageReviewsView(),
       ),
     ),
