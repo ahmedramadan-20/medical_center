@@ -53,15 +53,34 @@ A comprehensive Flutter-based healthcare management application with Firebase ba
 
 ## 📸 Screenshots
 
+### 🔑 Authentication & Onboarding
+<div align="center">
+
+| Splash Screen | Onboarding (EN) | Onboarding (AR) |
+|:---:|:---:|:---:|
+| <img width="280" alt="Splash" src="assets/screenshots/splashscrean.jpg" /> | <img width="280" alt="Onboarding EN" src="assets/screenshots/onboarding1en.jpg" /> | <img width="280" alt="Onboarding AR" src="assets/screenshots/onboarding1ar.jpg" /> |
+
+| Login | Sign Up | Forget Password |
+|:---:|:---:|:---:|
+| <img width="280" alt="Login" src="assets/screenshots/loginen.jpg" /> | <img width="280" alt="Sign Up" src="assets/screenshots/signupen.jpg" /> | <img width="280" alt="Forgot" src="assets/screenshots/forgetpassworden.jpg" /> |
+
+</div>
+
+### 🛡️ Administrative Dashboard (Placeholders)
 <div align="center">
 
 | Admin Dashboard | Appointment Analysis | User Management |
 |:---:|:---:|:---:|
-| <img width="280" height="500" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/1766059401281" /> | <img width="280" height="500" alt="Appointment Dashboard" src="https://github.com/user-attachments/assets/1766059612490" /> | <img width="280" height="500" alt="User Management" src="https://github.com/user-attachments/assets/c1f93798-b42f-4e27-b582-6cc986e8afc3" /> |
+| (MISSING: admin_dashboard.jpg) | (MISSING: appointment_analytics.jpg) | (MISSING: user_management.jpg) |
 
 </div>
 
 ---
+
+## 📹 Application Walkthrough
+> [!NOTE]
+> Adding a short (30-60s) video or GIF of the app in action (especially the new Admin Dashboard) significantly enhances the repository's professional appeal on GitHub.
+
 
 ## 🏗️ Project Architecture
 
